@@ -24,9 +24,9 @@ public abstract class LocalPlayerMixin {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo info) {
         LocalPlayer player = (LocalPlayer) (Object) this;
-        if (ROMUtils.checkInventory(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
+        if (ROMUtils.checkInventory(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())||ROMUtils.checkCurios(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
             if (player.onGround() || player.onClimbable()) {
-                jumpCount = ROMUtils.counting(player, ROMItems.HOPOO_FEATHER.getDefaultInstance());
+                jumpCount = ROMUtils.countAll(player, ROMItems.HOPOO_FEATHER.getDefaultInstance());
 
             } else if (!jumpedLastTick && jumpCount > 0 && player.getDeltaMovement().y < 0) {
                 if (player.input.jumping && !player.getAbilities().flying) {
@@ -42,24 +42,7 @@ public abstract class LocalPlayerMixin {
             }
             jumpedLastTick = player.input.jumping;
         }
-        if (ROMUtils.checkCurios(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
-            if (player.onGround() || player.onClimbable()) {
-                jumpCount = ROMUtils.countingCurio(player, ROMItems.HOPOO_FEATHER);
 
-            } else if (!jumpedLastTick && jumpCount > 0 && player.getDeltaMovement().y < 0) {
-                if (player.input.jumping && !player.getAbilities().flying) {
-                    if (canJump(player)) {
-                        --jumpCount;
-                        player.jumpFromGround();
-                        ROMDoubleEffect.play(player);
-                        ROMNetwork.sendToServer(new DoubleJumpPacket());
-
-
-                    }
-                }
-            }
-            jumpedLastTick = player.input.jumping;
-        }
     }
 
 

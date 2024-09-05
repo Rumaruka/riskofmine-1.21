@@ -1,15 +1,19 @@
 package com.rumaruka.riskofmine.common.events;
 
 
+import com.rumaruka.riskofmine.common.entity.misc.HealthOrbEntity;
 import com.rumaruka.riskofmine.common.entity.misc.StickyBombEntity;
 import com.rumaruka.riskofmine.init.ROMItems;
 import com.rumaruka.riskofmine.init.ROMParticles;
+import com.rumaruka.riskofmine.init.ROMSounds;
 import com.rumaruka.riskofmine.utils.ROMDoubleEffect;
 import com.rumaruka.riskofmine.utils.ROMMathFormula;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -22,6 +26,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -95,6 +100,21 @@ public class ItemsEvents {
             }
         }
 
+    }
+
+    @SubscribeEvent
+    public static void onEntityDeath(LivingDeathEvent event) {
+        LivingEntity target = event.getEntity();
+        Entity attacked = event.getSource().getEntity();
+        Level level = target.level();
+        if (attacked instanceof ServerPlayer player) {
+            if (!level.isClientSide()) {
+                if (ROMUtils.checkInventory(player,  ROMItems.MONSTER_TOOTH.getDefaultInstance()) || ROMUtils.checkCurios(player,  ROMItems.MONSTER_TOOTH.getDefaultInstance())) {
+                    level.addFreshEntity(new HealthOrbEntity(level, target.getX() + 0.5d, target.getY() + 0.5d, target.getZ() + 0.5d, ROMUtils.countAll(player,  ROMItems.MONSTER_TOOTH.getDefaultInstance())));
+                    level.playSound(null, new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ()), ROMSounds.PROC_MT_SPAWN.get(), SoundSource.MASTER, 2, 2);
+                }
+            }
+        }
     }
 
     @SubscribeEvent

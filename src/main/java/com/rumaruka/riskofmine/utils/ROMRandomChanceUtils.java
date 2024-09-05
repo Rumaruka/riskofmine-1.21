@@ -60,6 +60,7 @@ public final class ROMRandomChanceUtils {
         return RANDOM.randomValueBetween(min, max);
     }
 
+    @SafeVarargs
     public static <T> T getRandomSelection(@Nonnull T... options) {
         return RANDOM.getRandomSelection(options);
     }

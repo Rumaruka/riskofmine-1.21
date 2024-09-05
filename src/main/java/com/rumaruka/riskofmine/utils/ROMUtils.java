@@ -15,19 +15,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.EntityBasedExplosionDamageCalculator;
-import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ROMUtils {
@@ -36,48 +32,44 @@ public class ROMUtils {
     private static MobEffectCategory category;
 
 
+    @Getter
     private static final Minecraft mc = Minecraft.getInstance();
-    private static int durOld;
-    public static int valueShields = 5;
-
-    public static Minecraft getMc() {
-        return mc;
-    }
+    // private static int durOld;
+    // public static int valueShields = 5;
 
     public static Level getLvL() {
         return getMc().level;
     }
 
     public static LevelRenderer getRender() {
-        return mc.levelRenderer;
+        return getMc().levelRenderer;
     }
+
 
     public static Player getPlayer() {
 
-        return mc.player;
+        return getMc().player;
     }
 
-    public static int getValueShields() {
-        return valueShields;
-    }
+//    public static int getValueShields() {
+//        return valueShields;
+//    }
 
     public static int getShieldShapedGlass() {
         return 16;
     }
 
 
-    public static int getDurOld() {
-        return durOld;
-    }
+//    public static int getDurOld() {
+//        return durOld;
+//    }
 
     /**
      * set the movespeed used for the new AI system
      */
-    public static int setDurOld(int durNew) {
-        return durOld = durNew;
-    }
-
-
+//    public static int setDurOld(int durNew) {
+//        return durOld = durNew;
+//    }
     public static void sendMessage(String msg) {
         Player player = Minecraft.getInstance().player;
 
@@ -99,14 +91,20 @@ public class ROMUtils {
         return ((IOverloading) entity).isOverloading();
 
     }
-public static int countAll(Player player, ItemStack item){
-    int itemCount = 0;
-        if (checkCurios(player,item)||checkCurios(player,item)){
-            itemCount+=item.getCount();
+
+    public static int countAll(Player player, ItemStack item) {
+        int itemCount = 0;
+        if (checkCurios(player, item) || checkCurios(player, item)) {
+            itemCount += item.getCount();
         }
 
         return itemCount;
-}
+    }
+
+    @Deprecated
+    /**
+     *  {@param countAll(player, itemstack)} new methods for check count items for inventory and curios
+     **/
     public static int counting(Player player, ItemStack itemToCount) {
         int itemCount = 0;
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
@@ -118,6 +116,10 @@ public static int countAll(Player player, ItemStack item){
         return itemCount;
     }
 
+    @Deprecated
+    /**
+     * {@param countAll(player, itemstack)} new methods for check count items for inventory and curios
+     **/
     public static int countingCurio(Player player, Item item) {
         int itemCount = 0;
 
@@ -154,19 +156,8 @@ public static int countAll(Player player, ItemStack item){
         }
         return false;
     }
-    public static boolean checkBaseItems(Player player) {
 
-        Inventory inventory = player.getInventory();
 
-        for (int i = 0; i < inventory.getContainerSize(); i++) {
-            ItemStack itemStack = inventory.getItem(i);
-            if (itemStack.getItem() instanceof BaseCollectablesItem){
-                return true;
-            }
-
-        }
-        return false;
-    }
     public static boolean isCommon(Player player) {
 
         ItemStack itemStack = player.getMainHandItem();
@@ -262,6 +253,10 @@ public static int countAll(Player player, ItemStack item){
         return false;
     }
 
+    @Deprecated
+    /**
+     * @deprecated unnecessary this method
+     */
     public static ItemStack curiosItemStack(Player player, Item item) {
         if (CuriosApi.getCuriosHelper().findFirstCurio(player, item).isPresent()) {
             return CuriosApi.getCuriosHelper().findFirstCurio(player, item).get().stack();
@@ -309,12 +304,12 @@ public static int countAll(Player player, ItemStack item){
         graphics.drawString(fontRendererIn, text, x, y, color, true);
     }
 
-    public static  void renderText( PoseStack pose , String text,float x, float y, MultiBufferSource pBufferSource){
+    public static void renderText(PoseStack pose, String text, float x, float y, MultiBufferSource pBufferSource) {
         Font font = ROMUtils.getMc().font;
 
         pose.pushPose();
-       // drawString(graphics,font,text,x,y,0xFFFFFF);
-        font.drawInBatch(text,x,y,0xFFFFFF,true,pose.last().pose(), pBufferSource,Font.DisplayMode.NORMAL,
+        // drawString(graphics,font,text,x,y,0xFFFFFF);
+        font.drawInBatch(text, x, y, 0xFFFFFF, true, pose.last().pose(), pBufferSource, Font.DisplayMode.NORMAL,
                 0,
                 15728880);
         pose.popPose();
