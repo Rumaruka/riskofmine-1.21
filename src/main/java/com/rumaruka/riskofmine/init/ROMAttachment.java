@@ -1,16 +1,11 @@
 package com.rumaruka.riskofmine.init;
 
-import com.rumaruka.riskofmine.common.cap.Barrier;
-import com.rumaruka.riskofmine.common.cap.Lunar;
-import com.rumaruka.riskofmine.common.cap.Money;
-import com.rumaruka.riskofmine.common.cap.Shields;
+import com.rumaruka.riskofmine.common.cap.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
-
-import java.util.function.Supplier;
 
 import static com.rumaruka.riskofmine.RiskOfMine.MODID;
 
@@ -20,6 +15,7 @@ public class ROMAttachment {
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Lunar>> LUNAR = ATTACHMENT_TYPES.register("lunar", () -> AttachmentType.builder(()->new Lunar()).serialize(Lunar.CODEC).copyOnDeath().build());
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Money>> MONEY = ATTACHMENT_TYPES.register("money", () -> AttachmentType.builder(()->new Money()).serialize(Money.CODEC).copyOnDeath().build());
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Shields>> SHIELDS = ATTACHMENT_TYPES.register("shields", () -> AttachmentType.builder(()->new Shields()).serialize(Shields.CODEC).copyOnDeath().build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Timer>> TIMER = ATTACHMENT_TYPES.register("timer", () -> AttachmentType.builder(()->new Timer()).serialize(Timer.CODEC).copyOnDeath().build());
 
    public static void setup(IEventBus bus) {
        ATTACHMENT_TYPES.register(bus);

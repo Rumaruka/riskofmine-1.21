@@ -29,6 +29,7 @@ public class ROMNetwork {
             network.playToClient(LunarPacket.TYPE,LunarPacket.CODEC,LunarPacket::handle);
             network.playToClient(MoneyPacket.TYPE,MoneyPacket.CODEC,MoneyPacket::handle);
             network.playToClient(ShieldsPacket.TYPE,ShieldsPacket.CODEC,ShieldsPacket::handle);
+            network.playToClient(TimerPacket.TYPE,TimerPacket.CODEC,TimerPacket::handle);
             network.playToClient(OverlayPacket.TYPE,OverlayPacket.CODEC,OverlayPacket::handle);
     }
 
