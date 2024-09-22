@@ -31,9 +31,7 @@ public class ROMEffects {
     public static final DeferredHolder<MobEffect,MobEffect> CELESTINE = EFFECTS.register("celestine", () -> new CelestineMobs(MobEffectCategory.BENEFICIAL, 5646433));
     public static final DeferredHolder<MobEffect,MobEffect> GLACIAL = EFFECTS.register("glacial", () -> new GlacialMobs(MobEffectCategory.BENEFICIAL, 5646433));
     public static final DeferredHolder<MobEffect,MobEffect> MALACHITE = EFFECTS.register("malachite", () -> new MalachiteMobs(MobEffectCategory.BENEFICIAL, 5646433));
-    public static final DeferredHolder<MobEffect,MobEffect> MALACHITE_ELITES = EFFECTS.register("malachite_elites", () -> new MalachiteElitesMobs(MobEffectCategory.BENEFICIAL, 5646433));
     public static final DeferredHolder<MobEffect,MobEffect> OVERLOADING = EFFECTS.register("overloading", () -> new OverloadingMobs(MobEffectCategory.BENEFICIAL, 5646433));
-    public static final DeferredHolder<MobEffect,MobEffect> OVERLOADING_ELITES = EFFECTS.register("overloading_elites", () -> new OverloadingMobs(MobEffectCategory.BENEFICIAL, 5646433));
     public static final DeferredHolder<MobEffect,MobEffect> PERFECTED = EFFECTS.register("perfected", () -> new PerfectedMobs(MobEffectCategory.BENEFICIAL, 5646433));
     public static final DeferredHolder<MobEffect,MobEffect> MENDING = EFFECTS.register("mending", () -> new MendingMobs(MobEffectCategory.BENEFICIAL, 5646433));
 }
