@@ -91,9 +91,15 @@ public class ItemsEvents {
             if (target instanceof ServerPlayer player) {
                 if (!level.isClientSide()) {
                     if (ROMUtils.checkInventory(player, ROMItems.OLD_WAR_STEALTHKIT.getDefaultInstance()) || ROMUtils.checkInventory(player, ROMItems.OLD_WAR_STEALTHKIT.getDefaultInstance())) {
-                        if (player.getHealth() >= 2.5f) {
+                        if (player.getHealth() < 2.5f) {
                             player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 1000, 1, false, false));
                             player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000, 1, false, false));
+                        }
+                    }
+                    if (ROMUtils.checkInventory(player, ROMItems.DIO_BEST_FRIEND.getDefaultInstance()) || ROMUtils.checkCurios(player, ROMItems.DIO_BEST_FRIEND.getDefaultInstance())) {
+                        if (player.getHealth() == 1f) {
+                            //player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 1000, 1, false, false));
+                            //player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000, 1, false, false));
                         }
                     }
                 }
