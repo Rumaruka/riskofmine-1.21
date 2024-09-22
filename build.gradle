@@ -109,15 +109,11 @@ dependencies {
 
     implementation "org.zeith.hammerlib:HammerLib-1.21:${hl_version}"
     implementation "org.zeith.hammeranims:HammerAnimations-1.21:${hammeranims_version}"
+
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
 
-
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-
-
-    implementation("io.wispforest:accessories-neoforge:${accessories_version}")
-    compileOnly("io.wispforest:accessories-common:${accessories_version}")
     implementation 'top.theillusivec4.curios:curios-neoforge:9.0.1+1.21'
 }
 
