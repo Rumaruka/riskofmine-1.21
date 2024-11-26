@@ -11,5 +11,6 @@ public class ROMEntityRegister {
         EntityRenderers.register(ROMEntity.HEALTH_ORB, HealthOrbRenderer::new);
         EntityRenderers.register(ROMEntity.STICKY_BOMB, StickyBombRenderer::new);
 
+
     }
 }
