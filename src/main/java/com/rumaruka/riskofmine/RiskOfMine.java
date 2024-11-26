@@ -3,22 +3,19 @@ package com.rumaruka.riskofmine;
 
 import com.rumaruka.riskofmine.client.ROMEntityRegister;
 import com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender;
-import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.init.*;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.packets.OverlayPacket;
 import com.rumaruka.riskofmine.utils.ROMUtils;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
@@ -28,7 +25,6 @@ import org.zeith.hammerlib.proxy.HLConstants;
 
 import static com.rumaruka.riskofmine.RiskOfMine.MODID;
 import static com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender.KEY_SHOW_OVERLAYS;
-import static net.minecraft.core.component.DataComponents.CONTAINER;
 
 
 @Mod(MODID)
@@ -51,6 +47,7 @@ public class RiskOfMine {
         ROMEffects.POTIONS.register(bus);
         bus.addListener(RiskOfMine::clientSetup);
 
+
         bus.addListener(ROMOverlayRender::registerKeys);
 
     }
@@ -64,6 +61,7 @@ public class RiskOfMine {
 
 
     }
+
 
     @SubscribeEvent
     public static void inputEvent(InputEvent.Key event) {
