@@ -3,6 +3,7 @@ package com.rumaruka.riskofmine;
 
 import com.rumaruka.riskofmine.client.ROMEntityRegister;
 import com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender;
+import com.rumaruka.riskofmine.datagen.worldgen.ROMFeatures;
 import com.rumaruka.riskofmine.init.*;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.packets.OverlayPacket;
@@ -47,7 +48,7 @@ public class RiskOfMine {
         ROMEffects.POTIONS.register(bus);
         bus.addListener(RiskOfMine::clientSetup);
 
-
+        ROMFeatures.registerFeatures(bus);
         bus.addListener(ROMOverlayRender::registerKeys);
 
     }

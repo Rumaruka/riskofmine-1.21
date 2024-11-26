@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "#minecraft:is_end",
-  "features": "riskofmine:end_chest_gen",
-  "step": "underground_ores"
-}

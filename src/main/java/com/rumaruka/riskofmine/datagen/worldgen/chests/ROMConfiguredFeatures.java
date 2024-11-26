@@ -1,6 +1,8 @@
 package com.rumaruka.riskofmine.datagen.worldgen.chests;
 
 import com.rumaruka.riskofmine.RiskOfMine;
+import com.rumaruka.riskofmine.datagen.worldgen.ROMFeatures;
+import com.rumaruka.riskofmine.datagen.worldgen.chests.features.ROMSmallChestFeature;
 import com.rumaruka.riskofmine.init.ROMBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -25,8 +27,8 @@ import java.util.List;
 
 public class ROMConfiguredFeatures {
     protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_CHEST = createKey("overworld_chest");
-    protected static ResourceKey<ConfiguredFeature<?, ?>> NETHER_CHEST = createKey("nether_chest");
-    protected static ResourceKey<ConfiguredFeature<?, ?>> END_CHEST = createKey("end_chest");
+//    protected static ResourceKey<ConfiguredFeature<?, ?>> NETHER_CHEST = createKey("nether_chest");
+//    protected static ResourceKey<ConfiguredFeature<?, ?>> END_CHEST = createKey("end_chest");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -57,9 +59,9 @@ public class ROMConfiguredFeatures {
                         OreConfiguration.target(flowerReplace, smallChest)
 
                 );
-        register(context, OVERWORLD_CHEST, Feature.ORE, new OreConfiguration(overOre, 2));
-        register(context, NETHER_CHEST, Feature.ORE, new OreConfiguration(netherOre, 4));
-        register(context, END_CHEST, Feature.ORE, new OreConfiguration(endOre, 4));
+        FeatureUtils.register(context, OVERWORLD_CHEST, ROMFeatures.SMALL_CHEST.get());
+//        register(context, NETHER_CHEST, Feature.ORE, new OreConfiguration(netherOre, 57));
+//        register(context, END_CHEST, Feature.ORE, new OreConfiguration(endOre, 57));
 
     }
 
@@ -71,11 +73,7 @@ public class ROMConfiguredFeatures {
         context.register(key, new ConfiguredFeature<>(feature, config));
     }
 
-    private static RandomPatchConfiguration grassPatch(BlockStateProvider p_195203_, int p_195204_) {
-        return FeatureUtils.simpleRandomPatchConfiguration(
-                p_195204_, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(p_195203_))
-        );
-    }
+
 }
 
 
