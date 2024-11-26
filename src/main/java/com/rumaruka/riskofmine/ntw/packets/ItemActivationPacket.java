@@ -27,6 +27,6 @@ public record ItemActivationPacket(ItemStack stack) implements CustomPacketPaylo
 
     @Override
     public Type<? extends CustomPacketPayload> type() {
-        return null;
+        return TYPE;
     }
 }

@@ -99,45 +99,6 @@ public interface ROMItems {
     @RegistryName("lunar_coin")
     LunarCoinItem LUNAR_COIN = new LunarCoinItem();
 
-
-    //  private static void register() {
-
-    //      REGISTER.register("armor_piercing_rounds", ArmorPiercingRoundsItem::new).defaultModel(tl("item/armor_piercing_rounds"));
-    //      REGISTER.register("bustling_fungus", BustlingFungusItem::new).defaultModel(tl("item/bustling_fungus"));
-    //      REGISTER.register("gasoline", GasolineItem::new).defaultModel(tl("item/gasoline"));
-    //      REGISTER.register("infusion", InfusionItem::new).defaultModel(tl("item/infusion"));
-    //      REGISTER.register("shaped_glass", ShapedGlassItem::new).defaultModel(tl("item/shaped_glass"));
-    //      REGISTER.register("soldier_syringe", SoldierSyringeItem::new).defaultModel(tl("item/soldier_syringe"));
-    //      REGISTER.register("monster_tooth", MonsterToothItem::new).defaultModel(tl("item/monster_tooth"));
-    //      REGISTER.register("crowbar", CrowbarItem::new).defaultModel(tl("item/crowbar"));
-    //      REGISTER.register("energy_drink", EnergyDrinkItem::new).defaultModel(tl("item/energy_drink"));
-    //      REGISTER.register("beads_of_fealty", BeadsOfFealtyItem::new).defaultModel(tl("item/beads_of_fealty"));
-    //      REGISTER.register("chronobauble", ChronobaubleItem::new).defaultModel(tl("item/chronobauble"));
-    //      REGISTER.register("blast_shower", BlastShowerItem::new).defaultModel(tl("item/blast_shower"));
-    //      REGISTER.register("focus_crystal", FocusCrystalItem::new).defaultModel(tl("item/focus_crystal"));
-    //      REGISTER.register("dio_best_friend", DioBestFriendItem::new).defaultModel(tl("item/dio_best_friend"));
-    //      REGISTER.register("alien_head", AlienHeadItem::new).defaultModel(tl("item/alien_head"));
-    //      REGISTER.register("old_war_stealthkit", OldWarStealthkitItem::new).defaultModel(tl("item/old_war_stealthkit"));
-    //      REGISTER.register("tri_tip_dagger", TriTipDaggerItem::new).defaultModel(tl("item/tri_tip_dagger"));
-    //      REGISTER.register("stun_grenade", StunGrenadeItem::new).defaultModel(tl("item/stun_grenade"));
-    //      REGISTER.register("warbanner", WarbannerItem::new).defaultModel(tl("item/warbanner"));
-    //      REGISTER.register("the_crowdfunder", TheCrowdFunderItem::new).defaultModel(tl("item/the_crowdfunder"));
-    //      REGISTER.register("sticky_bomb", StickyBombItem::new).defaultModel(tl("item/sticky_bomb"));
-    //      REGISTER.register("tentabauble", TentabaubleItem::new).defaultModel(tl("item/tentabauble"));
-    //      REGISTER.register("topaz_brooch", TopazBroochItem::new).defaultModel(tl("item/topaz_broosh"));
-    //      REGISTER.register("bison_steak", BisonSteakItem::new).defaultModel(tl("item/bison_steak"));
-    //      REGISTER.register("common_item_scrap", CommonItemScrapItem::new).defaultModel(tl("item/common_item_scrap"));
-    //      REGISTER.register("uncommon_item_scrap", UnCommonItemScrapItem::new).defaultModel(tl("item/uncommon_item_scrap"));
-    //      REGISTER.register("weeping_fungus", WeepingFungusItem::new).defaultModel(tl("item/weeping_fungus"));
-    //      REGISTER.register("power_elixir", PowerElixirItem::new).defaultModel(tl("item/power_elixir"));
-    //      REGISTER.register("empty_elixir", EmptyElixirItem::new).defaultModel(tl("item/empty_bottle"));
-    //      REGISTER.register("tougher_times", TougherTimesItem::new).defaultModel(tl("item/tougher_times"));
-    //      REGISTER.register("safer_spaces", SaferSpacesItem::new).defaultModel(tl("item/safer_spaces"));
-    //      REGISTER.register("hopoo_feather", HopooFeatherItem::new).defaultModel(tl("item/hopoo_feather"));
-    //      REGISTER.register("lunar_coin", LunarCoinItem::new);
-
-
-    //  }
     class Items {
         public static ArrayList<Item> getAllItem() {
             return (Lists.newArrayList(
@@ -182,5 +143,5 @@ public interface ROMItems {
 }
 
 
-//    }
+
 
