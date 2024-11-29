@@ -28,7 +28,7 @@ import java.util.List;
 public class ROMFeatures{
 
     private static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(BuiltInRegistries.FEATURE, RiskOfMine.MODID);
-    public static final DeferredHolder<Feature<?>,ROMSmallChestFeature> SMALL_CHEST = FEATURES.register("features_small_chest", ()->new ROMSmallChestFeature(NoneFeatureConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, ROMSmallChestFeature> SMALL_CHEST = FEATURES.register("features_small_chest", ()->new ROMSmallChestFeature(NoneFeatureConfiguration.CODEC));
 
     public static void registerFeatures(IEventBus bus) {
         FEATURES.register(bus);

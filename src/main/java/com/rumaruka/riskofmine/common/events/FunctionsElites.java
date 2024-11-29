@@ -5,10 +5,12 @@ import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -27,7 +29,7 @@ public class FunctionsElites {
         if (entity instanceof LivingEntity living) {
             if (living.hasEffect(ROMEffects.BLAZING)) {
                 living.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE));
-                Utils.createBlazingStep(living);
+
                 //  ROMUtils.getPlayer().sendSystemMessage(Component.literal("Я ГОРЮ"));
             }
         }
@@ -36,36 +38,17 @@ public class FunctionsElites {
 
 
     @SubscribeEvent
-    public static void onBlazingImmune(EntityInvulnerabilityCheckEvent event) {
-        Entity entity = event.getEntity();
-        Player player = ROMUtils.getPlayer();
-        if (entity instanceof LivingEntity living) {
-            if (living.hasEffect(ROMEffects.BLAZING)) {
-                if (living.isOnFire()){
-                    event.setInvulnerable(true);
-
+    public static void fireAttack(EntityInvulnerabilityCheckEvent event) {
+        Entity target = event.getEntity();
+        Entity attacked = event.getSource().getEntity();
+        Level level = target.level();
+        if (attacked instanceof Mob) {
+            if (target instanceof ServerPlayer player) {
+                if (!level.isClientSide()) {
+                    player.setRemainingFireTicks(100);
                 }
-
-
-            }
-
-        }
-
-
-    }
-
-    static class Utils {
-
-        public static void createBlazingStep(LivingEntity livingEntity) {
-            Level world = livingEntity.level();
-            BlockPos pos = livingEntity.blockPosition();
-
-            if (world.getBlockState(pos).isAir()) {
-                world.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
             }
         }
 
-
     }
-
 }

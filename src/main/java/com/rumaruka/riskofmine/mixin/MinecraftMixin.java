@@ -17,7 +17,9 @@ public abstract class MinecraftMixin {
         if (ROMUtils.hasOverloadingOnClient(entity)) {
             ci.setReturnValue(true);
         }
-
+        if (ROMUtils.hasBlazingOnClient(entity)) {
+            ci.setReturnValue(true);
+        }
 
     }
 }

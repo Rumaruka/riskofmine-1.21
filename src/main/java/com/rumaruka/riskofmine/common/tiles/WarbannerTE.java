@@ -1,6 +1,7 @@
 package com.rumaruka.riskofmine.common.tiles;
 
 import com.rumaruka.riskofmine.init.ROMTiles;
+import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -24,11 +25,9 @@ public class WarbannerTE extends BlockEntity {
         List<Player> entities = level.getEntitiesOfClass(
                 Player.class, pArea);
         for (Player entity : entities) {
-
-            entity.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED));
-            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED));
-            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST));
-
+            ROMUtils.addEffects(entity,MobEffects.DIG_SPEED);
+            ROMUtils.addEffects(entity,MobEffects.MOVEMENT_SPEED);
+            ROMUtils.addEffects(entity,MobEffects.DAMAGE_BOOST);
 
         }
     }

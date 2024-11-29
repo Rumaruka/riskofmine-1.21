@@ -23,7 +23,9 @@ public abstract class LevelRendererMixin {
             Minecraft.getInstance().renderBuffers().outlineBufferSource().setColor(0, 0, 255, 255);
         }
 
-
+        if (ROMUtils.hasBlazingOnClient(pEntity)) {
+            Minecraft.getInstance().renderBuffers().outlineBufferSource().setColor(255, 0, 0, 255);
+        }
     }
 
 

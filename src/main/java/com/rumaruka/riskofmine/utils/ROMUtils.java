@@ -2,6 +2,7 @@ package com.rumaruka.riskofmine.utils;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.rumaruka.riskofmine.api.Types;
+import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import lombok.Getter;
@@ -10,10 +11,13 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
@@ -24,6 +28,8 @@ import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class ROMUtils {
@@ -89,6 +95,12 @@ public class ROMUtils {
     public static boolean hasOverloadingOnClient(Entity entity) {
 
         return ((IOverloading) entity).isOverloading();
+
+    }
+
+    public static boolean hasBlazingOnClient(Entity entity) {
+
+        return ((IBlazing) entity).isBlazing();
 
     }
 
@@ -314,5 +326,11 @@ public class ROMUtils {
                 15728880);
         pose.popPose();
     }
+
+
+    public static void addEffects(Player player, Holder<MobEffect> mobEffect) {
+        player.addEffect(new MobEffectInstance(mobEffect, 1000, 1, false, false));
+    }
+
 
 }

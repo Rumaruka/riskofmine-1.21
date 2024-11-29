@@ -1,5 +1,6 @@
 package com.rumaruka.riskofmine.common.events;
 
+import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
 import com.rumaruka.riskofmine.init.ROMEffects;
 import net.minecraft.world.entity.Entity;
@@ -14,7 +15,7 @@ public class ElitesEvents {
 
 
     @SubscribeEvent
-    public static void addFunctionForEffectsTick(EntityTickEvent.Post event) {
+    public static void addOveloading(EntityTickEvent.Post event) {
         Entity entity = event.getEntity();
 
 
@@ -26,9 +27,25 @@ public class ElitesEvents {
             }
 
 
+
         }
     }
+    @SubscribeEvent
+    public static void addBlazing(EntityTickEvent.Post event) {
+        Entity entity = event.getEntity();
 
+
+        Level level = entity.level();
+        if (!level.isClientSide()) {
+
+            if (entity instanceof LivingEntity living) {
+                ((IBlazing) living).setBlazing(living.hasEffect(ROMEffects.BLAZING));
+            }
+
+
+
+        }
+    }
 
 }
 

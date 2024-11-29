@@ -25,6 +25,8 @@ public class ROMNetwork {
             network.playToServer(DoubleJumpPacket.TYPE,DoubleJumpPacket.STREAM_CODEC,DoubleJumpPacket::handle);
 
             network.playToClient(OverloadingPacket.TYPE,OverloadingPacket.CODEC,OverloadingPacket::handle);
+            network.playToClient(BlazingPacket.TYPE,BlazingPacket.CODEC,BlazingPacket::handle);
+
             network.playToClient(BarrierPacket.TYPE,BarrierPacket.CODEC,BarrierPacket::handle);
             network.playToClient(LunarPacket.TYPE,LunarPacket.CODEC,LunarPacket::handle);
             network.playToClient(MoneyPacket.TYPE,MoneyPacket.CODEC,MoneyPacket::handle);

@@ -19,7 +19,7 @@ public interface ROMEntity {
     EntityType<StickyBombEntity> STICKY_BOMB = EntityType.Builder.<StickyBombEntity>of(StickyBombEntity::new, MobCategory.MISC)
            .setTrackingRange(80)
            .setShouldReceiveVelocityUpdates(true)
-           .sized(1.5F, 1.5F).updateInterval(20).build("sticky_bomb");
+           .sized(0.5F, 0.5F).updateInterval(20).build("sticky_bomb");
 
 
 }
