@@ -97,6 +97,6 @@ public class Timer implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-            nbt.getInt("timer");
+        nbt.getInt("timer");
     }
 }

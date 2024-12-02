@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.config;
 
-import com.rumaruka.riskofmine.RiskOfMine;
+
 import org.zeith.hammerlib.annotations.SetupConfigs;
 import org.zeith.hammerlib.util.configured.ConfigFile;
 import org.zeith.hammerlib.util.configured.ConfiguredLib;

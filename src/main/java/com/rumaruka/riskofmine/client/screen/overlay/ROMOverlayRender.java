@@ -1,9 +1,6 @@
 package com.rumaruka.riskofmine.client.screen.overlay;
 
-import com.rumaruka.riskofmine.common.cap.Barrier;
-import com.rumaruka.riskofmine.common.cap.Lunar;
-import com.rumaruka.riskofmine.common.cap.Money;
-import com.rumaruka.riskofmine.common.cap.Shields;
+import com.rumaruka.riskofmine.common.cap.*;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -34,15 +31,29 @@ public class ROMOverlayRender {
 
     @SubscribeEvent
     public static void renderOverlay(CustomizeGuiOverlayEvent.Chat event) {
+        GuiGraphics guiGraphics = event.getGuiGraphics();
+        renderNearbyTimerDisplay(guiGraphics);
         if (!KEY_SHOW_OVERLAYS.isDown()) {
-            renderNearbyMoneyDisplay(event.getGuiGraphics());
-            renderNearbyLunarDisplay(event.getGuiGraphics());
+            renderNearbyMoneyDisplay(guiGraphics);
+            renderNearbyLunarDisplay(guiGraphics);
         } else {
-            renderNearbyShieldsDisplay(event.getGuiGraphics());
-            renderNearbyBarrierDisplay(event.getGuiGraphics());
+            renderNearbyShieldsDisplay(guiGraphics);
+            renderNearbyBarrierDisplay(guiGraphics);
 
         }
 
+    }
+    private static void renderNearbyTimerDisplay(GuiGraphics stack) {
+        var pose = stack.pose();
+        pose.pushPose();
+        Player player = mc.player;
+        Font font = mc.font;
+        if (player != null && !player.isDeadOrDying()) {
+            Timer timer = Timer.get(player);
+            String toDisplay = getTimerDisplay(timer);
+            Color color = Color.RED;
+            ROMUtils.drawString(stack, font, toDisplay, 27.5f, 60, color.getRGB());
+        }
     }
 
     private static void renderNearbyMoneyDisplay(GuiGraphics stack) {
@@ -106,7 +117,11 @@ public class ROMOverlayRender {
         return I18n.get("riskofmine.currentmoney.name") + currentMoney;
 
     }
+    private static String getTimerDisplay(Timer timer) {
+        int currentTimer = timer.getCurrentTimer();
+        return I18n.get("riskofmine.currenttimer.name") + currentTimer;
 
+    }
     private static String getLunarDisplay(Lunar lunar) {
         int currentLunar = lunar.getCurrentLunar();
         return I18n.get("riskofmine.currentlunar.name") + currentLunar;
