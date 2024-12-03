@@ -4,8 +4,11 @@ import com.rumaruka.riskofmine.api.Category;
 import com.rumaruka.riskofmine.api.Types;
 import lombok.Getter;
 import net.minecraft.ChatFormatting;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public abstract class BaseCollectablesItem extends Item implements ICurioItem {
@@ -26,10 +29,15 @@ public abstract class BaseCollectablesItem extends Item implements ICurioItem {
 
     }
 
+    @Override
+    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+        return true;
+    }
 
-
-
-
+    @Override
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) {
+        return true;
+    }
 
     public String getTypeName() {
         return type.getName();
