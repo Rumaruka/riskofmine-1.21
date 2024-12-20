@@ -90,11 +90,18 @@ public class EnergyDrinkItem extends BaseCollectablesItem {
 
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
-        tooltip.add(Component.translatable((getColor() + getTypeName())));
+        tooltip.add(Component.translatable("ror.alt.info"));
+        if (Screen.hasAltDown()) {
+
+
+            tooltip.add(Component.translatable("riskofmine.rarity").append(": ").append(Component.translatable((getColor() + getTypeName()))));
+            tooltip.add(Component.translatable("riskofmine.category").append(": ").append(Component.translatable((getColors() + getCategoryName()))));
+
+        }
         tooltip.add(Component.translatable("ror.shiftpress.info"));
         if (Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("ror.energydrink.info"));
-            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.counting(ROMUtils.getPlayer(), pStack) + "]"));
+            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.countAll(ROMUtils.getPlayer(), pStack) + "]"));
         }
     }
 }

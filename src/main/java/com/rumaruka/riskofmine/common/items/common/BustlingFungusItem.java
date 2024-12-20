@@ -4,21 +4,17 @@ import com.rumaruka.riskofmine.api.Category;
 import com.rumaruka.riskofmine.api.Types;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.events.MovingHandler;
-import com.rumaruka.riskofmine.init.ROMItems;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
@@ -34,14 +30,13 @@ public class BustlingFungusItem extends BaseCollectablesItem {
         if (Screen.hasAltDown()) {
 
 
-
-            tooltip.add(Component.translatable("riskofmine.rarity").append(":").append(Component.translatable((getColor() + getTypeName()))));
-            tooltip.add(Component.translatable("riskofmine.category").append(":").append(Component.translatable((getColors() + getCategoryName()))));
+            tooltip.add(Component.translatable("riskofmine.rarity").append(": ").append(Component.translatable((getColor() + getTypeName()))));
+            tooltip.add(Component.translatable("riskofmine.category").append(": ").append(Component.translatable((getColors() + getCategoryName()))));
         }
         tooltip.add(Component.translatable("ror.shiftpress.info"));
         if (Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("ror.bf.info"));
-            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.counting(ROMUtils.getPlayer(), pStack) + "]"));
+            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.countAll(ROMUtils.getPlayer(), pStack) + "]"));
         }
     }
 

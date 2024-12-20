@@ -29,8 +29,8 @@ public class WarbannerItem extends BaseCollectablesItem {
         }
         tooltip.add(Component.translatable("ror.shiftpress.info"));
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("ror.apr.info"));
-            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.counting(ROMUtils.getPlayer(), pStack) + "]"));
+            tooltip.add(Component.translatable("ror.warbanner.info"));
+            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.countAll(ROMUtils.getPlayer(), pStack) + "]"));
         }
     }
 }

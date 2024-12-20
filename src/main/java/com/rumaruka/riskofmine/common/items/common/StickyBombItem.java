@@ -25,13 +25,13 @@ public class StickyBombItem extends BaseCollectablesItem {
         if (Screen.hasAltDown()) {
 
 
-            tooltip.add(Component.translatable("riskofmine.rarity").append(":").append(Component.translatable((getColor() + getTypeName()))));
-            tooltip.add(Component.translatable("riskofmine.category").append(":").append(Component.translatable((getColors() + getCategoryName()))));
+            tooltip.add(Component.translatable("riskofmine.rarity").append(": ").append(Component.translatable((getColor() + getTypeName()))));
+            tooltip.add(Component.translatable("riskofmine.category").append(": ").append(Component.translatable((getColors() + getCategoryName()))));
         }
         tooltip.add(Component.translatable("ror.shiftpress.info"));
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("ror.focus_crystal.info"));
-            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.counting(ROMUtils.getPlayer(), pStack) + "]"));
+            tooltip.add(Component.translatable("ror.sticky_bomb.info"));
+            tooltip.add(Component.translatable("[Stacks:" + ROMUtils.countAll(ROMUtils.getPlayer(), pStack) + "]"));
         }
     }
 }

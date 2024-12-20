@@ -4,6 +4,7 @@ import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.Category;
 
 import com.rumaruka.riskofmine.init.ROMItems;
+import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -71,17 +72,16 @@ public class BlastShowerItem extends EquipmentBase {
         tooltip.add(Component.translatable("ror.alt.info"));
         if (Screen.hasAltDown()) {
 
-            tooltip.add(Component.translatable("riskofmine.rarity" + ":"));
-            tooltip.add(Component.translatable((getColor() + getTypeName())));
-            tooltip.add(Component.translatable("riskofmine.category" + ":"));
-            tooltip.add(Component.translatable((getColors() + getCategoryName())));
+
+            tooltip.add(Component.translatable("riskofmine.rarity").append(": ").append(Component.translatable((getColor() + getTypeName()))));
+            tooltip.add(Component.translatable("riskofmine.category").append(": ").append(Component.translatable((getColors() + getCategoryName()))));
+
         }
         tooltip.add(Component.translatable("ror.shiftpress.info"));
         if (Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("ror.blast_shower.info"));
         }
     }
-
 
 
 }

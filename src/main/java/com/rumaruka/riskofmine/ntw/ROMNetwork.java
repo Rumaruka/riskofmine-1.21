@@ -14,7 +14,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-public class ROMNetwork {
+public class  ROMNetwork {
 
 
     @SubscribeEvent

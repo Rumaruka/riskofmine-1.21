@@ -22,7 +22,7 @@ public class ROMMathUtils {
 
     public static float divide(float x, float y) {
         if (y == 0) {
-            new CrashReport("Divide Null", new ArithmeticException("Divide don`t null"));
+            new CrashReport("Divide 0", new ArithmeticException("Result divide = 0"));
         }
         return x / y;
     }
