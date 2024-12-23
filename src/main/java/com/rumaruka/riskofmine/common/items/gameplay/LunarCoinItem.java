@@ -19,8 +19,10 @@ public class LunarCoinItem extends GamePlayItem {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
         Lunar lunar = Lunar.get(pPlayer);
         lunar.addLunar(1);
+        if (!pPlayer.isCreative() || !pPlayer.getAbilities().invulnerable){
+            itemStack.shrink(1);
+        }
 
-        itemStack.shrink(1);
         return InteractionResultHolder.success(itemStack);
     }
 }

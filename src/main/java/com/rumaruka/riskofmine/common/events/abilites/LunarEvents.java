@@ -1,7 +1,6 @@
-package com.rumaruka.riskofmine.common.events;
+package com.rumaruka.riskofmine.common.events.abilites;
 
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.common.cap.Barrier;
 import com.rumaruka.riskofmine.common.cap.Lunar;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.init.ROMItems;

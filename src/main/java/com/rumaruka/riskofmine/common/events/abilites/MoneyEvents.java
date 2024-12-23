@@ -1,7 +1,8 @@
-package com.rumaruka.riskofmine.common.events;
+package com.rumaruka.riskofmine.common.events.abilites;
 
 
 import com.rumaruka.riskofmine.common.cap.Money;
+import com.rumaruka.riskofmine.common.events.ItemsEvents;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import net.minecraft.server.MinecraftServer;

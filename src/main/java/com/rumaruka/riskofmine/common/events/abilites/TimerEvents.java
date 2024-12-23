@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.common.events;
+package com.rumaruka.riskofmine.common.events.abilites;
 
 import com.rumaruka.riskofmine.common.cap.Timer;
 import com.rumaruka.riskofmine.common.config.ROMConfig;
@@ -12,7 +12,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber
 public class TimerEvents {

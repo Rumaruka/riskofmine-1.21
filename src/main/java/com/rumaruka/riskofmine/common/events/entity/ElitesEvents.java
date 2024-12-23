@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.common.events;
+package com.rumaruka.riskofmine.common.events.entity;
 
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;

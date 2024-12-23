@@ -85,7 +85,6 @@ public class Lunar implements INBTSerializable<CompoundTag> {
     }
 
     public static @NotNull Lunar get(Player player) {
-
         Lunar data = player.getData(ROMAttachment.LUNAR.get());
         data.setTarget(player);
         player.setData(ROMAttachment.LUNAR.get(), data);

@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.common.events;
+package com.rumaruka.riskofmine.common.events.abilites;
 
 import com.rumaruka.riskofmine.common.cap.Shields;
 import com.rumaruka.riskofmine.init.ROMAttachment;
