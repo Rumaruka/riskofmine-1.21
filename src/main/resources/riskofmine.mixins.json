@@ -9,6 +9,7 @@
     "LevelRendererMixin",
     "LocalPlayerMixin",
     "MinecraftMixin",
+    "PlayerMixin",
     "PlayerRendererMixin"
   ],
   "refmap": "riskofmine.mixin-refmap.json",

@@ -1,19 +1,28 @@
 package com.rumaruka.riskofmine;
 
 
+import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.client.ROMEntityRegister;
 import com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender;
+import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
+import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.datagen.worldgen.ROMFeatures;
 import com.rumaruka.riskofmine.init.*;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.packets.OverlayPacket;
 import com.rumaruka.riskofmine.utils.ROMUtils;
+import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.ConfirmScreen;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -35,7 +44,6 @@ public class RiskOfMine {
     public static final String MODID = "riskofmine";
     public static final Logger logger = LogManager.getLogger(MODID);
 
-    private static final ModList MOD_LIST = ModList.get();
 
     public RiskOfMine(IEventBus bus) {
 
@@ -74,6 +82,7 @@ public class RiskOfMine {
 
 
     }
+
 
 
     @SubscribeEvent
