@@ -3,6 +3,7 @@ package com.rumaruka.riskofmine;
 
 import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.client.ROMEntityRegister;
+import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
 import com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
@@ -16,6 +17,7 @@ import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +28,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
@@ -58,6 +62,7 @@ public class RiskOfMine {
         ROMEffects.POTIONS.register(bus);
         bus.addListener(RiskOfMine::setup);
         bus.addListener(RiskOfMine::clientSetup);
+      //  NeoForge.EVENT_BUS.addListener(RiskOfMine::onGuiOpen);
 
         ROMFeatures.registerFeatures(bus);
         bus.addListener(ROMOverlayRender::registerKeys);
@@ -73,6 +78,14 @@ public class RiskOfMine {
     }
 
 
+//    @SubscribeEvent
+//    public static void onGuiOpen(ClientTickEvent.Post event) {
+//
+//        if (Minecraft.getInstance().screen instanceof SelectWorldScreen) {
+//            Minecraft.getInstance().setScreen(new SurvivorsSelectionScreen());
+//
+//        }
+//    }
 
 
     private static void clientSetup(final FMLClientSetupEvent event) {

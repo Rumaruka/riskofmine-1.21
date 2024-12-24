@@ -6,14 +6,15 @@ import lombok.Setter;
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerSurvivorsBridge implements ISurvivors {
-    protected final Player player; // The player associated with this object
-    @Setter
-    private Survivors survivors; // The player associated with this object
+    protected final Player player;
+
+    private Survivors survivors;
 
     public PlayerSurvivorsBridge(Player player, Survivors survivors) {
         this.player = player;
         this.survivors = survivors;
 
+        setSurvivors(survivors);
     }
 
     @Override
@@ -21,14 +22,16 @@ public class PlayerSurvivorsBridge implements ISurvivors {
         return survivors;
     }
 
+    public void setSurvivors(Survivors survivors) {
+        this.survivors = survivors();
 
+    }
 
     @Override
     public float getHealth() {
         return survivors().getHealth();
 
     }
-
 
 
     @Override
@@ -44,7 +47,6 @@ public class PlayerSurvivorsBridge implements ISurvivors {
     }
 
 
-
     @Override
     public TypeDamage getTypeDamage() {
         return survivors().getTypeDamage();
@@ -58,13 +60,10 @@ public class PlayerSurvivorsBridge implements ISurvivors {
     }
 
 
-
     @Override
     public float getSpeed() {
         return survivors().getSpeed();
     }
-
-
 
 
     @Override
@@ -75,5 +74,6 @@ public class PlayerSurvivorsBridge implements ISurvivors {
     @Override
     public void copyOnDeath(ISurvivors info) {
         this.survivors = info.survivors();
+        setSurvivors(info.survivors());
     }
 }

@@ -19,7 +19,7 @@ public interface ISurvivors {
     static void copyOnDeath(Player oldPlayer, Player newPlayer) {
         final ISurvivors oldInfo = get(oldPlayer);
         final ISurvivors newInfo = get(newPlayer);
-
+        set(newPlayer);
         newInfo.copyOnDeath(oldInfo);
     }
 

@@ -1,9 +1,11 @@
 package com.rumaruka.riskofmine.utils;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.api.Types;
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
+import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -100,6 +102,9 @@ public class ROMUtils {
 
     }
 
+    public static PlayerSurvivorsBridge get(Player player, Survivors survivors) {
+        return new PlayerSurvivorsBridge(player,survivors);
+    }
     public static int countAll(Player player, ItemStack item) {
         int itemCount = 0;
         if (checkCurios(player, item) || checkCurios(player, item)) {
