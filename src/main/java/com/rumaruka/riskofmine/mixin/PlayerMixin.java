@@ -1,6 +1,7 @@
 package com.rumaruka.riskofmine.mixin;
 
 import com.rumaruka.riskofmine.api.Survivors;
+import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
 import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;
@@ -34,9 +35,19 @@ public abstract class PlayerMixin extends Entity implements IPlayerSurvivorsBrid
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void replacePlayerInfo(CallbackInfo ci) {
-        riskofmine$survivorsBridge.setSurvivors(Survivors.ARTIFICER);
-        riskofmine$survivorsBridge = new PlayerSurvivorsBridge((Player) (Object) this, riskofmine$survivorsBridge.survivors());
+        riskofmine$survivorsBridge = new PlayerSurvivorsBridge((Player) (Object) this, Survivors.COMMANDO);
+        if (SurvivorsSelectionScreen.isCommando) {
+            riskofmine$survivorsBridge = new PlayerSurvivorsBridge((Player) (Object) this, Survivors.COMMANDO);
 
+        }
+        if (SurvivorsSelectionScreen.isAcrid) {
+            riskofmine$survivorsBridge = new PlayerSurvivorsBridge((Player) (Object) this, Survivors.ACRID);
+
+        }
+        if (SurvivorsSelectionScreen.isArtificer) {
+            riskofmine$survivorsBridge = new PlayerSurvivorsBridge((Player) (Object) this, Survivors.ARTIFICER);
+
+        }
 
     }
 

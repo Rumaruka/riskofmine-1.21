@@ -5,6 +5,8 @@ import lombok.Setter;
 import net.minecraft.util.StringRepresentable;
 
 public enum Survivors implements StringRepresentable {
+    COMMANDO("commando",110f,12f,1.5f,TypeDamage.Ranged,0,7),
+
     ACRID("acrid", 160f, 15f, 2.5f, TypeDamage.Melee_Ranged, 20, 7),
     ARTIFICER("artificer", 110f, 12f, 1f, TypeDamage.Ranged, 0, 7);
 
