@@ -1,5 +1,7 @@
 package com.rumaruka.riskofmine.client.screen.overlay;
 
+import com.mojang.blaze3d.platform.Window;
+import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
 import com.rumaruka.riskofmine.common.cap.*;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.KeyMapping;
@@ -27,7 +29,6 @@ public class ROMOverlayRender {
     public static void registerKeys(RegisterKeyMappingsEvent e) {
         e.register(KEY_SHOW_OVERLAYS);
     }
-
 
     @SubscribeEvent
     public static void renderOverlay(CustomizeGuiOverlayEvent.Chat event) {

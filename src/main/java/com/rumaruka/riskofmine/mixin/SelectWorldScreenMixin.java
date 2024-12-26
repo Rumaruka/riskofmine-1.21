@@ -17,21 +17,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(SelectWorldScreen.class)
 @OnlyIn(Dist.CLIENT)
 public  class SelectWorldScreenMixin extends Screen {
-    @Unique
-    private Button riskofmine$selectSurvivors;
-    protected final Screen lastScreen;
+
     protected SelectWorldScreenMixin(Screen p_96550_) {
         super(Component.translatable("selectWorld.title"));
-        this.lastScreen = p_96550_;
+
     }
     @Inject(method = "init", at = @At("TAIL"))
     private void init(CallbackInfo ci){
-        this.riskofmine$selectSurvivors = this.addRenderableWidget(
-                Button.builder(Component.literal("Choose your Survivors"), b -> {
+       this.addRenderableWidget(
+                Button.builder(Component.translatable("riskofmine.choose.survivors"), b -> {
                             this.getMinecraft().setScreen(new SurvivorsSelectionScreen());
                         })
 
-                        .bounds(this.width / 2 + 5, 10, 100, 10)
+                        .bounds(this.width / 2 +100, 10, 150, 25)
                         .build()
         );
 

@@ -304,7 +304,9 @@ public class ROMUtils {
     public static void drawString(GuiGraphics graphics, Font fontRendererIn, String text, float x, float y, int color) {
         graphics.drawString(fontRendererIn, text, x, y, color, false);
     }
-
+    public static void drawString(GuiGraphics graphics, Font fontRendererIn, Component text, int x, int y, int color) {
+        graphics.drawString(fontRendererIn, text, x, y, color, false);
+    }
     /**
      * Draws string with shadow.
      *
