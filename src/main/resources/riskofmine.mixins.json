@@ -13,8 +13,5 @@
     "PlayerRendererMixin"
   ],
   "refmap": "riskofmine.mixin-refmap.json",
-  "minVersion": "0.8",
-  "client": [
-    "SelectWorldScreenMixin"
-  ]
+  "minVersion": "0.8"
 }

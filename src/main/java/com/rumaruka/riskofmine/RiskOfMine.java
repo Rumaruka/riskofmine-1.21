@@ -3,6 +3,8 @@ package com.rumaruka.riskofmine;
 
 import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.client.ROMEntityRegister;
+
+import com.rumaruka.riskofmine.client.event.ROMScreenEvent;
 import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
 import com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
@@ -60,9 +62,15 @@ public class RiskOfMine {
         ROMParticles.PARTICLES.register(bus);
         ROMEffects.EFFECTS.register(bus);
         ROMEffects.POTIONS.register(bus);
+
+
+        logger.info("Register Custom Registeres");
+        ROMSkills.SKILL.register(bus);
+        logger.info("END");
+
         bus.addListener(RiskOfMine::setup);
         bus.addListener(RiskOfMine::clientSetup);
-      //  NeoForge.EVENT_BUS.addListener(RiskOfMine::onGuiOpen);
+        NeoForge.EVENT_BUS.addListener(ROMScreenEvent::screenEvent);
 
         ROMFeatures.registerFeatures(bus);
         bus.addListener(ROMOverlayRender::registerKeys);

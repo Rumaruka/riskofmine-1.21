@@ -76,7 +76,7 @@ public class SurvivorsSelectionScreen extends Screen {
 
         if (isAcrid) {
             ROMUtils.drawString(p_281549_, font, Component.literal("Acrid Selected"), this.width / 2 - 154, this.height - 20, Color.RED.getRGB());
-            ROMUtils.drawString(p_281549_, font, String.valueOf(Survivors.ACRID.getHealth()), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
+            ROMUtils.drawString(p_281549_, font,Component.literal("Health").append(String.valueOf(Survivors.ACRID.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
 
         }
         if (isCommando) {
