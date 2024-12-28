@@ -27,7 +27,7 @@ public class PlayerEvents {
         Player player = evt.getEntity();
         if (player instanceof IPlayerSurvivorsBridge survivors){
             ISurvivors iSurvivors = survivors.riskofmine$getSurvivor();
-            //  player.sendSystemMessage(Component.literal(iSurvivors.getName()));
+             player.sendSystemMessage(Component.literal(iSurvivors.getName()));
             player.getAttributes().addTransientAttributeModifiers(makeAttributeMap(iSurvivors));
         }
     }

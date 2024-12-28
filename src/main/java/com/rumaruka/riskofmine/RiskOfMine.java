@@ -32,6 +32,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -70,6 +71,7 @@ public class RiskOfMine {
 
         bus.addListener(RiskOfMine::setup);
         bus.addListener(RiskOfMine::clientSetup);
+
         NeoForge.EVENT_BUS.addListener(ROMScreenEvent::screenEvent);
 
         ROMFeatures.registerFeatures(bus);

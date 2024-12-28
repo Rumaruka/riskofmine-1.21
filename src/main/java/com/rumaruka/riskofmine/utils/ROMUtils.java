@@ -5,6 +5,7 @@ import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.api.Types;
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
+import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import lombok.Getter;
@@ -107,9 +108,12 @@ public class ROMUtils {
     }
     public static int countAll(Player player, ItemStack item) {
         int itemCount = 0;
-        if (checkCurios(player, item) || checkCurios(player, item)) {
-            itemCount += item.getCount();
+        if (player instanceof IPlayerSurvivorsBridge survivorsBridge){
+            if (checkCurios((Player) survivorsBridge, item) || checkCurios((Player) survivorsBridge, item)) {
+                itemCount += item.getCount();
+            }
         }
+
 
         return itemCount;
     }
@@ -279,11 +283,14 @@ public class ROMUtils {
     }
 
     public static boolean checkCurios(Player player, ItemStack item) {
-        if (CuriosApi.getCuriosHelper().findFirstCurio(player, item.getItem()).isPresent()) {
-            ItemStack curioStack = curiosItemStack(player, item.getItem());
-            return ItemStack.isSameItem(curioStack, item);
+        if (player instanceof IPlayerSurvivorsBridge){
+            if (CuriosApi.getCuriosHelper().findFirstCurio(player, item.getItem()).isPresent()) {
+                ItemStack curioStack = curiosItemStack(player, item.getItem());
+                return ItemStack.isSameItem(curioStack, item);
 
+            }
         }
+
         return false;
     }
 

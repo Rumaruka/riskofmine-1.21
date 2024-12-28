@@ -34,8 +34,9 @@ public class SurvivorsSelectionScreen extends Screen {
                             isAcrid = true;
 
                             isArtificer = isCommando = false;
+
                         })
-                        .bounds(this.width / 2 - 154, this.height - 20 - count, 150, 20)
+                        .bounds(this.width / 2 - 154, this.height - 5 - count, 150, 20)
                         .build()
         );
         this.addRenderableWidget(
@@ -43,8 +44,9 @@ public class SurvivorsSelectionScreen extends Screen {
                             isArtificer = true;
 
                             isAcrid = isCommando = false;
+
                         })
-                        .bounds(this.width / 2 - 154, this.height - 20 - (count * 2), 150, 20)
+                        .bounds(this.width / 2 - 154, this.height -5 - (count * 2), 150, 20)
                         .build()
         );
         this.addRenderableWidget(
@@ -52,18 +54,23 @@ public class SurvivorsSelectionScreen extends Screen {
                             isAcrid = isArtificer = false;
 
                             isCommando = true;
+
                         })
-                        .bounds(this.width / 2 - 154, this.height - 20 - (count * 3), 150, 20)
+                        .bounds(this.width / 2 - 154, this.height - 5 - (count * 3), 150, 20)
                         .build()
         );
         this.addRenderableWidget(
                 Button.builder(CommonComponents.GUI_BACK,
-                                p_280917_ -> this.minecraft.setScreen(new SelectWorldScreen(new TitleScreen())))
-                        .bounds(this.width / 2 + 82, this.height - 28, 72, 20)
+                                p_280917_ -> backToMenu())
+                        .bounds(this.width / 2 + 82, this.height - 20, 72, 20)
                         .build()
         );
 
 
+    }
+
+    private void backToMenu() {
+        this.minecraft.setScreen(new SelectWorldScreen(new TitleScreen()));
     }
 
     @Override

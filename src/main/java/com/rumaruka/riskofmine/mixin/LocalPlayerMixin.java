@@ -1,5 +1,6 @@
 package com.rumaruka.riskofmine.mixin;
 
+import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.init.ROMItems;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.packets.DoubleJumpPacket;
@@ -8,10 +9,12 @@ import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -24,35 +27,40 @@ public abstract class LocalPlayerMixin {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo info) {
         LocalPlayer player = (LocalPlayer) (Object) this;
-        if (ROMUtils.checkInventory(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())||ROMUtils.checkCurios(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
-            if (player.onGround() || player.onClimbable()) {
-                jumpCount = ROMUtils.countAll(player, ROMItems.HOPOO_FEATHER.getDefaultInstance());
+        if (player instanceof IPlayerSurvivorsBridge survivorsBridge) {
+            if (ROMUtils.checkInventory((Player) survivorsBridge, ROMItems.HOPOO_FEATHER.getDefaultInstance())||ROMUtils.checkCurios(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
+                if (player.onGround() || player.onClimbable()) {
+                    jumpCount = ROMUtils.countAll(player, ROMItems.HOPOO_FEATHER.getDefaultInstance());
 
-            } else if (!jumpedLastTick && jumpCount > 0 && player.getDeltaMovement().y < 0) {
-                if (player.input.jumping && !player.getAbilities().flying) {
-                    if (canJump(player)) {
-                        --jumpCount;
-                        player.jumpFromGround();
-                        ROMDoubleEffect.play(player);
-                        ROMNetwork.sendToServer(new DoubleJumpPacket());
+                } else if (!jumpedLastTick && jumpCount > 0 && player.getDeltaMovement().y < 0) {
+                    if (player.input.jumping && !player.getAbilities().flying) {
+                        if (riskofmine$canJump(player)) {
+                            --jumpCount;
+                            player.jumpFromGround();
+                            ROMDoubleEffect.play(player);
+                            ROMNetwork.sendToServer(new DoubleJumpPacket());
 
 
+                        }
                     }
                 }
+                jumpedLastTick = player.input.jumping;
             }
-            jumpedLastTick = player.input.jumping;
+
         }
 
     }
 
 
-    private boolean wearingUsableElytra(LocalPlayer player) {
+    @Unique
+    private boolean riskofmine$wearingUsableElytra(LocalPlayer player) {
         ItemStack chestItemStack = player.getItemBySlot(EquipmentSlot.CHEST);
         return chestItemStack.getItem() == Items.ELYTRA && ElytraItem.isFlyEnabled(chestItemStack);
     }
 
-    private boolean canJump(LocalPlayer player) {
-        return !wearingUsableElytra(player) && !player.isFallFlying() && !player.isVehicle() && !player.isInWater() && !player.hasEffect(MobEffects.LEVITATION);
+    @Unique
+    private boolean riskofmine$canJump(LocalPlayer player) {
+        return !riskofmine$wearingUsableElytra(player) && !player.isFallFlying() && !player.isVehicle() && !player.isInWater() && !player.hasEffect(MobEffects.LEVITATION);
     }
 
 
