@@ -1,18 +1,27 @@
 package com.rumaruka.riskofmine.client.screen;
 
+import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 import java.awt.*;
 
 public class SurvivorsSelectionScreen extends Screen {
+
+
+
+    private static final ResourceLocation COMMANDO_SELECT = RiskOfMine.rl("survivors/commando_selected");
+    private static final ResourceLocation COMMANDO = RiskOfMine.rl("survivors/commando");
 
 
     public static boolean isCommando;
@@ -50,14 +59,7 @@ public class SurvivorsSelectionScreen extends Screen {
                         .build()
         );
         this.addRenderableWidget(
-                Button.builder(Component.literal("Commando"), button -> {
-                            isAcrid = isArtificer = false;
-
-                            isCommando = true;
-
-                        })
-                        .bounds(this.width / 2 - 154, this.height - 5 - (count * 3), 150, 20)
-                        .build()
+                getCommandoButton(this,count)
         );
         this.addRenderableWidget(
                 Button.builder(CommonComponents.GUI_BACK,
@@ -65,10 +67,27 @@ public class SurvivorsSelectionScreen extends Screen {
                         .bounds(this.width / 2 + 82, this.height - 20, 72, 20)
                         .build()
         );
+     //   this.addRenderableWidget(getIM(this));
 
 
     }
 
+//        Button.builder(Component.literal("Commando"), button -> {
+//        isAcrid = isArtificer = false;
+//
+//        isCommando = true;
+//
+//    })
+//            .bounds(this.width / 2 - 154, this.height - 5 - (count * 3), 150, 20)
+//            .build()
+    public  ImageButton getCommandoButton(Screen screen ,int count) {
+        WidgetSprites sprites = new WidgetSprites(COMMANDO,COMMANDO_SELECT);
+        return new ImageButton(screen.width / 2 - 154, this.height - 5 - (count * 3), 32, 32,sprites, b->{
+            isAcrid = isArtificer = false;
+
+            isCommando = true;
+        });
+    }
     private void backToMenu() {
         this.minecraft.setScreen(new SelectWorldScreen(new TitleScreen()));
     }

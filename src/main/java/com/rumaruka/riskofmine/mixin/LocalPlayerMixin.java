@@ -1,6 +1,5 @@
 package com.rumaruka.riskofmine.mixin;
 
-import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.init.ROMItems;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.packets.DoubleJumpPacket;
@@ -27,13 +26,13 @@ public abstract class LocalPlayerMixin {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo info) {
         LocalPlayer player = (LocalPlayer) (Object) this;
-        if (player instanceof IPlayerSurvivorsBridge survivorsBridge) {
-            if (ROMUtils.checkInventory((Player) survivorsBridge, ROMItems.HOPOO_FEATHER.getDefaultInstance())||ROMUtils.checkCurios(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
+
+            if (ROMUtils.checkInventory(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())||ROMUtils.checkCurios(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
                 if (player.onGround() || player.onClimbable()) {
                     jumpCount = ROMUtils.countAll(player, ROMItems.HOPOO_FEATHER.getDefaultInstance());
 
                 } else if (!jumpedLastTick && jumpCount > 0 && player.getDeltaMovement().y < 0) {
-                    if (player.input.jumping && !player.getAbilities().flying) {
+                    if (player.input.jumping || !player.getAbilities().flying) {
                         if (riskofmine$canJump(player)) {
                             --jumpCount;
                             player.jumpFromGround();
@@ -42,9 +41,9 @@ public abstract class LocalPlayerMixin {
 
 
                         }
-                    }
+                        jumpedLastTick = player.input.jumping;
                 }
-                jumpedLastTick = player.input.jumping;
+
             }
 
         }

@@ -65,9 +65,7 @@ public class RiskOfMine {
         ROMEffects.POTIONS.register(bus);
 
 
-        logger.info("Register Custom Registeres");
-        ROMSkills.SKILL.register(bus);
-        logger.info("END");
+
 
         bus.addListener(RiskOfMine::setup);
         bus.addListener(RiskOfMine::clientSetup);
@@ -80,7 +78,9 @@ public class RiskOfMine {
     }
 
     private static void setup(final FMLCommonSetupEvent evt) {
-      ROMItems.Items.getAllItem().forEach(item ->{
+        ROMSkills.init();
+
+        ROMItems.Items.getAllItem().forEach(item ->{
           if (item instanceof BaseCollectablesItem baseCollectablesItem){
               CuriosApi.registerCurio(item,baseCollectablesItem);
           }

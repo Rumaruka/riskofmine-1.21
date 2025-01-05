@@ -1,34 +1,36 @@
-package com.rumaruka.riskofmine.common.events;
+package com.rumaruka.riskofmine.common.events.cap_event;
 
-
-import com.rumaruka.riskofmine.common.cap.Money;
+import com.rumaruka.riskofmine.RiskOfMine;
+import com.rumaruka.riskofmine.common.cap.Lunar;
 import com.rumaruka.riskofmine.init.ROMAttachment;
-import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
+import com.rumaruka.riskofmine.init.ROMItems;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.AmbientCreature;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 
-@EventBusSubscriber
-public class MoneyEvents {
+@EventBusSubscriber(modid = RiskOfMine.MODID)
+public class LunarEvents {
+
 
     @SubscribeEvent
     public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
         Player player = event.getEntity() instanceof Player ? (Player) event.getEntity() : null;
 
         if (player != null) {
-            Money barrier = Money.get(player);
-            barrier.setMoney(barrier.getCurrentMoney());
+            Lunar barrier = Lunar.get(player);
+            barrier.setLunar(barrier.getCurrentLunar());
         }
 
 
@@ -36,8 +38,8 @@ public class MoneyEvents {
 
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
-        if (event.isWasDeath() && event.getOriginal().hasData(ROMAttachment.MONEY.get())) {
-            event.getEntity().getData(ROMAttachment.MONEY.get()).setMoney(event.getOriginal().getData(ROMAttachment.MONEY.get()).getCurrentMoney());
+        if (event.isWasDeath() && event.getOriginal().hasData(ROMAttachment.LUNAR.get())) {
+            event.getEntity().getData(ROMAttachment.LUNAR.get()).setLunar(event.getOriginal().getData(ROMAttachment.LUNAR.get()).getCurrentLunar());
 
         }
     }
@@ -47,46 +49,40 @@ public class MoneyEvents {
         Player entity = event.getEntity();
         MinecraftServer server = entity.getServer();
         if (server != null) {
-            Money data = Money.get(entity);
-            data.setMoney(data.getCurrentMoney());
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Post event) {
-        Player entity = event.getEntity();
-        Money money = Money.get(entity);
-        if (ItemsEvents.isAlive()) {
-            if (ROMRandomChanceUtils.fiftyFifty()) {
-                money.addMoney(1);
-            }
-
-
-            ItemsEvents.setAlive(false);
+            Lunar data = Lunar.get(entity);
+            data.setLunar(data.getCurrentLunar());
         }
     }
 
     @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
-        if (event.getSource().getEntity() instanceof ServerPlayer player) {
+
+        if (event.getSource().getEntity() instanceof ServerPlayer) {
             LivingEntity livingEntity = event.getEntity();
             Level level = livingEntity.level();
 
-            if (!level.isClientSide()) {
-                Money money = Money.get(player);
-                money.addMoney(10);
+
+            if (!level.isClientSide) {
+                if (livingEntity.tickCount % 10 == 0) {
+                    ItemEntity itemEntity = new ItemEntity(level, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), new ItemStack(ROMItems.LUNAR_COIN));
+                    level.addFreshEntity(itemEntity);
+
+                }
 
 
             }
+
         }
         if (event.getSource().getEntity() instanceof AmbientCreature && event.getEntity() instanceof ServerPlayer player) {
             Level world = player.level();
-            Money money = Money.get(player);
-            if (!world.isClientSide) {
+
+            if (!world.isClientSide()) {
+                Lunar lunar = Lunar.get(player);
                 if (event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
                     return;
                 } else {
-                    money.setMoney(0);
+                    lunar.setLunar(0);
+
 
                 }
 
@@ -94,5 +90,4 @@ public class MoneyEvents {
             }
         }
     }
-
 }

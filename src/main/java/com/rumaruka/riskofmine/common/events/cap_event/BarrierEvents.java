@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.common.events;
+package com.rumaruka.riskofmine.common.events.cap_event;
 
 import com.rumaruka.riskofmine.common.cap.Barrier;
 import com.rumaruka.riskofmine.init.ROMAttachment;

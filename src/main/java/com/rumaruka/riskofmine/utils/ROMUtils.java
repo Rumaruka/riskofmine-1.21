@@ -1,13 +1,14 @@
 package com.rumaruka.riskofmine.utils;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.rumaruka.riskofmine.api.SkillRegistration;
 import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.api.Types;
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
-import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
+import com.rumaruka.riskofmine.common.skills.base.SkillBase;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -16,6 +17,7 @@ import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -104,18 +106,22 @@ public class ROMUtils {
     }
 
     public static PlayerSurvivorsBridge get(Player player, Survivors survivors) {
-        return new PlayerSurvivorsBridge(player,survivors);
+        return new PlayerSurvivorsBridge(player, survivors);
     }
+
     public static int countAll(Player player, ItemStack item) {
         int itemCount = 0;
-        if (player instanceof IPlayerSurvivorsBridge survivorsBridge){
-            if (checkCurios((Player) survivorsBridge, item) || checkCurios((Player) survivorsBridge, item)) {
-                itemCount += item.getCount();
-            }
+
+        if (checkInventory(player, item) || checkCurios(player, item)) {
+            int i = counting(player, item) + countingCurio(player, item.getItem().getDefaultInstance());
+            itemCount += i;
+            return itemCount;
+
+
         }
 
-
         return itemCount;
+
     }
 
     @Deprecated
@@ -137,11 +143,11 @@ public class ROMUtils {
     /**
      * {@param countAll(player, itemstack)} new methods for check count items for inventory and curios
      **/
-    public static int countingCurio(Player player, Item item) {
+    public static int countingCurio(Player player, ItemStack item) {
         int itemCount = 0;
 
-        ItemStack itemStack = curiosItemStack(player, item);
-        if (itemStack.getItem() == item) {
+        ItemStack itemStack = curiosItemStack(player, item.getItem());
+        if (!itemStack.isEmpty() && ItemStack.isSameItem(itemStack, item)) {
 
             itemCount += itemStack.getCount();
 
@@ -283,12 +289,12 @@ public class ROMUtils {
     }
 
     public static boolean checkCurios(Player player, ItemStack item) {
-        if (player instanceof IPlayerSurvivorsBridge){
-            if (CuriosApi.getCuriosHelper().findFirstCurio(player, item.getItem()).isPresent()) {
-                ItemStack curioStack = curiosItemStack(player, item.getItem());
-                return ItemStack.isSameItem(curioStack, item);
 
-            }
+        if (CuriosApi.getCuriosHelper().findFirstCurio(player, item.getItem()).isPresent()) {
+            ItemStack curioStack = curiosItemStack(player, item.getItem());
+            return ItemStack.isSameItem(curioStack, item);
+
+
         }
 
         return false;
@@ -311,9 +317,11 @@ public class ROMUtils {
     public static void drawString(GuiGraphics graphics, Font fontRendererIn, String text, float x, float y, int color) {
         graphics.drawString(fontRendererIn, text, x, y, color, false);
     }
+
     public static void drawString(GuiGraphics graphics, Font fontRendererIn, Component text, int x, int y, int color) {
         graphics.drawString(fontRendererIn, text, x, y, color, false);
     }
+
     /**
      * Draws string with shadow.
      *
@@ -342,5 +350,11 @@ public class ROMUtils {
         player.addEffect(new MobEffectInstance(mobEffect, 1000, 1, false, false));
     }
 
+
+
+
+    public static void registerSkill(ResourceLocation rl, SkillBase skill){
+        new SkillRegistration().registerPerk(rl,skill);
+    }
 
 }
