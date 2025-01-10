@@ -24,7 +24,7 @@ public record DoubleJumpPacket() implements CustomPacketPayload {
             Player player = ROMUtils.getPlayer();
             FriendlyByteBuf byteBuf = new FriendlyByteBuf(Unpooled.buffer());
             byteBuf.writeUtf(player.getStringUUID());
-            ROMDoubleEffect.play(player);
+
 
         });
     }

@@ -8,7 +8,6 @@ import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -20,34 +19,26 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LocalPlayer.class)
 public abstract class LocalPlayerMixin {
-    private int jumpCount = 0;
-    private boolean jumpedLastTick = false;
+
+    private int riskofmine$jumpCount = 0;
+    private boolean riskofmine$jumpedLastTick = false;
 
     @Inject(method = "tick", at = @At("HEAD"))
-    public void tick(CallbackInfo info) {
+    private void tickMovement(CallbackInfo info) {
         LocalPlayer player = (LocalPlayer) (Object) this;
-
-            if (ROMUtils.checkInventory(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())||ROMUtils.checkCurios(player, ROMItems.HOPOO_FEATHER.getDefaultInstance())) {
-                if (player.onGround() || player.onClimbable()) {
-                    jumpCount = ROMUtils.countAll(player, ROMItems.HOPOO_FEATHER.getDefaultInstance());
-
-                } else if (!jumpedLastTick && jumpCount > 0 && player.getDeltaMovement().y < 0) {
-                    if (player.input.jumping || !player.getAbilities().flying) {
-                        if (riskofmine$canJump(player)) {
-                            --jumpCount;
-                            player.jumpFromGround();
-                            ROMDoubleEffect.play(player);
-                            ROMNetwork.sendToServer(new DoubleJumpPacket());
-
-
-                        }
-                        jumpedLastTick = player.input.jumping;
+        if (player.onGround() || player.onClimbable()) {
+            riskofmine$jumpCount = ROMUtils.countAll(player, ROMItems.HOPOO_FEATHER.getDefaultInstance());
+        } else if (!riskofmine$jumpedLastTick && riskofmine$jumpCount > 0 && player.getDeltaMovement().y < 0) {
+            if (player.input.jumping && !player.getAbilities().flying) {
+                if (riskofmine$canJump(player)) {
+                    --riskofmine$jumpCount;
+                    player.jumpFromGround();
+                    ROMDoubleEffect.play(player);
+                    ROMNetwork.sendToServer(new DoubleJumpPacket());
                 }
-
             }
-
         }
-
+        riskofmine$jumpedLastTick = player.input.jumping;
     }
 
 

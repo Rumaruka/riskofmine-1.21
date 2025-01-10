@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SkillRegistration {
-    private final Map<ResourceLocation, SkillBase> skills = new HashMap<>();
+    protected final Map<ResourceLocation, SkillBase> skills = new HashMap<>();
     public SkillRegistration() {}
     public void registerPerk(ResourceLocation perkID, SkillBase skillBase) {
         Preconditions.checkNotNull(perkID);
