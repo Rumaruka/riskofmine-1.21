@@ -1,14 +1,12 @@
 package com.rumaruka.riskofmine.utils;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.rumaruka.riskofmine.api.SkillRegistration;
 import com.rumaruka.riskofmine.api.Survivors;
-import com.rumaruka.riskofmine.api.Types;
+import com.rumaruka.riskofmine.api.ChestTypes;
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
 import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
-import com.rumaruka.riskofmine.common.skills.base.SkillBase;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -17,7 +15,6 @@ import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -185,7 +182,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == Types.COMMON) {
+            if (base.getType() == ChestTypes.COMMON) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -198,7 +195,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == Types.UNCOMMON) {
+            if (base.getType() == ChestTypes.UNCOMMON) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -211,7 +208,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == Types.BOSS) {
+            if (base.getType() == ChestTypes.BOSS) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -224,7 +221,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            return base.getType() == Types.VOID;
+            return base.getType() == ChestTypes.VOID;
 
         }
         return false;
@@ -234,7 +231,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            return base.getType() == Types.SCRAP;
+            return base.getType() == ChestTypes.SCRAP;
 
         }
         return false;
@@ -244,7 +241,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            return base.getType() == Types.LUNAR;
+            return base.getType() == ChestTypes.LUNAR;
 
         }
         return false;
@@ -254,7 +251,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == Types.LEGENDARY) {
+            if (base.getType() == ChestTypes.LEGENDARY) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -267,7 +264,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == Types.EQUIPMENT) {
+            if (base.getType() == ChestTypes.EQUIPMENT) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -353,8 +350,6 @@ public class ROMUtils {
 
 
 
-    public static void registerSkill(ResourceLocation rl, SkillBase skill){
-        new SkillRegistration().registerPerk(rl,skill);
-    }
+
 
 }
