@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.common;
 
 import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.Types;
+import com.rumaruka.riskofmine.api.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class PowerElixirItem extends BaseCollectablesItem {
     public PowerElixirItem() {
-        super(Types.COMMON, Category.HEALING);
+        super(ChestTypes.COMMON, Category.HEALING);
     }
 
     @Override
