@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.common.skills.base;
+package com.rumaruka.riskofmine.api.registry.skill;
 
 public enum SkillType {
 

@@ -1,16 +1,12 @@
 package com.rumaruka.riskofmine.init;
 
-import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.api.skills.FeaturesSkills;
-import com.rumaruka.riskofmine.utils.ROMUtils;
+import com.rumaruka.riskofmine.common.skills.commando.DoubleTap;
+import org.zeith.hammerlib.annotations.RegistryName;
+import org.zeith.hammerlib.annotations.SimplyRegister;
 
-public class ROMSkills {
+@SimplyRegister
+public interface ROMSkills {
 
-
-    public static void init(){
-        RiskOfMine.logger.info("Register Custom Registeres");
-
-        ROMUtils.registerSkill(RiskOfMine.rl("double_tap"), FeaturesSkills.DOUBLE_TAP);
-        RiskOfMine.logger.info("END");
-    }
+    @RegistryName("double_tap")
+    DoubleTap DOUBLE_TAP = new DoubleTap();
 }

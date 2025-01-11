@@ -32,6 +32,7 @@ public class  ROMNetwork {
             network.playToClient(MoneyPacket.TYPE,MoneyPacket.CODEC,MoneyPacket::handle);
             network.playToClient(ShieldsPacket.TYPE,ShieldsPacket.CODEC,ShieldsPacket::handle);
             network.playToClient(TimerPacket.TYPE,TimerPacket.CODEC,TimerPacket::handle);
+            network.playToClient(SurvivorsPacket.TYPE,SurvivorsPacket.CODEC,SurvivorsPacket::handle);
             network.playToClient(OverlayPacket.TYPE,OverlayPacket.CODEC,OverlayPacket::handle);
     }
 
