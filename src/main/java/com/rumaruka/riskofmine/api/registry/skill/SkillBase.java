@@ -3,6 +3,7 @@ package com.rumaruka.riskofmine.api.registry.skill;
 
 import com.google.common.base.Suppliers;
 import com.rumaruka.riskofmine.RiskOfMine;
+import com.rumaruka.riskofmine.api.SkillData;
 import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.api.client.IClientSkillExtensions;
 import lombok.Getter;
@@ -41,9 +42,9 @@ public  class SkillBase implements IHasRegisterName,IRegisterListener {
     }
 
 
-    //    public void tick(SkillData data, boolean isActive)
-//    {
-//    }
+        public void tick(SkillData data, boolean isActive)
+    {
+    }
     @Override
     public void onPostRegistered() {
         for (var listener : events) {

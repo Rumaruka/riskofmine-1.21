@@ -7,6 +7,7 @@ import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.SyncSkills;
+import com.rumaruka.riskofmine.ntw.packets.PacketSyncSkillData;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -19,6 +20,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.common.util.INBTSerializable;
 import org.jetbrains.annotations.UnknownNullability;
+import org.zeith.hammerlib.net.Network;
 import org.zeith.hammerlib.util.mcf.Resources;
 
 import java.util.*;
@@ -99,7 +101,7 @@ public class SkillData implements INBTSerializable<CompoundTag> {
     public void requestSync()
     {
         if(player != null && player.isLocalPlayer())
-            ROMNetwork.sendToServer(new PacketSyncSkillData());
+            Network.sendToServer(new PacketSyncSkillData());
     }
 
 
