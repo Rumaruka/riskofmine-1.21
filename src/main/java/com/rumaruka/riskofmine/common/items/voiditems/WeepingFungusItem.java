@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.items.voiditems;
 
-import com.rumaruka.riskofmine.api.Category;
+import com.rumaruka.riskofmine.api.enumeration.Category;
 import com.rumaruka.riskofmine.common.items.common.BustlingFungusItem;
 import com.rumaruka.riskofmine.events.MovingHandler;
 import com.rumaruka.riskofmine.init.ROMSounds;

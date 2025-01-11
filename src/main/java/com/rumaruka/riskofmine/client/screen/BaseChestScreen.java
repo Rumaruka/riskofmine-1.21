@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.rumaruka.riskofmine.api.Chest;
+import com.rumaruka.riskofmine.api.enumeration.Chest;
 import com.rumaruka.riskofmine.common.inventory.ChestInventory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.uncommon;
 
-import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.Category;
+import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;

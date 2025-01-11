@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.inventory;
 
-import com.rumaruka.riskofmine.api.Chest;
+import com.rumaruka.riskofmine.api.enumeration.Chest;
 import com.rumaruka.riskofmine.common.inventory.slots.TripleSlot;
 import com.rumaruka.riskofmine.init.ROMContainerTypes;
 import net.minecraft.world.Container;

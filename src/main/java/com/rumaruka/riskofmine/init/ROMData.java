@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.init;
 
-import com.rumaruka.riskofmine.api.SkillData;
+import com.rumaruka.riskofmine.api.registry.skill.SkillData;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import org.zeith.hammerlib.annotations.RegistryName;

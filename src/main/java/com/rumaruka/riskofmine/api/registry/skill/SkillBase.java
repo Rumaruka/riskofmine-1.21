@@ -3,13 +3,11 @@ package com.rumaruka.riskofmine.api.registry.skill;
 
 import com.google.common.base.Suppliers;
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.api.SkillData;
-import com.rumaruka.riskofmine.api.Survivors;
 import com.rumaruka.riskofmine.api.client.IClientSkillExtensions;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.Event;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -22,7 +20,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public  class SkillBase implements IHasRegisterName,IRegisterListener {
+public class SkillBase implements IHasRegisterName, IRegisterListener {
 
 
     @Setter
@@ -34,56 +32,59 @@ public  class SkillBase implements IHasRegisterName,IRegisterListener {
     private List<Consumer<? extends Event>> events = new ArrayList<>();
     protected Supplier<Integer> color = Suppliers.memoize(() -> getRegisterName().toString().hashCode());
     private ResourceLocation id;
-    public SkillBase(Survivors survivors,SkillType skillType) {
+    @Getter
+    @Setter
+    private boolean isActive;
+
+    public SkillBase(Survivors survivors, SkillType skillType) {
 
         this.skillType = skillType;
-        this.survivors=survivors;
+        this.survivors = survivors;
         initClient();
     }
 
 
-        public void tick(SkillData data, boolean isActive)
-    {
+    public void tick(SkillData data, boolean isActive) {
     }
+
     @Override
     public void onPostRegistered() {
         for (var listener : events) {
             NeoForge.EVENT_BUS.addListener(listener);
         }
     }
-    public <T extends Event> void addListener(Consumer<T> consumer)
-    {
+
+    public <T extends Event> void addListener(Consumer<T> consumer) {
         events.add(consumer);
     }
-    public boolean is(SkillBase skill)
-    {
+
+    public boolean is(SkillBase skill) {
         return skill == this;
     }
-    private void initClient()
-    {
-        if(FMLEnvironment.dist == Dist.CLIENT && !DatagenModLoader.isRunningDataGen())
-        {
+
+    private void initClient() {
+        if (FMLEnvironment.dist == Dist.CLIENT && !DatagenModLoader.isRunningDataGen()) {
             initializeClient(properties ->
             {
-                if(properties == this)
+                if (properties == this)
                     throw new IllegalStateException("Don't extend IItemRenderProperties in your item, use an anonymous class instead.");
                 this.renderProperties = properties;
             });
         }
     }
-    public void initializeClient(java.util.function.Consumer<IClientSkillExtensions> consumer)
-    {
+
+    public void initializeClient(java.util.function.Consumer<IClientSkillExtensions> consumer) {
     }
+
     private Object renderProperties;
 
-    public Object getRenderPropertiesInternal()
-    {
+    public Object getRenderPropertiesInternal() {
         return renderProperties;
     }
 
     @Override
     public ResourceLocation getRegisterName() {
-        if(id == null)
+        if (id == null)
             id = RiskOfMine.SKILLS.getKey(this);
         return id;
     }

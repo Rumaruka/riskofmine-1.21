@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.common;
 
-import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.Category;
+import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 
 public class EmptyElixirItem extends BaseCollectablesItem {

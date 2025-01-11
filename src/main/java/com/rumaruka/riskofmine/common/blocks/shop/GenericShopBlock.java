@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.blocks.shop;
 
-import com.rumaruka.riskofmine.api.Chest;
+import com.rumaruka.riskofmine.api.enumeration.Chest;
 
 import com.rumaruka.riskofmine.common.tiles.shop.GenericShopTE;
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;

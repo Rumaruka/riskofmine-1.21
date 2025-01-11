@@ -1,8 +1,8 @@
 package com.rumaruka.riskofmine.common.items.voiditems;
 
-import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.IVoidItem;
-import com.rumaruka.riskofmine.api.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.Category;
+import com.rumaruka.riskofmine.api.item.IVoidItem;
+import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import net.minecraft.world.item.ItemStack;
 

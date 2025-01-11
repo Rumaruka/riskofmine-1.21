@@ -2,8 +2,8 @@ package com.rumaruka.riskofmine.common.items.common;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.Category;
+import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMMathFormula;
 import com.rumaruka.riskofmine.utils.ROMUtils;

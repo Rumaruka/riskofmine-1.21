@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.api;
+package com.rumaruka.riskofmine.api.item;
 
 
 import net.minecraft.world.item.ItemStack;

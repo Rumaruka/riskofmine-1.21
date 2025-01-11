@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.items.voiditems;
 
-import com.rumaruka.riskofmine.api.Category;
+import com.rumaruka.riskofmine.api.enumeration.Category;
 import com.rumaruka.riskofmine.common.items.common.TougherTimesItem;
 import com.rumaruka.riskofmine.init.ROMSounds;
 import com.rumaruka.riskofmine.utils.ROMUtils;

@@ -1,8 +1,8 @@
 package com.rumaruka.riskofmine.utils;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.rumaruka.riskofmine.api.Survivors;
-import com.rumaruka.riskofmine.api.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
+import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
 import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;

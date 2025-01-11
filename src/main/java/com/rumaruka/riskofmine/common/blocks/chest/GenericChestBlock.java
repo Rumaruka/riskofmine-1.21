@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.blocks.chest;
 
-import com.rumaruka.riskofmine.api.Chest;
+import com.rumaruka.riskofmine.api.enumeration.Chest;
 import com.rumaruka.riskofmine.common.tiles.chest.GenericChestTE;
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.minecraft.core.BlockPos;

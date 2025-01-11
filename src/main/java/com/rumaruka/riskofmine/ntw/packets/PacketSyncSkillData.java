@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.ntw.packets;
 
-import com.rumaruka.riskofmine.api.IGuiSkillDataConsumer;
-import com.rumaruka.riskofmine.api.SkillData;
+import com.rumaruka.riskofmine.api.registry.skill.IGuiSkillDataConsumer;
+import com.rumaruka.riskofmine.api.registry.skill.SkillData;
 import com.rumaruka.riskofmine.common.data.PlayerDataManager;
 import com.rumaruka.riskofmine.ntw.SyncSkills;
 import lombok.Getter;

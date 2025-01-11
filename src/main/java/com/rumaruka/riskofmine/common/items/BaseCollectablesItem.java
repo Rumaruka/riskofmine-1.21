@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items;
 
-import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.Category;
+import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
 import lombok.Getter;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.entity.EquipmentSlot;

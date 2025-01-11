@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.data;
 
-import com.rumaruka.riskofmine.api.SkillData;
+import com.rumaruka.riskofmine.api.registry.skill.SkillData;
 import com.rumaruka.riskofmine.init.ROMData;
 import com.rumaruka.riskofmine.ntw.SyncSkills;
 import com.rumaruka.riskofmine.ntw.packets.PacketSyncSkillData;

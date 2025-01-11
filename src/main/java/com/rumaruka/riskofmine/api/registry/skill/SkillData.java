@@ -1,11 +1,9 @@
 
 //TODO: Skill Data class Development
 
-package com.rumaruka.riskofmine.api;
+package com.rumaruka.riskofmine.api.registry.skill;
 
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
-import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.SyncSkills;
 import com.rumaruka.riskofmine.ntw.packets.PacketSyncSkillData;
 import com.rumaruka.riskofmine.utils.ROMUtils;
@@ -19,7 +17,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.common.util.INBTSerializable;
-import org.jetbrains.annotations.UnknownNullability;
 import org.zeith.hammerlib.net.Network;
 import org.zeith.hammerlib.util.mcf.Resources;
 
@@ -76,7 +73,6 @@ public class SkillData implements INBTSerializable<CompoundTag> {
 
         if(!level.isClientSide)
         {
-            player.sendSystemMessage(Component.translatable("chat." + RiskOfMine.MODID + ".guide"));
             sync();
         }
 

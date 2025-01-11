@@ -1,29 +1,20 @@
 package com.rumaruka.riskofmine.common.items.eqiupment;
 
-import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.api.Category;
+import com.rumaruka.riskofmine.api.enumeration.Category;
 
 import com.rumaruka.riskofmine.init.ROMItems;
-import com.rumaruka.riskofmine.utils.ROMUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.EffectCure;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 

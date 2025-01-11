@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.mixin;
 
-import com.rumaruka.riskofmine.api.Survivors;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;

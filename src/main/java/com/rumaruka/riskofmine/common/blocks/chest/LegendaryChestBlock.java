@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.blocks.chest;
 
 import com.mojang.serialization.MapCodec;
-import com.rumaruka.riskofmine.api.Chest;
+import com.rumaruka.riskofmine.api.enumeration.Chest;
 import com.rumaruka.riskofmine.common.cap.Money;
 import com.rumaruka.riskofmine.common.tiles.chest.GenericChestTE;
 import com.rumaruka.riskofmine.common.tiles.chest.LegendaryChestTE;

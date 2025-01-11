@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.api;
+package com.rumaruka.riskofmine.api.registry.skill;
 
 public interface IGuiSkillDataConsumer {
 

@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.api;
+package com.rumaruka.riskofmine.api.enumeration;
 
 import com.rumaruka.riskofmine.init.ROMBlocks;
 

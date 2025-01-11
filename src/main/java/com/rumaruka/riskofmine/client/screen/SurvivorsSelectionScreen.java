@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.client.screen;
 
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.api.Survivors;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;

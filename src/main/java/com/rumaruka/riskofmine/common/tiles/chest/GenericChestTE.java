@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.tiles.chest;
 
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.api.Chest;
+import com.rumaruka.riskofmine.api.enumeration.Chest;
 import com.rumaruka.riskofmine.common.blocks.chest.GenericChestBlock;
 import com.rumaruka.riskofmine.common.inventory.ChestInventory;
 import com.rumaruka.riskofmine.init.ROMSounds;
@@ -17,14 +17,12 @@ import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
-import org.zeith.hammerlib.api.tiles.IContainerTile;
 
 import javax.annotation.Nullable;
 

@@ -1,6 +1,6 @@
 package com.rumaruka.riskofmine.common.tiles.shop;
 
-import com.rumaruka.riskofmine.api.Chest;
+import com.rumaruka.riskofmine.api.enumeration.Chest;
 import com.rumaruka.riskofmine.common.inventory.ChestShopInventory;
 import com.rumaruka.riskofmine.init.ROMBlocks;
 import com.rumaruka.riskofmine.init.ROMTiles;

@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.entity.player;
 
-import com.rumaruka.riskofmine.api.Survivors;
-import com.rumaruka.riskofmine.api.TypeDamage;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
+import com.rumaruka.riskofmine.api.enumeration.TypeDamage;
 import net.minecraft.world.entity.player.Player;
 
 public interface ISurvivors {

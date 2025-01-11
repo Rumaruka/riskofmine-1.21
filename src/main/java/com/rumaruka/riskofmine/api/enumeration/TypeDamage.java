@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.api;
+package com.rumaruka.riskofmine.api.enumeration;
 
 public enum TypeDamage {
 

@@ -7,19 +7,21 @@ import com.rumaruka.riskofmine.api.registry.skill.SkillType;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
 import com.rumaruka.riskofmine.utils.ROMUtils;
-import net.minecraft.network.chat.Component;
 
-public class DoubleTap extends CommandoSkills {
-    public DoubleTap( ) {
-        super(SkillType.PRIMARY);
+public class CommandoSkills extends SkillBase {
+    public CommandoSkills( SkillType skillType) {
+        super(Survivors.COMMANDO, skillType);
+    }
+    @Override
+    public void tick(SkillData data, boolean isActive) {
+        super.tick(data, isActive);
+        if (ROMUtils.getPlayer() instanceof IPlayerSurvivorsBridge survivorsBridge){
+            ISurvivors iSurvivors = survivorsBridge.riskofmine$getSurvivor();
+            setActive(iSurvivors.survivors()==getSurvivors());
+        }
 
     }
 
-
-    private void onEntityAttack(){
-
-
-    }
 
 
 }

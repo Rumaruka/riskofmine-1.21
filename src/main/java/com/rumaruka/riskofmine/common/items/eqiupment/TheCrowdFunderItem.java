@@ -1,8 +1,7 @@
 package com.rumaruka.riskofmine.common.items.eqiupment;
 
-import com.rumaruka.riskofmine.api.Category;
+import com.rumaruka.riskofmine.api.enumeration.Category;
 
-import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;

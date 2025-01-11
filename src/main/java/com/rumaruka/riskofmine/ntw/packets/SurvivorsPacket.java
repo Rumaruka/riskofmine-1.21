@@ -1,7 +1,6 @@
 package com.rumaruka.riskofmine.ntw.packets;
 
-import com.rumaruka.riskofmine.api.Survivors;
-import com.rumaruka.riskofmine.common.cap.Lunar;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import io.netty.buffer.Unpooled;

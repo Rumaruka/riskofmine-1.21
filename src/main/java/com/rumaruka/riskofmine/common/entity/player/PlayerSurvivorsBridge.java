@@ -1,10 +1,9 @@
 package com.rumaruka.riskofmine.common.entity.player;
 
-import com.rumaruka.riskofmine.api.Survivors;
-import com.rumaruka.riskofmine.api.TypeDamage;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
+import com.rumaruka.riskofmine.api.enumeration.TypeDamage;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.packets.SurvivorsPacket;
-import lombok.Setter;
 import net.minecraft.world.entity.player.Player;
 
 public class PlayerSurvivorsBridge implements ISurvivors {
@@ -16,7 +15,7 @@ public class PlayerSurvivorsBridge implements ISurvivors {
         this.player = player;
         this.survivors = survivors;
 
-        setSurvivors(survivors);
+
     }
 
     @Override
@@ -25,8 +24,9 @@ public class PlayerSurvivorsBridge implements ISurvivors {
     }
 
     public void setSurvivors(Survivors survivors) {
+        this.survivors = survivors;
         ROMNetwork.sendToServer(new SurvivorsPacket(player.getId()));
-        this.survivors = survivors();
+
 
     }
 
