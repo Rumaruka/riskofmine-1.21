@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items;
 
 import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.Types;
+import com.rumaruka.riskofmine.api.ChestTypes;
 import lombok.Getter;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,13 +13,13 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public abstract class BaseCollectablesItem extends Item implements ICurioItem {
     @Getter
-    private final Types type;
+    private final ChestTypes type;
     private final Category categoryEnum;
 
 
 
 
-    public BaseCollectablesItem(Types type, Category category) {
+    public BaseCollectablesItem(ChestTypes type, Category category) {
         super(new Properties());
         this.type = type;
         this.categoryEnum = category;

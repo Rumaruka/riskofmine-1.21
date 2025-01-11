@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.common;
 
 import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.Types;
+import com.rumaruka.riskofmine.api.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.events.MovingHandler;
 import com.rumaruka.riskofmine.utils.ROMUtils;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class BustlingFungusItem extends BaseCollectablesItem {
     public BustlingFungusItem() {
-        super(Types.COMMON, Category.HEALING);
+        super(ChestTypes.COMMON, Category.HEALING);
     }
 
     @Override

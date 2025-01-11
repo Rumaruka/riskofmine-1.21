@@ -3,7 +3,7 @@ package com.rumaruka.riskofmine.common.items.common;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.Types;
+import com.rumaruka.riskofmine.api.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMMathFormula;
 import com.rumaruka.riskofmine.utils.ROMUtils;
@@ -22,7 +22,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public class EnergyDrinkItem extends BaseCollectablesItem {
     private static final ResourceLocation SPEED_MODIFIER_SPRINTING_UUID = rl("speed");
 
     public EnergyDrinkItem() {
-        super(Types.COMMON, Category.UTILITY);
+        super(ChestTypes.COMMON, Category.UTILITY);
     }
 
     @Override

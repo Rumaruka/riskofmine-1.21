@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.uncommon;
 
 import com.rumaruka.riskofmine.api.Category;
-import com.rumaruka.riskofmine.api.Types;
+import com.rumaruka.riskofmine.api.ChestTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class HopooFeatherItem extends BaseCollectablesItem {
     public HopooFeatherItem() {
-        super(Types.UNCOMMON, Category.UTILITY);
+        super(ChestTypes.UNCOMMON, Category.UTILITY);
     }
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {

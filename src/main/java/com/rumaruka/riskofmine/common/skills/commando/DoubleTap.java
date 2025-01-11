@@ -1,12 +1,19 @@
 package com.rumaruka.riskofmine.common.skills.commando;
 
 import com.rumaruka.riskofmine.api.Survivors;
-import com.rumaruka.riskofmine.common.skills.base.SkillBase;
-import com.rumaruka.riskofmine.common.skills.base.SkillType;
+import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
+import com.rumaruka.riskofmine.api.registry.skill.SkillType;
+import net.minecraft.world.InteractionResult;
 
 public class DoubleTap extends SkillBase {
     public DoubleTap( ) {
-        super(Survivors.COMMANDO, SkillType.PRIMARY);
+        super(Survivors.COMMANDO,SkillType.PRIMARY);
+    }
+
+
+
+    private void onEntityAttack(){
+
     }
 
 
