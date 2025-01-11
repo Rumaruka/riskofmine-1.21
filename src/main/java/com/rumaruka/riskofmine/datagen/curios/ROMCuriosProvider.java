@@ -22,7 +22,7 @@ public class ROMCuriosProvider extends CuriosDataProvider {
 
 
         ;
-        createSlot("curio").size(4);
+        createSlot("curio").size(6);
 
 
     }
