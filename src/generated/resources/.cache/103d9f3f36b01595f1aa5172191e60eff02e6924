@@ -1,0 +1,4 @@
+// 1.21.1	2024-11-29T02:20:13.0731673	Registries
+3ffe873b49f88dd008854cfeadca39681308db87 data/riskofmine/neoforge/biome_modifier/add_chest.json
+ab2759c15606cefd92bc8db696594270e7b17d41 data/riskofmine/worldgen/configured_feature/overworld_chest.json
+8f4a7db18ff7de92036aae7a8ef814bbad8df6ad data/riskofmine/worldgen/placed_feature/over_small_chest_gen.json
