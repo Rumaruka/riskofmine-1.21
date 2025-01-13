@@ -19,7 +19,6 @@ import java.awt.*;
 public class SurvivorsSelectionScreen extends Screen {
 
 
-
     private static final ResourceLocation COMMANDO_SELECT = RiskOfMine.rl("survivors/commando_selected");
     private static final ResourceLocation COMMANDO = RiskOfMine.rl("survivors/commando");
 
@@ -37,42 +36,30 @@ public class SurvivorsSelectionScreen extends Screen {
         int count = 20;
 
         this.addRenderableWidget(
+                getAcridButton(this, count)
+        );
 
 
-                Button.builder(Component.literal("Acrid"), button -> {
-                            isAcrid = true;
-
-                            isArtificer = isCommando = false;
-
-                        })
-                        .bounds(this.width / 2 - 154, this.height - 5 - count, 150, 20)
-                        .build()
+        this.addRenderableWidget(
+                getCommandoButton(this, count)
         );
         this.addRenderableWidget(
-                Button.builder(Component.literal("Artificer"), button -> {
-                            isArtificer = true;
-
-                            isAcrid = isCommando = false;
-
-                        })
-                        .bounds(this.width / 2 - 154, this.height -5 - (count * 2), 150, 20)
-                        .build()
+                getArtificerButton(this, count)
         );
-        this.addRenderableWidget(
-                getCommandoButton(this,count)
-        );
+
+
         this.addRenderableWidget(
                 Button.builder(CommonComponents.GUI_BACK,
                                 p_280917_ -> backToMenu())
                         .bounds(this.width / 2 + 82, this.height - 20, 72, 20)
                         .build()
         );
-     //   this.addRenderableWidget(getIM(this));
+        //   this.addRenderableWidget(getIM(this));
 
 
     }
 
-//        Button.builder(Component.literal("Commando"), button -> {
+    //        Button.builder(Component.literal("Commando"), button -> {
 //        isAcrid = isArtificer = false;
 //
 //        isCommando = true;
@@ -80,14 +67,43 @@ public class SurvivorsSelectionScreen extends Screen {
 //    })
 //            .bounds(this.width / 2 - 154, this.height - 5 - (count * 3), 150, 20)
 //            .build()
-    public  ImageButton getCommandoButton(Screen screen ,int count) {
-        WidgetSprites sprites = new WidgetSprites(COMMANDO,COMMANDO_SELECT);
-        return new ImageButton(screen.width / 2 - 154, this.height - 5 - (count * 3), 32, 32,sprites, b->{
+    public ImageButton getCommandoButton(Screen screen, int count) {
+        WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
+        return new ImageButton(screen.width / 2 - 154, this.height - 350 - (count * 3), 32, 32, sprites, b -> {
             isAcrid = isArtificer = false;
 
             isCommando = true;
         });
     }
+
+//     this.addRenderableWidget(
+//            Button.builder(Component.literal("Artificer"), button -> {
+//        isArtificer = true;
+//
+//        isAcrid = isCommando = false;
+//
+//    })
+//            .bounds(this.width / 2 - 154, this.height -5 - (count * 2), 150, 20)
+//            .build()
+
+    public ImageButton getArtificerButton(Screen screen, int count) {
+        WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
+        return new ImageButton(screen.width / 2 - 154, this.height - 5 - (count * 2), 32, 32, sprites, b -> {
+            isArtificer = true;
+
+            isAcrid = isCommando = false;
+        });
+    }
+
+    public ImageButton getAcridButton(Screen screen, int count) {
+        WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
+        return new ImageButton(this.width / 2 - 154, this.height - 5 - count, 32, 32, sprites, b -> {
+            isAcrid = true;
+
+            isArtificer = isCommando = false;
+        });
+    }
+
     private void backToMenu() {
         this.minecraft.setScreen(new SelectWorldScreen(new TitleScreen()));
     }
@@ -102,7 +118,7 @@ public class SurvivorsSelectionScreen extends Screen {
 
         if (isAcrid) {
             ROMUtils.drawString(p_281549_, font, Component.literal("Acrid Selected"), this.width / 2 - 154, this.height - 20, Color.RED.getRGB());
-            ROMUtils.drawString(p_281549_, font,Component.literal("Health").append(String.valueOf(Survivors.ACRID.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
+            ROMUtils.drawString(p_281549_, font, Component.literal("Health").append(String.valueOf(Survivors.ACRID.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
 
         }
         if (isCommando) {
