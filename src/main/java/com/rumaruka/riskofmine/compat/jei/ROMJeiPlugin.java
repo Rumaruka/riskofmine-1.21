@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import static com.rumaruka.riskofmine.RiskOfMine.rl;
 
@@ -16,7 +17,7 @@ import static com.rumaruka.riskofmine.RiskOfMine.rl;
 @JeiPlugin
 public class ROMJeiPlugin implements IModPlugin {
     @Override
-    public void registerRecipes(IRecipeRegistration registration) {
+    public void registerRecipes(@NotNull IRecipeRegistration registration) {
         ROMItems.Items.getAllItem().forEach(item -> {
             registerIngredientInfo(registration, item);
         });
@@ -24,7 +25,8 @@ public class ROMJeiPlugin implements IModPlugin {
 
 
     @Override
-    public ResourceLocation getPluginUid() {
+    @NotNull
+    public  ResourceLocation getPluginUid() {
         return rl("riskofmine");
     }
 

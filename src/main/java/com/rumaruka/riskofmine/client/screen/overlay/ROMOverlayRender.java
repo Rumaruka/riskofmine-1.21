@@ -1,7 +1,5 @@
 package com.rumaruka.riskofmine.client.screen.overlay;
 
-import com.mojang.blaze3d.platform.Window;
-import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
 import com.rumaruka.riskofmine.common.cap.*;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.KeyMapping;
@@ -44,6 +42,7 @@ public class ROMOverlayRender {
         }
 
     }
+
     private static void renderNearbyTimerDisplay(GuiGraphics stack) {
         var pose = stack.pose();
         pose.pushPose();
@@ -100,7 +99,7 @@ public class ROMOverlayRender {
         pose.popPose();
     }
 
-        private static void renderNearbyShieldsDisplay(GuiGraphics stack) {
+    private static void renderNearbyShieldsDisplay(GuiGraphics stack) {
         var pose = stack.pose();
         pose.pushPose();
         Player player = mc.player;
@@ -118,11 +117,13 @@ public class ROMOverlayRender {
         return I18n.get("riskofmine.currentmoney.name") + currentMoney;
 
     }
+
     private static String getTimerDisplay(Timer timer) {
         int currentTimer = timer.getCurrentTimer();
         return I18n.get("riskofmine.currenttimer.name") + currentTimer;
 
     }
+
     private static String getLunarDisplay(Lunar lunar) {
         int currentLunar = lunar.getCurrentLunar();
         return I18n.get("riskofmine.currentlunar.name") + currentLunar;
@@ -135,7 +136,8 @@ public class ROMOverlayRender {
         return I18n.get("riskofmine.currentshields.name") + shieldsCurrent;
 
     }
-//
+
+    //
     private static String getBarrierDisplay(Barrier barrier) {
         int barrierCurrent = barrier.getCurrentBarrier();
         return I18n.get("riskofmine.currentbarrier.name") + barrierCurrent;

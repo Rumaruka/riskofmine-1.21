@@ -30,7 +30,6 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     @Getter
     protected Survivors survivors;
     private List<Consumer<? extends Event>> events = new ArrayList<>();
-    protected Supplier<Integer> color = Suppliers.memoize(() -> getRegisterName().toString().hashCode());
     private ResourceLocation id;
     @Getter
     @Setter
