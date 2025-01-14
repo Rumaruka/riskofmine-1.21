@@ -35,10 +35,17 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     @Setter
     private boolean isActive;
 
-    public SkillBase(Survivors survivors, SkillType skillType) {
+    @Getter
+    @Setter
+    private int cooldownCount;
+    protected boolean isCooldown;
+
+
+    public SkillBase(Survivors survivors, SkillType skillType, int cooldown) {
 
         this.skillType = skillType;
         this.survivors = survivors;
+        this.cooldownCount = cooldown;
         initClient();
     }
 
@@ -86,5 +93,15 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
         if (id == null)
             id = RiskOfMine.SKILLS.getKey(this);
         return id;
+    }
+
+    public boolean isCooldown() {
+        return getCooldownCount() != 0;
+    }
+
+    public void setCooldown(boolean cooldown) {
+       if (getCooldownCount()>0){
+           isCooldown=cooldown;
+       }
     }
 }

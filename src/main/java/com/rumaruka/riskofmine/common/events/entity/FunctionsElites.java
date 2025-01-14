@@ -36,12 +36,15 @@ public class FunctionsElites {
         Entity target = event.getEntity();
         Entity attacked = event.getSource().getEntity();
         Level level = target.level();
-        if (attacked instanceof Mob) {
-            if (target instanceof ServerPlayer player) {
-                if (!level.isClientSide()) {
-                    player.setRemainingFireTicks(100);
+        if (attacked instanceof Mob mob) {
+            if (mob.hasEffect(ROMEffects.BLAZING)) {
+                if (target instanceof ServerPlayer player) {
+                    if (!level.isClientSide()) {
+                        player.setRemainingFireTicks(100);
+                    }
                 }
             }
+
         }
 
     }
