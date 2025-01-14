@@ -52,20 +52,6 @@ public abstract class PlayerMixin extends Entity implements IPlayerSurvivorsBrid
     }
 
 
-//    public static AttributeSupplier.Builder createAttributes() {
-//        return LivingEntity.createLivingAttributes()
-//                .add(Attributes.ATTACK_DAMAGE, 1.0)
-//                .add(Attributes.MOVEMENT_SPEED, 0.1F)
-//                .add(Attributes.ATTACK_SPEED)
-//                .add(Attributes.LUCK)
-//                .add(Attributes.BLOCK_INTERACTION_RANGE, 4.5)
-//                .add(Attributes.ENTITY_INTERACTION_RANGE, 3.0)
-//                .add(Attributes.BLOCK_BREAK_SPEED)
-//                .add(Attributes.SUBMERGED_MINING_SPEED)
-//                .add(Attributes.SNEAKING_SPEED)
-//                .add(Attributes.MINING_EFFICIENCY)
-//                .add(Attributes.SWEEPING_DAMAGE_RATIO)
-//                .add(net.neoforged.neoforge.common.NeoForgeMod.CREATIVE_FLIGHT);
-//    }
+
 
 }
