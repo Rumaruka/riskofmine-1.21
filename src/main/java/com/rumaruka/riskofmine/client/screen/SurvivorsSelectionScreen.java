@@ -19,10 +19,14 @@ import java.awt.*;
 public class SurvivorsSelectionScreen extends Screen {
 
 
-    private static final ResourceLocation COMMANDO_SELECT = RiskOfMine.rl("survivors/commando_selected");
-    private static final ResourceLocation COMMANDO = RiskOfMine.rl("survivors/commando");
+    private static final ResourceLocation COMMANDO_SELECT = RiskOfMine.rl("survivors/commando_selected_final");
+    private static final ResourceLocation COMMANDO = RiskOfMine.rl("survivors/commando_final");
+    private static final ResourceLocation ARTIFICER_SELECT = RiskOfMine.rl("survivors/artificer_selected_final");
+    private static final ResourceLocation ARTIFICER = RiskOfMine.rl("survivors/artificer_final");
+    private static final ResourceLocation ACRID_SELECT = RiskOfMine.rl("survivors/acrid_selected_final");
+    private static final ResourceLocation ACRID = RiskOfMine.rl("survivors/acrid_final");
 
-
+    private static final Component COPYRIGHT_TEXT = Component.translatable("title.credits");
     public static boolean isCommando;
     public static boolean isAcrid;
     public static boolean isArtificer;
@@ -33,71 +37,64 @@ public class SurvivorsSelectionScreen extends Screen {
 
     @Override
     protected void init() {
-        int count = 20;
-
+        int i = this.font.width(COPYRIGHT_TEXT);
+        int j = this.width - i - 2;
+        int k = 24;
+        int l = this.height / 4 + 32;
         this.addRenderableWidget(
-                getAcridButton(this, count)
+                getAcridButton(this,l)
         );
 
 
         this.addRenderableWidget(
-                getCommandoButton(this, count)
+                getCommandoButton(this,l)
         );
         this.addRenderableWidget(
-                getArtificerButton(this, count)
+                getArtificerButton(this,l)
         );
 
 
         this.addRenderableWidget(
                 Button.builder(CommonComponents.GUI_BACK,
                                 p_280917_ -> backToMenu())
-                        .bounds(this.width / 2 + 82, this.height - 20, 72, 20)
+                        .bounds(this.width / 2 + 82, this.height - 30, 72, 20)
                         .build()
         );
-        //   this.addRenderableWidget(getIM(this));
+
 
 
     }
 
     //        Button.builder(Component.literal("Commando"), button -> {
 //        isAcrid = isArtificer = false;
-//
+//screen.width/2  + 82 , screen.height - 310 - (count * 3)
 //        isCommando = true;
 //
 //    })
 //            .bounds(this.width / 2 - 154, this.height - 5 - (count * 3), 150, 20)
 //            .build()
-    public ImageButton getCommandoButton(Screen screen, int count) {
+    public ImageButton getCommandoButton(Screen screen, int height) {
         WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
-        return new ImageButton(screen.width / 2 - 154, this.height - 350 - (count * 3), 32, 32, sprites, b -> {
+        return new ImageButton(screen.width/2  -  160 , height, 32, 32, sprites, b -> {
             isAcrid = isArtificer = false;
 
             isCommando = true;
         });
     }
 
-//     this.addRenderableWidget(
-//            Button.builder(Component.literal("Artificer"), button -> {
-//        isArtificer = true;
-//
-//        isAcrid = isCommando = false;
-//
-//    })
-//            .bounds(this.width / 2 - 154, this.height -5 - (count * 2), 150, 20)
-//            .build()
 
-    public ImageButton getArtificerButton(Screen screen, int count) {
-        WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
-        return new ImageButton(screen.width / 2 - 154, this.height - 5 - (count * 2), 32, 32, sprites, b -> {
+    public ImageButton getArtificerButton(Screen screen,int height) {
+        WidgetSprites sprites = new WidgetSprites(ARTIFICER, ARTIFICER_SELECT);
+        return new ImageButton(screen.width / 2 - 128, height +1, 32, 32, sprites, b -> {
             isArtificer = true;
 
             isAcrid = isCommando = false;
         });
     }
 
-    public ImageButton getAcridButton(Screen screen, int count) {
-        WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
-        return new ImageButton(this.width / 2 - 154, this.height - 5 - count, 32, 32, sprites, b -> {
+    public ImageButton getAcridButton(Screen screen, int height) {
+        WidgetSprites sprites = new WidgetSprites(ACRID, ACRID_SELECT);
+        return new ImageButton(screen.width / 2 - 80, height  , 32, 32, sprites, b -> {
             isAcrid = true;
 
             isArtificer = isCommando = false;
