@@ -11,8 +11,8 @@ import com.rumaruka.riskofmine.utils.ROMUtils;
 public class CommandoSkills extends SkillBase {
     public CommandoSkills(SkillType skillType, int cooldown) {
         super(Survivors.COMMANDO, skillType, cooldown);
-
     }
+
 
     @Override
     public void tick(SkillData data, boolean isActive) {
@@ -20,19 +20,25 @@ public class CommandoSkills extends SkillBase {
         if (ROMUtils.getPlayer() instanceof IPlayerSurvivorsBridge survivorsBridge) {
             ISurvivors iSurvivors = survivorsBridge.riskofmine$getSurvivor();
             setActive(iSurvivors.survivors() == getSurvivors());
-            if (!isCooldown()) {
-                int cooldownCount = getCooldownCount();
-                setCooldown(true);
-                setCooldownCount(cooldownCount);
-                cooldownCount--;
-                if (cooldownCount == 0) {
-                    setCooldown(false);
+            {
+
+
+
+                    if (!isCooldown()) {
+                        int cooldownCount = getCooldownCount();
+                        setCooldown(true);
+                        setCooldownCount(cooldownCount);
+                        cooldownCount--;
+                        if (cooldownCount == 0) {
+                            setCooldown(false);
+                        }
+
+                    }
                 }
 
             }
-        }
 
+
+        }
     }
 
-
-}

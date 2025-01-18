@@ -55,18 +55,13 @@ public enum ChestTypes implements StringRepresentable {
         return this.unlocalizedName;
     }
 
-    /**
-     * Gets the RGB color corresponding to this dye color.
-     */
+
 
     public int getColorValue() {
         return this.colorValue;
     }
 
-    /**
-     * Gets an array containing 3 floats ranging from 0.0 to 1.0: the red, green, and blue components of the
-     * corresponding color.
-     */
+
     public float[] getColorComponentValues() {
         return this.colorComponentValues;
     }

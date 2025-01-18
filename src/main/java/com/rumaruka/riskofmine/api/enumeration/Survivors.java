@@ -44,6 +44,6 @@ public enum Survivors implements StringRepresentable {
 
     @Override
     public String getSerializedName() {
-        return "Survivors";
+        return name;
     }
 }

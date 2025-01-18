@@ -65,6 +65,7 @@ public class RiskOfMine {
         ROMFeatures.registerFeatures(bus);
         bus.addListener(this::newRegister);
         bus.addListener(ROMOverlayRender::registerKeys);
+        bus.addListener(SkillBase::registerKeys);
 
     }
 

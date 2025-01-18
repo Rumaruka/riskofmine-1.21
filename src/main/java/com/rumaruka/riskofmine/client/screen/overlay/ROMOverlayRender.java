@@ -26,7 +26,10 @@ public class ROMOverlayRender {
 
     public static void registerKeys(RegisterKeyMappingsEvent e) {
         e.register(KEY_SHOW_OVERLAYS);
+
     }
+
+
 
     @SubscribeEvent
     public static void renderOverlay(CustomizeGuiOverlayEvent.Chat event) {

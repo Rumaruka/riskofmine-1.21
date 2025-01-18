@@ -7,12 +7,15 @@ import com.rumaruka.riskofmine.api.client.IClientSkillExtensions;
 import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.Event;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.loading.DatagenModLoader;
+import org.lwjgl.glfw.GLFW;
 import org.zeith.hammerlib.api.fml.IRegisterListener;
 
 import java.util.ArrayList;
@@ -21,6 +24,8 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class SkillBase implements IHasRegisterName, IRegisterListener {
+
+    public static KeyMapping KEY_ACTIVE_SKILL = new KeyMapping("key.mapping.active_skill.name", GLFW.GLFW_KEY_X, "key.mapping.category.name");
 
 
     @Setter
@@ -41,6 +46,8 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     protected boolean isCooldown;
 
 
+    protected volatile boolean isSkillActive=false;
+
     public SkillBase(Survivors survivors, SkillType skillType, int cooldown) {
 
         this.skillType = skillType;
@@ -48,6 +55,9 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
         this.cooldownCount = cooldown;
         initClient();
     }
+
+
+
 
 
     public void tick(SkillData data, boolean isActive) {
@@ -59,7 +69,10 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
             NeoForge.EVENT_BUS.addListener(listener);
         }
     }
+    public static void registerKeys(RegisterKeyMappingsEvent e) {
+        e.register(KEY_ACTIVE_SKILL);
 
+    }
     public <T extends Event> void addListener(Consumer<T> consumer) {
         events.add(consumer);
     }
