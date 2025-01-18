@@ -46,7 +46,7 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     protected boolean isCooldown;
 
 
-    protected volatile boolean isSkillActive=false;
+    protected  boolean isSkillActive=false;
 
     public SkillBase(Survivors survivors, SkillType skillType, int cooldown) {
 
