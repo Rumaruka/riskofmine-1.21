@@ -42,7 +42,7 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
 
     @Getter
     @Setter
-    private int cooldownCount;
+    protected int cooldownCount;
     protected boolean isCooldown;
 
     @Getter
@@ -111,7 +111,7 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     }
 
     public boolean isCooldown() {
-        return getCooldownCount() != 0;
+        return getCooldownCount() == 0;
     }
 
     public void setCooldown(boolean cooldown) {
