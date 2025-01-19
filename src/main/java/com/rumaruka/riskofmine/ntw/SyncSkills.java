@@ -36,10 +36,7 @@ public class SyncSkills {
         return CLIENT_DATA;
     }
 
-//    public static void handle(Player localPlayer, PacketOpenSkillsBook packet)
-//    {
-//        CLIENT_DATA = SkillData.deserialize(localPlayer, packet.getNbt());
-//    }
+
 
     public static void handle(Player localPlayer, PacketSyncSkillData packet)
     {
