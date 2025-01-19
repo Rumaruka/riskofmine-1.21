@@ -45,8 +45,11 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     private int cooldownCount;
     protected boolean isCooldown;
 
-
-    protected  boolean isSkillActive=false;
+    @Getter
+    protected static boolean isSkillActive = false;
+    @Getter
+    @Setter
+    protected static boolean isKillInSkills = false;
 
     public SkillBase(Survivors survivors, SkillType skillType, int cooldown) {
 
@@ -55,9 +58,6 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
         this.cooldownCount = cooldown;
         initClient();
     }
-
-
-
 
 
     public void tick(SkillData data, boolean isActive) {
@@ -69,10 +69,12 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
             NeoForge.EVENT_BUS.addListener(listener);
         }
     }
+
     public static void registerKeys(RegisterKeyMappingsEvent e) {
         e.register(KEY_ACTIVE_SKILL);
 
     }
+
     public <T extends Event> void addListener(Consumer<T> consumer) {
         events.add(consumer);
     }
@@ -113,8 +115,8 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     }
 
     public void setCooldown(boolean cooldown) {
-       if (getCooldownCount()>0){
-           isCooldown=cooldown;
-       }
+        if (getCooldownCount() > 0) {
+            isCooldown = cooldown;
+        }
     }
 }

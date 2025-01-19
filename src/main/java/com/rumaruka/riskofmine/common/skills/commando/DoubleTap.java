@@ -12,6 +12,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -23,6 +24,7 @@ public class DoubleTap extends CommandoSkills {
         super(SkillType.PRIMARY, 5);
         addListener(this::onLeftClick);
         addListener(this::onTick);
+        addListener(this::onDeath);
 
 
     }
@@ -46,13 +48,14 @@ public class DoubleTap extends CommandoSkills {
 
             if (isSkillActive) {
                 if (isFlag) {
-                   //  player.addItem(Items.DIAMOND.getDefaultInstance());
+                    //  player.addItem(Items.DIAMOND.getDefaultInstance());
                     Arrow arrow = new Arrow(EntityType.ARROW, level);
 
                     Vec3 direction = player.getLookAngle();
                     arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
                     arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
-                   level.addFreshEntity(arrow);
+                    level.addFreshEntity(arrow);
+
                     isFlag = false;
 
                 }
@@ -62,6 +65,12 @@ public class DoubleTap extends CommandoSkills {
         }
 
 
+    }
+
+    private void onDeath(LivingDeathEvent event) {
+        if (isSkillActive) {
+            isKillInSkills = true;
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 package com.rumaruka.riskofmine.common.events.cap_event;
 
 
+import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.common.cap.Money;
 import com.rumaruka.riskofmine.common.events.ItemsEvents;
 import com.rumaruka.riskofmine.init.ROMAttachment;
@@ -64,6 +65,15 @@ public class MoneyEvents {
 
 
             ItemsEvents.setAlive(false);
+        }
+
+        if (SkillBase.isSkillActive()){
+            if (SkillBase.isKillInSkills()){
+                if (ROMRandomChanceUtils.fiftyFifty()) {
+                    money.addMoney(1);
+                }
+                SkillBase.setKillInSkills(false);
+            }
         }
     }
 
