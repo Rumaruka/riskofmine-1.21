@@ -55,7 +55,7 @@ public class RiskOfMine {
         ROMEffects.EFFECTS.register(bus);
         ROMEffects.POTIONS.register(bus);
 
-        logger.info("Skills: {}", ROMSkills.DOUBLE_TAP);
+
 
         bus.addListener(RiskOfMine::setup);
         bus.addListener(RiskOfMine::clientSetup);
