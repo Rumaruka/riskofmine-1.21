@@ -26,6 +26,7 @@ import java.util.function.Supplier;
 public class SkillBase implements IHasRegisterName, IRegisterListener {
 
     public static KeyMapping KEY_ACTIVE_SKILL = new KeyMapping("key.mapping.active_skill.name", GLFW.GLFW_KEY_X, "key.mapping.category.name");
+    public static KeyMapping KEY_SPECIAL_SKILL = new KeyMapping("key.mapping.special_skill.name", GLFW.GLFW_KEY_Z, "key.mapping.category.name");
 
 
     @Setter
@@ -72,6 +73,7 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
 
     public static void registerKeys(RegisterKeyMappingsEvent e) {
         e.register(KEY_ACTIVE_SKILL);
+        e.register(KEY_SPECIAL_SKILL);
 
     }
 
