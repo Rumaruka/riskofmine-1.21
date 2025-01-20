@@ -91,8 +91,8 @@ repositories {
         url = "https://maven.blamejared.com/" // location of the maven that hosts JEI files since January 2023
     }
     maven {
-        name = "OctoStudios"
-        url = uri("https://maven.octo-studios.com/releases")
+        name = "Curios"
+        url = uri("https://maven.theillusivec4.top/")
     }
     maven { url 'https://maven.wispforest.io/releases' }
     maven { url 'https://maven.su5ed.dev/releases' }
@@ -114,7 +114,7 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
 
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
-    implementation 'top.theillusivec4.curios:curios-neoforge:9.0.1+1.21'
+    implementation 'top.theillusivec4.curios:curios-neoforge:9.2.2+1.21.1'
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
