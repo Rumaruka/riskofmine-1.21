@@ -75,7 +75,7 @@ public class SuppressiveFire extends CommandoSkills {
                 try {
                     Thread.sleep(delayTicks * 50L); // 50 ms per tick
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                   e.fillInStackTrace();
                 }
 
                 MinecraftServer server = world.getServer();
