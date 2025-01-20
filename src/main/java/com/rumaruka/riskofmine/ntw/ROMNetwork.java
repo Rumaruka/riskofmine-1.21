@@ -23,6 +23,7 @@ public class  ROMNetwork {
 
             network.playToClient(ItemActivationPacket.TYPE,ItemActivationPacket.STREAM_CODEC,ItemActivationPacket::handle);
             network.playToServer(DoubleJumpPacket.TYPE,DoubleJumpPacket.STREAM_CODEC,DoubleJumpPacket::handle);
+            network.playToServer(DashPacket.TYPE,DashPacket.CODEC,DashPacket::handle);
 
             network.playToClient(OverloadingPacket.TYPE,OverloadingPacket.CODEC,OverloadingPacket::handle);
             network.playToClient(BlazingPacket.TYPE,BlazingPacket.CODEC,BlazingPacket::handle);
