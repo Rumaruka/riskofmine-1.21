@@ -6,28 +6,33 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 public class SuppressiveFire extends CommandoSkills {
 
-    protected boolean isLeftFlag;
+    protected boolean isFlag;
     protected int cooldownCountMax;
+
     public SuppressiveFire(int cooldownCountMax) {
-        super(SkillType.PRIMARY, cooldownCountMax);
-        addListener(this::onLeftClick);
-        this.cooldownCountMax=cooldownCountMax;
+        super(SkillType.SPECIAL, cooldownCountMax);
+        addListener(this::onInputKey);
+        this.cooldownCountMax = cooldownCountMax;
         addListener(this::onTick);
         addListener(this::onDeath);
 
 
     }
 
-    private void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
-        if (isActive()) {
+    private void onInputKey(InputEvent.Key event) {
 
-            isLeftFlag = true;
+        if (isActive()) {
+            if (KEY_SPECIAL_SKILL.isDown()){
+                isFlag = true;
+            }
+
 
         }
 
@@ -42,14 +47,9 @@ public class SuppressiveFire extends CommandoSkills {
         if (!level.isClientSide()) {
 
             if (isSkillActive) {
-                if (isLeftFlag && isCooldown()) {
-                    Arrow arrow = new Arrow(EntityType.ARROW, level);
-
-                    Vec3 direction = player.getLookAngle();
-                    arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
-                    arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
-                    level.addFreshEntity(arrow);
-                    isLeftFlag = false;
+                if (isFlag && isCooldown()) {
+                    shootMultipleArrows(player, level, 5, 2);
+                    isFlag = false;
                     setCooldown(false);
                     setCooldownCount(cooldownCountMax);
                 }
@@ -67,8 +67,31 @@ public class SuppressiveFire extends CommandoSkills {
         }
     }
 
-}
 
+    public static void shootMultipleArrows(Player player, Level world, int numberOfArrows, int delayTicks) {
+        new Thread(() -> {
+            for (int i = 0; i < numberOfArrows; i++) {
+                try {
+                    Thread.sleep(delayTicks * 50L); // 50 ms per tick
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                world.getServer().execute(() -> {
+                    if (player != null && !world.isClientSide()) {
+                        Arrow arrow = new Arrow(EntityType.ARROW, world);
+
+                        Vec3 direction = player.getLookAngle();
+                        arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
+                        arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
+                        world.addFreshEntity(arrow);
+                    }
+                });
+            }
+        }).start();
+
+    }
+}
 
 
 
