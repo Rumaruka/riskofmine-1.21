@@ -1,6 +1,7 @@
 package com.rumaruka.riskofmine.common.skills.commando;
 
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -77,16 +78,20 @@ public class SuppressiveFire extends CommandoSkills {
                     e.printStackTrace();
                 }
 
-                world.getServer().execute(() -> {
-                    if (player != null && !world.isClientSide()) {
-                        Arrow arrow = new Arrow(EntityType.ARROW, world);
+                MinecraftServer server = world.getServer();
+                if (server!=null){
+                    server.execute(() -> {
+                        if (player != null && !world.isClientSide()) {
+                            Arrow arrow = new Arrow(EntityType.ARROW, world);
 
-                        Vec3 direction = player.getLookAngle();
-                        arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
-                        arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
-                        world.addFreshEntity(arrow);
-                    }
-                });
+                            Vec3 direction = player.getLookAngle();
+                            arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
+                            arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
+                            world.addFreshEntity(arrow);
+                        }
+                    });
+                }
+
             }
         }).start();
 

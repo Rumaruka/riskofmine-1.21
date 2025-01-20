@@ -18,7 +18,7 @@ public class ROMScreenEvent {
         Screen screen = event.getScreen();
         if (screen instanceof SelectWorldScreen selectWorldScreen) {
             event.addListener(getSurvivors(selectWorldScreen));
-           // event.addListener(getIM(selectWorldScreen));
+
 
         }
 
