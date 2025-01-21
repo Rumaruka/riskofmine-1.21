@@ -1,5 +1,6 @@
 package com.rumaruka.riskofmine.common.skills.commando;
 
+import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.api.registry.skill.SkillData;
@@ -28,10 +29,10 @@ public class CommandoSkills extends SkillBase {
                 isSkillActive = !isSkillActive;
                 if (isSkillActive) {
                     // Enable the feature
-                    ROMUtils.getPlayer().sendSystemMessage(Component.literal("Skill is enabled"));
+                    RiskOfMine.logger.info("Skill activated");
                 } else {
                     // Disable the feature
-                    ROMUtils.getPlayer().sendSystemMessage(Component.literal("Skill is disabled"));
+                    RiskOfMine.logger.info("Skill deactivate");
                 }
 
 
