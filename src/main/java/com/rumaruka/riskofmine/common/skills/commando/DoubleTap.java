@@ -27,8 +27,10 @@ public class DoubleTap extends CommandoSkills {
 
     private void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
         if (isActive()) {
+            if (isSkillActive()) {
+                isLeftFlag = true;
+            }
 
-            isLeftFlag = true;
 
         }
 
@@ -42,7 +44,7 @@ public class DoubleTap extends CommandoSkills {
 
         if (!level.isClientSide()) {
 
-            if (isSkillActive) {
+            if (isSkillActive()) {
                 if (isLeftFlag && isCooldown()) {
                     Arrow arrow = new Arrow(EntityType.ARROW, level);
                     Vec3 direction = player.getLookAngle();
@@ -62,7 +64,7 @@ public class DoubleTap extends CommandoSkills {
     }
 
     private void onDeath(LivingDeathEvent event) {
-        if (isSkillActive) {
+        if (isSkillActive()) {
             isKillInSkills = true;
         }
     }

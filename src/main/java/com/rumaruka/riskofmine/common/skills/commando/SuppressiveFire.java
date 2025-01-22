@@ -30,8 +30,11 @@ public class SuppressiveFire extends CommandoSkills {
     private void onInputKey(InputEvent.Key event) {
 
         if (isActive()) {
-            if (KEY_SPECIAL_SKILL.isDown()){
-                isFlag = true;
+            if (isSkillActive()){
+                if (KEY_SPECIAL_SKILL.isDown()){
+                    isFlag = true;
+                }
+
             }
 
 
@@ -47,7 +50,7 @@ public class SuppressiveFire extends CommandoSkills {
 
         if (!level.isClientSide()) {
 
-            if (isSkillActive) {
+            if (isSkillActive()) {
                 if (isFlag && isCooldown()) {
                     shootMultipleArrows(player, level, 5, 2);
                     isFlag = false;
@@ -63,7 +66,7 @@ public class SuppressiveFire extends CommandoSkills {
     }
 
     private void onDeath(LivingDeathEvent event) {
-        if (isSkillActive) {
+        if (isSkillActive()) {
             isKillInSkills = true;
         }
     }

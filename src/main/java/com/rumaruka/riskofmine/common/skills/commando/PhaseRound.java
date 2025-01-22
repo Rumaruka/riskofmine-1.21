@@ -30,8 +30,10 @@ public class PhaseRound extends CommandoSkills {
 
     private void onRightClick(PlayerInteractEvent.RightClickEmpty event) {
         if (isActive()) {
+            if (isSkillActive()) {
+                isRightFlag = true;
 
-            isRightFlag = true;
+            }
 
         }
 
@@ -44,7 +46,7 @@ public class PhaseRound extends CommandoSkills {
         Level level = player.level();
         if (!level.isClientSide()) {
 
-            if (isSkillActive) {
+            if (isSkillActive()) {
                 if (isRightFlag &&isCooldown()) {
                     PrimedTnt tnt = new PrimedTnt(EntityType.TNT, level);
 
@@ -64,7 +66,7 @@ public class PhaseRound extends CommandoSkills {
     }
 
     private void onDeath(LivingDeathEvent event) {
-        if (isSkillActive) {
+        if (isSkillActive()) {
             isKillInSkills = true;
         }
     }

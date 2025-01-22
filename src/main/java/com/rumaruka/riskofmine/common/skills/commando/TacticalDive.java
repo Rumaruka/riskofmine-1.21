@@ -32,7 +32,7 @@ public class TacticalDive extends CommandoSkills {
 
     private void onKeyClick(InputEvent.Key event) {
         if (isActive()) {
-            if (isSkillActive) {
+            if (isSkillActive()) {
                 if (isCooldown()) {
                     if (KEY_UTILITY_SKILL.isDown()){
                         if (ROMUtils.getPlayer().onGround()){
