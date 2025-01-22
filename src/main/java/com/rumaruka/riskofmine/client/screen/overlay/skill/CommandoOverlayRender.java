@@ -116,13 +116,25 @@ public class CommandoOverlayRender {
 
         // Рисование изображения в центре экрана
         SuppressiveFire doubleTap = ROMSkills.SUPPRESSIVE_FIRE;
-        gui.blit(SUPPRESSIVE_FIRE_IMG , x + w - (h / 2 + 300),
-                y + (h / 2 + 30), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-        if (!doubleTap.isCooldown()){
-            String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+        if (mc.getWindow().isFullscreen()){
+            gui.blit(SUPPRESSIVE_FIRE_IMG , x + w - (h / 2 + 245),
+                    y + (h / 2 + 45), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            ROMUtils.drawString(gui, font, toDisplay, x + w - (h / 2 + 285), y + (h / 2 + 15), color.getRGB());
+            if (!doubleTap.isCooldown()){
+                String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+
+                ROMUtils.drawString(gui, font, toDisplay, x + w - (h / 2 + 285), y + (h / 2 + 15), color.getRGB());
+            }
+        }else {
+            gui.blit(SUPPRESSIVE_FIRE_IMG , x + w - (h / 2 + 300),
+                    y + (h / 2 + 30), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+
+            if (!doubleTap.isCooldown()){
+                String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+
+                ROMUtils.drawString(gui, font, toDisplay, x + w - (h / 2 + 285), y + (h / 2 + 15), color.getRGB());
+            }
         }
        //String toDisplay = String.valueOf(0);
 
