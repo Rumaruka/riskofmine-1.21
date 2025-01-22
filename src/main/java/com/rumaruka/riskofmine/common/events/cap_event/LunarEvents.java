@@ -96,26 +96,5 @@ public class LunarEvents {
         }
     }
 
-    @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Post event) {
-        Player entity = event.getEntity();
-        Lunar lunar = Lunar.get(entity);
-        if (ItemsEvents.isAlive()) {
-            if (ROMRandomChanceUtils.fiftyFifty()) {
-                lunar.addLunar(1);
-            }
 
-
-            ItemsEvents.setAlive(false);
-        }
-
-        if (SkillBase.isSkillActive()) {
-            if (SkillBase.isKillInSkills()) {
-                if (ROMRandomChanceUtils.fiftyFifty()) {
-                    lunar.addLunar(1);
-                }
-                SkillBase.setKillInSkills(false);
-            }
-        }
-    }
 }
