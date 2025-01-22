@@ -1,9 +1,13 @@
 package com.rumaruka.riskofmine.common.events.cap_event;
 
 import com.rumaruka.riskofmine.RiskOfMine;
+import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.common.cap.Lunar;
+import com.rumaruka.riskofmine.common.cap.Money;
+import com.rumaruka.riskofmine.common.events.ItemsEvents;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.init.ROMItems;
+import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
@@ -18,6 +22,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 
 @EventBusSubscriber(modid = RiskOfMine.MODID)
@@ -87,6 +92,29 @@ public class LunarEvents {
                 }
 
 
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player entity = event.getEntity();
+        Lunar lunar = Lunar.get(entity);
+        if (ItemsEvents.isAlive()) {
+            if (ROMRandomChanceUtils.fiftyFifty()) {
+                lunar.addLunar(1);
+            }
+
+
+            ItemsEvents.setAlive(false);
+        }
+
+        if (SkillBase.isSkillActive()) {
+            if (SkillBase.isKillInSkills()) {
+                if (ROMRandomChanceUtils.fiftyFifty()) {
+                    lunar.addLunar(1);
+                }
+                SkillBase.setKillInSkills(false);
             }
         }
     }
