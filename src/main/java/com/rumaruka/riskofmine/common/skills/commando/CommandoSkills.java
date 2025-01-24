@@ -7,9 +7,7 @@ import com.rumaruka.riskofmine.api.registry.skill.SkillData;
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
-import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import com.rumaruka.riskofmine.utils.ROMUtils;
-import net.minecraft.network.chat.Component;
 
 public class CommandoSkills extends SkillBase {
 
@@ -38,13 +36,14 @@ public class CommandoSkills extends SkillBase {
 
             }
 
-            if (getCooldownCount()>0){
+            if (getCooldownCount() > 0) {
                 setCooldown(true);
                 int cooldownCount = getCooldownCount();
-                if (ROMRandomChanceUtils.percentChance(0.05)){
-                    setCooldownCount(cooldownCount - 1);
-                }
 
+                if (ROMUtils.getPlayer().level().nextSubTickCount()%20 == 0) {
+                    setCooldownCount(cooldownCount-1);
+
+                }
 
 
             }

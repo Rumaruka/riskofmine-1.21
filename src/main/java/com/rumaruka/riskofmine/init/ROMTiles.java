@@ -33,5 +33,4 @@ public interface ROMTiles {
     @RegistryName("warbanner_block")
     BlockEntityType<WarbannerTE> WARBANNER_BLOCK = BlockAPI.createBlockEntityType(WarbannerTE::new, ROMBlocks.WARBANNER_BLOCK);
 
-
 }
