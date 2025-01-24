@@ -92,7 +92,7 @@ public class CommandoOverlayRender {
             }
 
         }else{
-            gui.blit(DOUBLE_TAP_IMG, w - (h / 2 + 420)/*(width - imageWidth-420) / 2*/, (h / 2 + 80+20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(DOUBLE_TAP_IMG, 0, (h / 2 + 80+20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
                 String toDisplay = String.valueOf(getDoubleTapDisplay(doubleTap));
