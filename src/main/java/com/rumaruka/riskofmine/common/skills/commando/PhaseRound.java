@@ -67,7 +67,7 @@ public class PhaseRound extends CommandoSkills {
 
     private void onDeath(LivingDeathEvent event) {
         if (isSkillActive()) {
-            isKillInSkills = true;
+          setKillInSkills(true);
         }
     }
 

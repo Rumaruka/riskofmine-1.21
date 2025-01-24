@@ -54,7 +54,29 @@ public class MoneyEvents {
         }
     }
 
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Pre event) {
+        Player entity = event.getEntity();
+        Level level = entity.level();
+        if (!level.isClientSide()){
+            Money data = Money.get(entity);
+            if (SkillBase.isKillInSkills()){
+                if (ROMRandomChanceUtils.fiftyFifty()){
+                    data.addMoney(1);
+                    SkillBase.setKillInSkills(false);
+                }
 
+
+            }
+            if (ItemsEvents.isAlive()){
+                if (ROMRandomChanceUtils.fiftyFifty()){
+                    data.addMoney(1);
+                    ItemsEvents.setAlive(false);
+                }
+
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
