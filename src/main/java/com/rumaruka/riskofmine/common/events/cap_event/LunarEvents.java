@@ -15,6 +15,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -59,6 +60,7 @@ public class LunarEvents {
         }
     }
 
+
     @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
 
@@ -70,8 +72,18 @@ public class LunarEvents {
             if (!level.isClientSide) {
                 if (livingEntity.tickCount % 10 == 0) {
                     ItemEntity itemEntity = new ItemEntity(level, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), new ItemStack(ROMItems.LUNAR_COIN));
-                    level.addFreshEntity(itemEntity);
 
+                    if (ItemsEvents.isAlive()){
+
+                        level.addFreshEntity(itemEntity);
+                        ItemsEvents.setAlive(false);
+                    }
+                    if (SkillBase.isKillInSkills()){
+
+                        level.addFreshEntity(itemEntity);
+                        SkillBase.setKillInSkills(false);
+                    }
+                    level.addFreshEntity(itemEntity);
                 }
 
 
