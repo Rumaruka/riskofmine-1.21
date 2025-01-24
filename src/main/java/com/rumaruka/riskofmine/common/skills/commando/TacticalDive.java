@@ -40,6 +40,8 @@ public class TacticalDive extends CommandoSkills {
                             ROMUtils.getPlayer().setDeltaMovement(playerLook.x * 1.5, playerLook.y * 1.5, playerLook.z * 1.5 );
                             ROMNetwork.sendToServer(new DashPacket());
                             isFlag = true;
+                            setCooldown(false);
+                            setCooldownCount(cooldownCountMax);
                         }
 
                     }

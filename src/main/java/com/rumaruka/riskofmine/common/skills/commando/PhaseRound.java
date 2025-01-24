@@ -47,7 +47,7 @@ public class PhaseRound extends CommandoSkills {
         if (!level.isClientSide()) {
 
             if (isSkillActive()) {
-                if (isRightFlag &&isCooldown()) {
+                if (isRightFlag && isCooldown()) {
                     PrimedTnt tnt = new PrimedTnt(EntityType.TNT, level);
 
                     tnt.setPos(player.getX(), player.getY() + 1, player.getZ());

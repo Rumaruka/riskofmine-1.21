@@ -50,7 +50,7 @@ public class SuppressiveFire extends CommandoSkills {
 
         if (!level.isClientSide()) {
 
-            if (isSkillActive()) {
+            if (isSkillActive() ) {
                 if (isFlag && isCooldown()) {
                     shootMultipleArrows(player, level, 5, 2);
                     isFlag = false;
