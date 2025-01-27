@@ -49,9 +49,6 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
 
     @Getter
     protected static boolean isSkillActive = false;
-    @Getter
-    @Setter
-    protected static boolean isKillInSkills = false;
 
 
 

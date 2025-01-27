@@ -20,7 +20,6 @@ public class DoubleTap extends CommandoSkills {
         addListener(this::onLeftClick);
         this.cooldownCountMax=cooldownCountMax;
         addListener(this::onTick);
-        addListener(this::onDeath);
 
 
     }
@@ -50,6 +49,7 @@ public class DoubleTap extends CommandoSkills {
                     Vec3 direction = player.getLookAngle();
                     arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
                     arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
+                    arrow.setOwner(player);
                     level.addFreshEntity(arrow);
                     isLeftFlag = false;
                     setCooldown(false);
@@ -58,16 +58,13 @@ public class DoubleTap extends CommandoSkills {
 
 
             }
+
         }
 
 
     }
 
-    private void onDeath(LivingDeathEvent event) {
-        if (isSkillActive()) {
-            setKillInSkills(true);
-        }
-    }
+
 
 }
 

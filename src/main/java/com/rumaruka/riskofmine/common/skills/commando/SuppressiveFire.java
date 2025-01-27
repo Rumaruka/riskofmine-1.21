@@ -22,7 +22,7 @@ public class SuppressiveFire extends CommandoSkills {
         addListener(this::onInputKey);
         this.cooldownCountMax = cooldownCountMax;
         addListener(this::onTick);
-        addListener(this::onDeath);
+
 
 
     }
@@ -65,11 +65,6 @@ public class SuppressiveFire extends CommandoSkills {
 
     }
 
-    private void onDeath(LivingDeathEvent event) {
-        if (isSkillActive()) {
-            setKillInSkills(true);
-        }
-    }
 
 
     public static void shootMultipleArrows(Player player, Level world, int numberOfArrows, int delayTicks) {
@@ -89,6 +84,7 @@ public class SuppressiveFire extends CommandoSkills {
 
                             Vec3 direction = player.getLookAngle();
                             arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
+                            arrow.setOwner(player);
                             arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
                             world.addFreshEntity(arrow);
                         }

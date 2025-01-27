@@ -23,7 +23,7 @@ public class PhaseRound extends CommandoSkills {
         this.cooldownCountMax=cooldownCountMax;
 
         addListener(this::onTick);
-        addListener(this::onDeath);
+
 
 
     }
@@ -52,6 +52,7 @@ public class PhaseRound extends CommandoSkills {
 
                     tnt.setPos(player.getX(), player.getY() + 1, player.getZ());
                     level.addFreshEntity(tnt);
+
                     isRightFlag = false;
                     setCooldown(false);
                     setCooldownCount(cooldownCountMax);
@@ -65,11 +66,6 @@ public class PhaseRound extends CommandoSkills {
 
     }
 
-    private void onDeath(LivingDeathEvent event) {
-        if (isSkillActive()) {
-          setKillInSkills(true);
-        }
-    }
 
 }
 

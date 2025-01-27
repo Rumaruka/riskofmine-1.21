@@ -9,9 +9,11 @@ import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -54,44 +56,34 @@ public class MoneyEvents {
         }
     }
 
-    @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Pre event) {
-        Player entity = event.getEntity();
-        Level level = entity.level();
-        if (!level.isClientSide()){
-            Money data = Money.get(entity);
-            if (SkillBase.isKillInSkills()){
-                if (ROMRandomChanceUtils.fiftyFifty()){
-                    data.addMoney(1);
-                    SkillBase.setKillInSkills(false);
-                }
-
-
-            }
-            if (ItemsEvents.isAlive()){
-                if (ROMRandomChanceUtils.fiftyFifty()){
-                    data.addMoney(1);
-                    ItemsEvents.setAlive(false);
-                }
-
-            }
-        }
-    }
 
     @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
-        if (event.getSource().getEntity() instanceof ServerPlayer player) {
+        Entity entity = event.getSource().getEntity();
+        if (entity instanceof ServerPlayer player) {
             LivingEntity livingEntity = event.getEntity();
             Level level = livingEntity.level();
 
             if (!level.isClientSide()) {
+
                 Money money = Money.get(player);
                 money.addMoney(10);
-
-
             }
         }
-        if (event.getSource().getEntity() instanceof AmbientCreature && event.getEntity() instanceof ServerPlayer player) {
+        if (entity instanceof Projectile projectile) {
+            LivingEntity livingEntity = event.getEntity();
+            Level level = livingEntity.level();
+            if (!level.isClientSide()) {
+
+                if (projectile.getOwner() instanceof ServerPlayer player){
+                    Money money = Money.get(player);
+                    money.addMoney(10);
+                }
+
+            }
+
+        }
+        if (event.getSource().getEntity() instanceof AmbientCreature && (event.getEntity() instanceof ServerPlayer player)) {
             Level world = player.level();
             Money money = Money.get(player);
             if (!world.isClientSide) {

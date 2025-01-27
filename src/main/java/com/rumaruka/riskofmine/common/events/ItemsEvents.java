@@ -144,9 +144,7 @@ public class ItemsEvents {
                             if (distance <= 3.5f) {
                                 mob.hurt(level.damageSources().magic(), ROMMathFormula.powerIncreasing(ROMUtils.counting(player, new ItemStack(ROMItems.FOCUS_CRYSTAL)), 5.0f, 5));
                                 ROMUtils.getMc().particleEngine.createTrackingEmitter(mob, ROMParticles.FOCUS_CRYSTAL.get());
-                                if (mob.getHealth() == 0) {
-                                    setAlive(true);
-                                }
+
                             }
                         }
                     }

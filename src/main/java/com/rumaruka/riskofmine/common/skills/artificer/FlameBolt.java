@@ -22,7 +22,7 @@ public class FlameBolt extends ArtificerSkills {
         addListener(this::onLeftClick);
         this.cooldownCountMax=cooldownCountMax;
         addListener(this::onTick);
-        addListener(this::onDeath);
+
 
 
     }
@@ -51,6 +51,8 @@ public class FlameBolt extends ArtificerSkills {
                     arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
                     arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
                     level.addFreshEntity(arrow);
+                    arrow.setOwner(player);
+                    arrow.setOwner(player);
                     isLeftFlag = false;
                     setCooldown(false);
                     setCooldownCount(cooldownCountMax);
@@ -61,12 +63,6 @@ public class FlameBolt extends ArtificerSkills {
         }
 
 
-    }
-
-    private void onDeath(LivingDeathEvent event) {
-        if (isSkillActive) {
-            isKillInSkills = true;
-        }
     }
 
 }

@@ -1,13 +1,10 @@
 package com.rumaruka.riskofmine.common.events.cap_event;
 
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.common.cap.Lunar;
 import com.rumaruka.riskofmine.common.cap.Money;
-import com.rumaruka.riskofmine.common.events.ItemsEvents;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.init.ROMItems;
-import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
@@ -15,7 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -23,7 +20,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 
 @EventBusSubscriber(modid = RiskOfMine.MODID)
@@ -69,23 +65,42 @@ public class LunarEvents {
             Level level = livingEntity.level();
 
 
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 if (livingEntity.tickCount % 10 == 0) {
+
                     ItemEntity itemEntity = new ItemEntity(level, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), new ItemStack(ROMItems.LUNAR_COIN));
-
-                    if (ItemsEvents.isAlive()){
-
-                        level.addFreshEntity(itemEntity);
-                        ItemsEvents.setAlive(false);
-                    }
-                    if (SkillBase.isKillInSkills()){
-
-                        level.addFreshEntity(itemEntity);
-                        SkillBase.setKillInSkills(false);
-                    }
                     level.addFreshEntity(itemEntity);
                 }
 
+
+            }
+
+        }
+        if (event.getSource().getEntity() instanceof Projectile projectile) {
+            LivingEntity livingEntity = event.getEntity();
+            Level level = livingEntity.level();
+            if (!level.isClientSide()) {
+
+                if (projectile.getOwner() instanceof ServerPlayer player){
+                    Money money = Money.get(player);
+                    money.addMoney(10);
+                }
+
+            }
+
+        }
+        if (event.getSource().getEntity() instanceof Projectile projectile) {
+            LivingEntity livingEntity = event.getEntity();
+            Level level = livingEntity.level();
+            if (!level.isClientSide()) {
+
+                if (projectile.getOwner() instanceof ServerPlayer player){
+                    if (livingEntity.tickCount % 10 == 0) {
+
+                        ItemEntity itemEntity = new ItemEntity(level, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), new ItemStack(ROMItems.LUNAR_COIN));
+                        level.addFreshEntity(itemEntity);
+                    }
+                }
 
             }
 
@@ -106,7 +121,6 @@ public class LunarEvents {
 
             }
         }
+
     }
-
-
 }
