@@ -30,9 +30,10 @@ public class SurvivorsSelectionScreen extends Screen {
     public static boolean isCommando;
     public static boolean isAcrid;
     public static boolean isArtificer;
-
-    public SurvivorsSelectionScreen() {
+    private final Screen parent;
+    public SurvivorsSelectionScreen(Screen parent) {
         super(Component.literal("Custom Map Selection"));
+        this.parent = parent;
     }
 
     @Override
@@ -102,7 +103,7 @@ public class SurvivorsSelectionScreen extends Screen {
     }
 
     private void backToMenu() {
-        this.minecraft.setScreen(new SelectWorldScreen(new TitleScreen()));
+        this.minecraft.setScreen(this.parent);
     }
 
     @Override
