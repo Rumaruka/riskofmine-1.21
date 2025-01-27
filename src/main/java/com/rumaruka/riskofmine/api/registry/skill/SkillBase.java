@@ -55,6 +55,8 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
 
 
 
+
+
     public SkillBase(Survivors survivors, SkillType skillType, int cooldown) {
 
         this.skillType = skillType;
