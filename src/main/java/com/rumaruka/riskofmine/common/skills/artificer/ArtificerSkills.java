@@ -40,7 +40,7 @@ public class ArtificerSkills extends SkillBase {
             if (getCooldownCount()>0){
                 setCooldown(true);
                 int cooldownCount = getCooldownCount();
-                if (ROMRandomChanceUtils.percentChance(0.05)){
+                if (ROMUtils.getPlayer().level().nextSubTickCount()%20 == 0) {
                     setCooldownCount(cooldownCount - 1);
                 }
 

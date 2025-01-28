@@ -20,8 +20,9 @@ public class FlameBolt extends ArtificerSkills {
     public FlameBolt(int cooldownCountMax) {
         super(SkillType.PRIMARY, cooldownCountMax);
         addListener(this::onLeftClick);
-        this.cooldownCountMax=cooldownCountMax;
         addListener(this::onTick);
+        this.cooldownCountMax=cooldownCountMax;
+
 
 
 
