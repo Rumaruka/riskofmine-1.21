@@ -22,7 +22,7 @@ public class ROMScreenEvent {
             event.addListener(getSurvivors(selectWorldScreen));
         }
         if (screen instanceof ExperimentsScreen experimentsScreen){
-            event.addListener(getSurvivorsTitle(82,200)) ;
+            event.addListener(getSurvivorsTitle(162,200)) ;
 
             event.addListener(getSurvivors(experimentsScreen, 30, 200));
         }
