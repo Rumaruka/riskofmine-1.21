@@ -38,7 +38,15 @@
   "riskofmine.currenttimer.name": "Timer: ",
   "riskofmine.currentshields.name": "Shields: ",
   "riskofmine.currentbarrier.name": "Barrier: ",
+  "riskofmine.select_survivors.title": "Select Survivors:",
+
   "key.mapping.show_overlay.name": "Show Overlay",
+  "key.mapping.active_skill.name": "Switch Skill Available button",
+  "key.mapping.special_skill.name": "Activated Special Skill",
+  "key.mapping.utility_skill.name": "Activated Utility Skill",
   "key.mapping.category.name": "Risk of Mine",
+
+
+
   "riskofminepedia.name": "Manual : Risk of Mine"
 }
