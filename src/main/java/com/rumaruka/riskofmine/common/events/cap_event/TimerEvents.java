@@ -1,17 +1,16 @@
 package com.rumaruka.riskofmine.common.events.cap_event;
 
 import com.rumaruka.riskofmine.common.cap.Timer;
-import com.rumaruka.riskofmine.common.config.ROMConfig;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import lombok.Getter;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber
 public class TimerEvents {
@@ -50,21 +49,16 @@ public class TimerEvents {
     }
 
     @SubscribeEvent
-    public static void onPlayerTick(EntityTickEvent.Post event) {
-        Entity entity = event.getEntity();
-        if (entity instanceof Player player){
-            Timer timer = Timer.get(player);
-            if (ROMConfig.TIME_UPDATE_TIMER > 0) {
-                if (time == 0L) {
-                    time = (long) player.level().getDayTimePerTick();
-                }
-                long minute = ROMConfig.TIME_UPDATE_TIMER * 60L * 1000L;
-                if (player.level().getDayTimePerTick() - time > minute) {
-                    value+=1;
-                    timer.addTimer((int) 1);
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        Level level = player.level();
+        Timer timer = Timer.get(player);
+        if (!level.isClientSide()) {
+            if (level.nextSubTickCount() % 20 == 0) {
+                timer.addTimer(1);
 
-                }
             }
+
         }
 
     }

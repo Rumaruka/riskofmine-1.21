@@ -11,6 +11,7 @@ import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.MultiLineTextWidget;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.Holder;
@@ -348,6 +349,9 @@ public class ROMUtils {
     }
 
 
+    public static MultiLineTextWidget getTextWidget(Component component, int x, int y) {
+        return new MultiLineTextWidget(x, y, component, mc.font) ;
+    }
 
 
 

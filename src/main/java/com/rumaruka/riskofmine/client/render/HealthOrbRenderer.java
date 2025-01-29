@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.ExperienceOrb;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -22,39 +23,45 @@ import static com.rumaruka.riskofmine.RiskOfMine.rl;
 @MethodsReturnNonnullByDefault
 public class HealthOrbRenderer extends EntityRenderer<HealthOrbEntity> {
     private static final ResourceLocation HEAL_ORB_TEXTURES = rl("textures/entity/health_orb.png");
-    private static final RenderType RENDER_TYPE = RenderType.entityTranslucentCull(HEAL_ORB_TEXTURES);
+    private static final RenderType RENDER_TYPE = RenderType.itemEntityTranslucentCull(HEAL_ORB_TEXTURES);
 
-    public HealthOrbRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext);
+    public HealthOrbRenderer(EntityRendererProvider.Context p_174110_) {
+        super(p_174110_);
         this.shadowRadius = 0.15F;
         this.shadowStrength = 0.75F;
-
     }
 
-    @Override
-    public void render(HealthOrbEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
-        pMatrixStack.pushPose();
-        int i = pEntity.getIcon();
-        float f = (float) (i % 3 * 16) / 64.0F;
-        float f1 = (float) (i % 3 * 16 + 16) / 64.0F;
-        float f2 = (float) (i / 3 * 16) / 64.0F;
-        float f3 = (float) (i / 3 * 16 + 16) / 64.0F;
-        float f8 = ((float) pEntity.tickCount + pPartialTicks) / 2.0F;
-        int j = (int) ((Mth.sin(f8 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-        int l = (int) ((Mth.sin(f8 + 4.1887903F) + 1.0F) * 0.1F * 255.0F);
-        pMatrixStack.translate(0.0D, 0.1F, 0.0D);
-        pMatrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-        pMatrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+    protected int getBlockLightLevel(HealthOrbEntity p_114606_, BlockPos p_114607_) {
+        return Mth.clamp(super.getBlockLightLevel(p_114606_, p_114607_) + 7, 0, 15);
+    }
+
+    public void render(HealthOrbEntity p_114599_, float p_114600_, float p_114601_, PoseStack p_114602_, MultiBufferSource p_114603_, int p_114604_) {
+        p_114602_.pushPose();
+        int i = p_114599_.getIcon();
+        float f = (float)(i % 4 * 16 + 0) / 64.0F;
+        float f1 = (float)(i % 4 * 16 + 16) / 64.0F;
+        float f2 = (float)(i / 4 * 16 + 0) / 64.0F;
+        float f3 = (float)(i / 4 * 16 + 16) / 64.0F;
+        float f4 = 1.0F;
+        float f5 = 0.5F;
+        float f6 = 0.25F;
+        float f7 = 255.0F;
+        float f8 = ((float)p_114599_.tickCount + p_114601_) / 2.0F;
+        int j = (int)((Mth.sin(f8 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+        int k = 255;
+        int l = (int)((Mth.sin(f8 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+        p_114602_.translate(0.0F, 0.1F, 0.0F);
+        p_114602_.mulPose(this.entityRenderDispatcher.cameraOrientation());
         float f9 = 0.3F;
-        pMatrixStack.scale(0.3F, 0.3F, 0.3F);
-        VertexConsumer ivertexbuilder = pBuffer.getBuffer(RENDER_TYPE);
-        PoseStack.Pose posestack$pose = pMatrixStack.last();
-        vertex(ivertexbuilder, posestack$pose, -0.5F, -0.25F, 255, j, l, f, f3, pPackedLight);
-        vertex(ivertexbuilder, posestack$pose, 0.5F, -0.25F, 255, j, l, f1, f3, pPackedLight);
-        vertex(ivertexbuilder, posestack$pose, 0.5F, 0.75F, 255, j, l, f1, f2, pPackedLight);
-        vertex(ivertexbuilder, posestack$pose, -0.5F, 0.75F, 255, j, l, f, f2, pPackedLight);
-        pMatrixStack.popPose();
-        super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
+        p_114602_.scale(0.3F, 0.3F, 0.3F);
+        VertexConsumer vertexconsumer = p_114603_.getBuffer(RENDER_TYPE);
+        PoseStack.Pose posestack$pose = p_114602_.last();
+        vertex(vertexconsumer, posestack$pose, -0.5F, -0.25F, 255, j, l, f, f3, p_114604_);
+        vertex(vertexconsumer, posestack$pose, 0.5F, -0.25F, 255, j, l, f1, f3, p_114604_);
+        vertex(vertexconsumer, posestack$pose, 0.5F, 0.75F, 255, j, l, f1, f2, p_114604_);
+        vertex(vertexconsumer, posestack$pose, -0.5F, 0.75F, 255, j, l, f, f2, p_114604_);
+        p_114602_.popPose();
+        super.render(p_114599_, p_114600_, p_114601_, p_114602_, p_114603_, p_114604_);
     }
 
     private static void vertex(
@@ -62,26 +69,22 @@ public class HealthOrbRenderer extends EntityRenderer<HealthOrbEntity> {
             PoseStack.Pose p_324046_,
             float p_253952_,
             float p_254066_,
-            int p_254283_,
-            int p_254566_,
-            int p_253882_,
+            int red,
+            int green,
+            int blue,
             float p_254434_,
             float p_254223_,
             int p_254372_
     ) {
         p_254515_.addVertex(p_324046_, p_253952_, p_254066_, 0.0F)
-                .setColor(p_254283_, p_254566_, p_253882_, 128)
+                .setColor(red, green, blue, 128)
                 .setUv(p_254434_, p_254223_)
                 .setOverlay(OverlayTexture.NO_OVERLAY)
-                .setLight(p_254372_);
+                .setLight(p_254372_)
+                .setNormal(p_324046_, 1.0F, 0.0F, 0.0F);
     }
 
-    protected int getBlockLightLevel(HealthOrbEntity pEntity, BlockPos pPos) {
-        return Mth.clamp(super.getBlockLightLevel(pEntity, pPos) + 7, 0, 15);
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(HealthOrbEntity pEntity) {
+    public ResourceLocation getTextureLocation(HealthOrbEntity p_114597_) {
         return HEAL_ORB_TEXTURES;
     }
 }

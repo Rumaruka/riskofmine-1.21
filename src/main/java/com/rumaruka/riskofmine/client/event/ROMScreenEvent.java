@@ -1,6 +1,7 @@
 package com.rumaruka.riskofmine.client.event;
 
 import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
+import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractStringWidget;
@@ -22,18 +23,13 @@ public class ROMScreenEvent {
             event.addListener(getSurvivors(selectWorldScreen));
         }
         if (screen instanceof ExperimentsScreen experimentsScreen){
-            event.addListener(getSurvivorsTitle(162,200)) ;
-
+            event.addListener(ROMUtils.getTextWidget(Component.translatable("riskofmine.select_survivors.title"),162,200)) ;
             event.addListener(getSurvivors(experimentsScreen, 30, 200));
         }
 
 
     }
 
-
-    private static MultiLineTextWidget getSurvivorsTitle( int x, int y) {
-        return new MultiLineTextWidget(x, y, Component.translatable("riskofmine.select_survivors.title"), Minecraft.getInstance().font) ;
-    }
 
     private static Button getSurvivors(Screen screen) {
         return Button.builder(Component.translatable("riskofmine.choose.survivors"), b -> {
