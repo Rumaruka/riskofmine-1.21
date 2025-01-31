@@ -17,7 +17,7 @@ public abstract class PlayerRendererMixin extends LivingEntityRenderer<AbstractC
         super(pContext, pModel, pShadowRadius);
     }
 
-    @Inject(method = "<init>", at = @At("RETURN"))
+    @Inject(method = "<init>", at = @At("TAIL"))
     public void onCreate(CallbackInfo info) {
         addLayer(new LayerMonsterTooth(this));
     }

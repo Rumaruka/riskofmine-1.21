@@ -2,7 +2,6 @@ package com.rumaruka.riskofmine.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
 import com.rumaruka.riskofmine.common.entity.misc.HealthOrbEntity;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -13,7 +12,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ExperienceOrb;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -38,18 +36,18 @@ public class HealthOrbRenderer extends EntityRenderer<HealthOrbEntity> {
     public void render(HealthOrbEntity p_114599_, float p_114600_, float p_114601_, PoseStack p_114602_, MultiBufferSource p_114603_, int p_114604_) {
         p_114602_.pushPose();
         int i = p_114599_.getIcon();
-        float f = (float)(i % 4 * 16 + 0) / 64.0F;
-        float f1 = (float)(i % 4 * 16 + 16) / 64.0F;
-        float f2 = (float)(i / 4 * 16 + 0) / 64.0F;
-        float f3 = (float)(i / 4 * 16 + 16) / 64.0F;
+        float f = (float) (i % 4 * 16 + 0) / 64.0F;
+        float f1 = (float) (i % 4 * 16 + 16) / 64.0F;
+        float f2 = (float) (i / 4 * 16 + 0) / 64.0F;
+        float f3 = (float) (i / 4 * 16 + 16) / 64.0F;
         float f4 = 1.0F;
         float f5 = 0.5F;
         float f6 = 0.25F;
         float f7 = 255.0F;
-        float f8 = ((float)p_114599_.tickCount + p_114601_) / 2.0F;
-        int j = (int)((Mth.sin(f8 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+        float f8 = ((float) p_114599_.tickCount + p_114601_) / 2.0F;
+        int j = (int) ((Mth.sin(f8 + 0.0F) + 1.0F) * 0.5F * 255.0F);
         int k = 255;
-        int l = (int)((Mth.sin(f8 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+        int l = (int) ((Mth.sin(f8 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
         p_114602_.translate(0.0F, 0.1F, 0.0F);
         p_114602_.mulPose(this.entityRenderDispatcher.cameraOrientation());
         float f9 = 0.3F;

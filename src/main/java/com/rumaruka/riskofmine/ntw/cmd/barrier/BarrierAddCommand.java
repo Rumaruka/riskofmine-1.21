@@ -32,7 +32,6 @@ public class BarrierAddCommand {
             lunar.addBarrier(amount);
 
 
-
         }
         if (playerEntities.size() == 1) {
             source.sendSuccess(() -> Component.translatable("commands.add." + "lunar" + ".success.single", amount, playerEntities.iterator().next().getDisplayName()), true);

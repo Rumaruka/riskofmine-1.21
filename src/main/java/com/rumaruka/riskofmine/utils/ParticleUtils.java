@@ -7,7 +7,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
-
 import static com.rumaruka.riskofmine.RiskOfMine.MODID;
 import static net.neoforged.fml.common.EventBusSubscriber.Bus.MOD;
 

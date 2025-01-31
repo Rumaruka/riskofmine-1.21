@@ -2,7 +2,6 @@ package com.rumaruka.riskofmine.common.blocks.shop;
 
 import com.mojang.serialization.MapCodec;
 import com.rumaruka.riskofmine.api.enumeration.Chest;
-
 import com.rumaruka.riskofmine.common.cap.Money;
 import com.rumaruka.riskofmine.common.tiles.shop.EquipmentTripleBarrelTE;
 import com.rumaruka.riskofmine.common.tiles.shop.GenericShopTE;
@@ -27,7 +26,7 @@ public class EquipmentTripleBarrelBlock extends GenericShopBlock {
     public static final MapCodec<EquipmentTripleBarrelBlock> CODEC = simpleCodec(p_304364_ -> new EquipmentTripleBarrelBlock());
 
     public EquipmentTripleBarrelBlock() {
-        super(Properties.of().strength(5.0F, 5.0F),()-> ROMTiles.EQUIPMENT_TRIPLE_BARREL, Chest.EQUIPMENT_TRIPLE_BARREL);
+        super(Properties.of().strength(5.0F, 5.0F), () -> ROMTiles.EQUIPMENT_TRIPLE_BARREL, Chest.EQUIPMENT_TRIPLE_BARREL);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.FALSE));
     }
 
@@ -39,13 +38,13 @@ public class EquipmentTripleBarrelBlock extends GenericShopBlock {
         } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof GenericShopTE) {
-                if (money.getCurrentMoney() >=10) {
+                if (money.getCurrentMoney() >= 10) {
                     money.consumeMoney(10);
 
                     player.openMenu((GenericShopTE) blockEntity);
                     player.awardStat(Stats.OPEN_CHEST);
                     PiglinAi.angerNearbyPiglins(player, true);
-                } else if (money.getCurrentMoney() <10) {
+                } else if (money.getCurrentMoney() < 10) {
                     level.playSound(null, blockPos, ROMSounds.ROM_CHEST_NOT_MONEY.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
                     player.displayClientMessage(Component.translatable("riskofmine.not_money"), true);
 

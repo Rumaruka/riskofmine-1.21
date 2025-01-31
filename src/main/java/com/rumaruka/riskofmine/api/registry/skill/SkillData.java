@@ -12,7 +12,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -39,11 +38,10 @@ public class SkillData implements INBTSerializable<CompoundTag> {
         this.player = player;
     }
 
-    public void handleTick()
-    {
+    public void handleTick() {
         long start = System.currentTimeMillis();
 
-        if(player == null || player.isSpectator())
+        if (player == null || player.isSpectator())
             return;
 
         var level = player.level();
@@ -55,85 +53,68 @@ public class SkillData implements INBTSerializable<CompoundTag> {
         var skillReg = RiskOfMine.SKILLS;
 
 
-        for(var value : skillReg)
-        {
+        for (var value : skillReg) {
             var start0 = System.currentTimeMillis();
             var rn = value.getRegisterName();
             value.tick(this, !disabledSkills.contains(rn));
             updates.put(rn, System.currentTimeMillis() - start0);
         }
 
-   
 
-        if(level.isClientSide && !Objects.equals(prevDim, level.dimension().location()))
-        {
+        if (level.isClientSide && !Objects.equals(prevDim, level.dimension().location())) {
             prevDim = level.dimension().location();
             requestSync();
         }
 
-        if(!level.isClientSide)
-        {
+        if (!level.isClientSide) {
             sync();
         }
 
 
- 
-
         long end = System.currentTimeMillis();
 
-        if(end - start > 50L)
+        if (end - start > 50L)
             RiskOfMine.logger.warn("Skill tick took too long! ({} ms, expected <50 ms!). Time map: {}",
                     (end - start),
-                    updates.entrySet().stream().sorted(Comparator.<Map.Entry<ResourceLocation, Long>> comparingLong(Map.Entry::getValue).reversed()).toList()
+                    updates.entrySet().stream().sorted(Comparator.<Map.Entry<ResourceLocation, Long>>comparingLong(Map.Entry::getValue).reversed()).toList()
             );
     }
 
-    public void sync()
-    {
-        if( player instanceof ServerPlayer sp)
+    public void sync() {
+        if (player instanceof ServerPlayer sp)
             PacketSyncSkillData.sync(sp);
     }
 
-    public void requestSync()
-    {
-        if(player != null && player.isLocalPlayer())
+    public void requestSync() {
+        if (player != null && player.isLocalPlayer())
             Network.sendToServer(new PacketSyncSkillData());
     }
 
 
-    public void setSkillLevel(SkillBase stat, Number lvl)
-    {
+    public void setSkillLevel(SkillBase stat, Number lvl) {
         setSkillLevelNoSync(stat, lvl);
         sync();
     }
 
-    public void setSkillLevelNoSync(SkillBase stat, Number lvl)
-    {
+    public void setSkillLevelNoSync(SkillBase stat, Number lvl) {
         stats.put(stat.getRegisterName(), lvl.shortValue());
     }
 
 
-
-    public boolean atTickRate(int i)
-    {
+    public boolean atTickRate(int i) {
         return i > 0 && player.tickCount % i == 0;
     }
 
 
-
-    public boolean hasSkillScroll(SkillBase skill)
-    {
+    public boolean hasSkillScroll(SkillBase skill) {
         return skill != null && skills.contains(skill.getRegisterName());
     }
 
 
-
-    public boolean unlockSkillScroll(SkillBase skill, boolean sync)
-    {
-        if(skill != null &&player != null && !player.level().isClientSide && !skills.contains(skill.getRegisterName()))
-        {
+    public boolean unlockSkillScroll(SkillBase skill, boolean sync) {
+        if (skill != null && player != null && !player.level().isClientSide && !skills.contains(skill.getRegisterName())) {
             skills.add(skill.getRegisterName());
-            if(sync) sync();
+            if (sync) sync();
             return true;
         }
 
@@ -141,48 +122,39 @@ public class SkillData implements INBTSerializable<CompoundTag> {
     }
 
 
-    public boolean lockSkillScroll(SkillBase skill, boolean sync)
-    {
-        if(skill != null && player != null && !player.level().isClientSide && skills.remove(skill.getRegisterName()))
-        {
-            if(sync) sync();
+    public boolean lockSkillScroll(SkillBase skill, boolean sync) {
+        if (skill != null && player != null && !player.level().isClientSide && skills.remove(skill.getRegisterName())) {
+            if (sync) sync();
             return true;
         }
         return false;
     }
 
-    public boolean isSkillActive(SkillBase skill)
-    {
+    public boolean isSkillActive(SkillBase skill) {
         return !disabledSkills.contains(skill.getRegisterName());
     }
 
-    public void setSkillState(SkillBase skill, boolean active)
-    {
-        if(active)
-        {
-            if(disabledSkills.remove(skill.getRegisterName()))
+    public void setSkillState(SkillBase skill, boolean active) {
+        if (active) {
+            if (disabledSkills.remove(skill.getRegisterName()))
                 sync();
-        } else if(!disabledSkills.contains(skill.getRegisterName()))
-        {
+        } else if (!disabledSkills.contains(skill.getRegisterName())) {
             disabledSkills.add(skill.getRegisterName());
             sync();
         }
     }
 
-    public int getAbilityCount()
-    {
+    public int getAbilityCount() {
         return abilities.size();
     }
 
-    public Player getPlayer()
-    {
-        if(SyncSkills.is(this)) return ROMUtils.getPlayer();
+    public Player getPlayer() {
+        if (SyncSkills.is(this)) return ROMUtils.getPlayer();
         return player;
     }
 
-    public SkillData toCurrent(Player playerReference)
-    {
-        if(player != playerReference) this.player = playerReference;
+    public SkillData toCurrent(Player playerReference) {
+        if (player != playerReference) this.player = playerReference;
         return this;
     }
 
@@ -191,18 +163,15 @@ public class SkillData implements INBTSerializable<CompoundTag> {
     public CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag nbt = new CompoundTag();
 
-       
 
         var reg = RiskOfMine.SKILLS;
         nbt.put("Persisted", persistedData);
-      
+
         ListTag list = new ListTag();
-        for(var skillKey : stats.keySet())
-        {
+        for (var skillKey : stats.keySet()) {
             SkillBase stat = reg.get(skillKey);
 
-            if(stat == null)
-            {
+            if (stat == null) {
                 RiskOfMine.logger.warn("[SAVE] Skill '" + skillKey + "' wasn't found. Maybe you removed the addon? Skipping unregistered ability.");
                 continue;
             }
@@ -214,36 +183,32 @@ public class SkillData implements INBTSerializable<CompoundTag> {
         nbt.put("Levels", list);
 
         list = new ListTag();
-        for(var scroll : skills)
+        for (var scroll : skills)
             list.add(StringTag.valueOf(scroll.toString()));
         nbt.put("Scrolls", list);
 
         list = new ListTag();
-        for(var scroll : disabledSkills)
+        for (var scroll : disabledSkills)
             list.add(StringTag.valueOf(scroll.toString()));
         nbt.put("DisabledSkills", list);
-
 
 
         return nbt;
     }
 
     @Override
-    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt)
-    {
+    public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
 
 
         var reg = RiskOfMine.SKILLS;
         ListTag lvls = nbt.getList("Levels", Tag.TAG_COMPOUND);
-        for(int i = 0; i < lvls.size(); ++i)
-        {
+        for (int i = 0; i < lvls.size(); ++i) {
             CompoundTag tag = lvls.getCompound(i);
             String sstat = tag.getString("Id");
 
             var sk = reg.get(ResourceLocation.tryParse(sstat));
 
-            if(sk == null)
-            {
+            if (sk == null) {
                 continue;
             }
 
@@ -255,23 +220,21 @@ public class SkillData implements INBTSerializable<CompoundTag> {
         abilities.clear();
 
         ListTag list = nbt.getList("Scrolls", Tag.TAG_STRING);
-        for(int i = 0; i < list.size(); ++i)
+        for (int i = 0; i < list.size(); ++i)
             skills.add(Resources.location(list.getString(i)));
 
         list = nbt.getList("DisabledSkills", Tag.TAG_STRING);
-        for(int i = 0; i < list.size(); ++i)
+        for (int i = 0; i < list.size(); ++i)
             disabledSkills.add(Resources.location(list.getString(i)));
 
         list = nbt.getList("Abilities", Tag.TAG_STRING);
-        for(int i = 0; i < list.size(); ++i)
+        for (int i = 0; i < list.size(); ++i)
             abilities.add(Resources.location(list.getString(i)));
-
 
 
     }
 
-    public static SkillData deserialize(Player player, CompoundTag nbt)
-    {
+    public static SkillData deserialize(Player player, CompoundTag nbt) {
         SkillData data = new SkillData(player);
         data.prevDim = player.level().dimension().location();
         data.deserializeNBT(player.registryAccess(), nbt);

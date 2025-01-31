@@ -1,21 +1,14 @@
 package com.rumaruka.riskofmine.common.events.cap_event;
 
 
-import com.mojang.datafixers.kinds.IdF;
-import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.common.cap.Money;
-import com.rumaruka.riskofmine.common.events.ItemsEvents;
-import com.rumaruka.riskofmine.common.skills.commando.PhaseRound;
 import com.rumaruka.riskofmine.init.ROMAttachment;
-import com.rumaruka.riskofmine.init.ROMSkills;
-import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.AmbientCreature;
-import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
@@ -24,7 +17,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 
 @EventBusSubscriber
@@ -79,7 +71,7 @@ public class MoneyEvents {
             Level level = livingEntity.level();
             if (!level.isClientSide()) {
 
-                if (projectile.getOwner() instanceof ServerPlayer player){
+                if (projectile.getOwner() instanceof ServerPlayer player) {
                     Money money = Money.get(player);
                     money.addMoney(10);
                 }

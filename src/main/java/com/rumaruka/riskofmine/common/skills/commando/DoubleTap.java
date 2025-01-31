@@ -1,13 +1,11 @@
 package com.rumaruka.riskofmine.common.skills.commando;
 
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
-import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -15,10 +13,11 @@ public class DoubleTap extends CommandoSkills {
 
     protected boolean isLeftFlag;
     protected int cooldownCountMax;
+
     public DoubleTap(int cooldownCountMax) {
         super(SkillType.PRIMARY, cooldownCountMax);
         addListener(this::onLeftClick);
-        this.cooldownCountMax=cooldownCountMax;
+        this.cooldownCountMax = cooldownCountMax;
         addListener(this::onTick);
 
 
@@ -63,7 +62,6 @@ public class DoubleTap extends CommandoSkills {
 
 
     }
-
 
 
 }

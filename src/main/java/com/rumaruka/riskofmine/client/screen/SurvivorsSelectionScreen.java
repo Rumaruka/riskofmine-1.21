@@ -8,8 +8,6 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -31,6 +29,7 @@ public class SurvivorsSelectionScreen extends Screen {
     public static boolean isAcrid;
     public static boolean isArtificer;
     private final Screen parent;
+
     public SurvivorsSelectionScreen(Screen parent) {
         super(Component.literal("Custom Map Selection"));
         this.parent = parent;
@@ -43,15 +42,15 @@ public class SurvivorsSelectionScreen extends Screen {
         int k = 24;
         int l = this.height / 4 + 32;
         this.addRenderableWidget(
-                getAcridButton(this,l)
+                getAcridButton(this, l)
         );
 
 
         this.addRenderableWidget(
-                getCommandoButton(this,l)
+                getCommandoButton(this, l)
         );
         this.addRenderableWidget(
-                getArtificerButton(this,l)
+                getArtificerButton(this, l)
         );
 
 
@@ -61,7 +60,6 @@ public class SurvivorsSelectionScreen extends Screen {
                         .bounds(this.width / 2 + 82, this.height - 30, 72, 20)
                         .build()
         );
-
 
 
     }
@@ -76,7 +74,7 @@ public class SurvivorsSelectionScreen extends Screen {
 //            .build()
     public ImageButton getCommandoButton(Screen screen, int height) {
         WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
-        return new ImageButton(screen.width/2  -  160 , height, 32, 32, sprites, b -> {
+        return new ImageButton(screen.width / 2 - 160, height, 32, 32, sprites, b -> {
             isAcrid = isArtificer = false;
 
             isCommando = true;
@@ -84,9 +82,9 @@ public class SurvivorsSelectionScreen extends Screen {
     }
 
 
-    public ImageButton getArtificerButton(Screen screen,int height) {
+    public ImageButton getArtificerButton(Screen screen, int height) {
         WidgetSprites sprites = new WidgetSprites(ARTIFICER, ARTIFICER_SELECT);
-        return new ImageButton(screen.width / 2 - 128, height +1, 32, 32, sprites, b -> {
+        return new ImageButton(screen.width / 2 - 128, height + 1, 32, 32, sprites, b -> {
             isArtificer = true;
 
             isAcrid = isCommando = false;
@@ -95,7 +93,7 @@ public class SurvivorsSelectionScreen extends Screen {
 
     public ImageButton getAcridButton(Screen screen, int height) {
         WidgetSprites sprites = new WidgetSprites(ACRID, ACRID_SELECT);
-        return new ImageButton(screen.width / 2 - 80, height  , 32, 32, sprites, b -> {
+        return new ImageButton(screen.width / 2 - 80, height, 32, 32, sprites, b -> {
             isAcrid = true;
 
             isArtificer = isCommando = false;

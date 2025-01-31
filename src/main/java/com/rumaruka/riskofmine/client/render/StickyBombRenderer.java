@@ -14,8 +14,6 @@ import org.zeith.hammeranims.api.HammerAnimationsApi;
 import org.zeith.hammeranims.api.geometry.event.RefreshStaleModelsEvent;
 import org.zeith.hammeranims.api.geometry.model.IGeometricModel;
 import org.zeith.hammeranims.api.geometry.model.RenderData;
-import org.zeith.hammeranims.core.client.render.entity.BedrockEntityRenderer;
-
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -34,10 +32,11 @@ public class StickyBombRenderer extends EntityRenderer<StickyBombEntity> {
         data = new RenderData();
         HammerAnimationsApi.EVENT_BUS.addListener(this::refreshModel);
     }
-    public void refreshModel(RefreshStaleModelsEvent e)
-    {
+
+    public void refreshModel(RefreshStaleModelsEvent e) {
         stickyBombModel = ROMModels.STICKY_BOMB.createModel();
     }
+
     @Override
     public void render(StickyBombEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
 
@@ -45,7 +44,7 @@ public class StickyBombRenderer extends EntityRenderer<StickyBombEntity> {
         pPoseStack.pushPose();
         pPoseStack.translate(0.5F, 0.01f, 0.5F);
         pPoseStack.scale(1.15f, 1f, 1.25f);
-        stickyBombModel.renderModel(data.apply(pPoseStack,pBuffer.getBuffer(RenderType.entitySolid(texture)),pPackedLight, OverlayTexture.NO_OVERLAY));
+        stickyBombModel.renderModel(data.apply(pPoseStack, pBuffer.getBuffer(RenderType.entitySolid(texture)), pPackedLight, OverlayTexture.NO_OVERLAY));
 
         pPoseStack.popPose();
     }

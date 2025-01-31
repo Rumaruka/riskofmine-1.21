@@ -39,10 +39,9 @@ public class MultiShopTESR implements IBESR<MultiShopTE> {
         model.resetPose();
         pPoseStack.translate(0.5F, 0.01f, 0.5);
         pPoseStack.scale(1.25f, 2f, 1.25f);
-        model.renderModel(data.apply(pPoseStack,pBufferSource.getBuffer(RenderType.entitySolid(textureOPEN)),pPackedLight,pPackedOverlay));
+        model.renderModel(data.apply(pPoseStack, pBufferSource.getBuffer(RenderType.entitySolid(textureOPEN)), pPackedLight, pPackedOverlay));
         pPoseStack.popPose();
     }
-
 
 
 }

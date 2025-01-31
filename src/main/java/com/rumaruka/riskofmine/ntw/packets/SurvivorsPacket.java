@@ -22,6 +22,7 @@ public record SurvivorsPacket(int entityID) implements CustomPacketPayload {
 
 
             SurvivorsPacket::new);
+
     public void handle(IPayloadContext ctx) {
         ctx.enqueueWork(() -> {
 
@@ -29,7 +30,7 @@ public record SurvivorsPacket(int entityID) implements CustomPacketPayload {
             Entity entity = ROMUtils.getLvL().getEntity(entityID());
             if (entity != null) {
                 if (entity instanceof Player player) {
-                    if (player instanceof IPlayerSurvivorsBridge survivorsBridge){
+                    if (player instanceof IPlayerSurvivorsBridge survivorsBridge) {
                         Survivors survivors = survivorsBridge.riskofmine$getSurvivor().survivors();
                         FriendlyByteBuf byteBuf = new FriendlyByteBuf(Unpooled.buffer());
                         byteBuf.writeUtf(entity.getStringUUID());
@@ -43,12 +44,12 @@ public record SurvivorsPacket(int entityID) implements CustomPacketPayload {
                 }
 
 
-
             }
 
 
         });
     }
+
     @Override
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;

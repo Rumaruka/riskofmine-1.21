@@ -6,7 +6,6 @@ import com.rumaruka.riskofmine.api.registry.skill.SkillData;
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
-import com.rumaruka.riskofmine.utils.ROMRandomChanceUtils;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.network.chat.Component;
 
@@ -37,13 +36,12 @@ public class ArtificerSkills extends SkillBase {
 
             }
 
-            if (getCooldownCount()>0){
+            if (getCooldownCount() > 0) {
                 setCooldown(true);
                 int cooldownCount = getCooldownCount();
-                if (ROMUtils.getPlayer().level().nextSubTickCount()%20 == 0) {
+                if (ROMUtils.getPlayer().level().nextSubTickCount() % 20 == 0) {
                     setCooldownCount(cooldownCount - 1);
                 }
-
 
 
             }

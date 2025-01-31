@@ -16,6 +16,7 @@ public class BeadsOfFealtyItem extends BaseCollectablesItem {
     public BeadsOfFealtyItem() {
         super(ChestTypes.LUNAR, Category.UTILITY);
     }
+
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
         tooltip.add(Component.translatable("ror.alt.info"));

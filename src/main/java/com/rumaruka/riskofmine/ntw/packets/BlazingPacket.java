@@ -1,7 +1,6 @@
 package com.rumaruka.riskofmine.ntw.packets;
 
 import com.rumaruka.riskofmine.api.entity.IBlazing;
-import com.rumaruka.riskofmine.api.entity.IOverloading;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.FriendlyByteBuf;

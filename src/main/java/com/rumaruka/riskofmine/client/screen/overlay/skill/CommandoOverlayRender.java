@@ -102,8 +102,6 @@ public class CommandoOverlayRender {
         }
 
 
-
-
         RenderSystem.disableBlend();
 
     }
@@ -136,12 +134,12 @@ public class CommandoOverlayRender {
             if (!doubleTap.isCooldown()) {
                 String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
 
-                ROMUtils.drawString(gui, font, toDisplay,  w - (h / 2 +290), (h / 2 + 70), color.getRGB());
+                ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 290), (h / 2 + 70), color.getRGB());
             }
 
 
         } else {
-            gui.blit(PHASE_ROUND_IMG,34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(PHASE_ROUND_IMG, 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
                 String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
@@ -188,12 +186,12 @@ public class CommandoOverlayRender {
 
 
         } else {
-            gui.blit(TACTICAL_DIVE_IMG, 34*2, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(TACTICAL_DIVE_IMG, 34 * 2, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
                 String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
 
-                ROMUtils.drawString(gui, font, toDisplay, 34*2+10, (h / 2 + 70 + 20), color.getRGB());
+                ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 10, (h / 2 + 70 + 20), color.getRGB());
             }
 
         }
@@ -232,18 +230,18 @@ public class CommandoOverlayRender {
             if (!doubleTap.isCooldown()) {
                 String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
 
-                ROMUtils.drawString(gui, font, toDisplay, 34*2+34, (h / 2 + 70), color.getRGB());
+                ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 34, (h / 2 + 70), color.getRGB());
             }
 
 
         } else {
-            gui.blit(SUPPRESSIVE_FIRE_IMG, 34*2+34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(SUPPRESSIVE_FIRE_IMG, 34 * 2 + 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
 
             if (!doubleTap.isCooldown()) {
                 String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
 
-                ROMUtils.drawString(gui, font, toDisplay, 34*2+34+10, (h / 2 + 70 + 20), color.getRGB());
+                ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 34 + 10, (h / 2 + 70 + 20), color.getRGB());
             }
         }
 

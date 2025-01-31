@@ -40,8 +40,8 @@ public class CommandoSkills extends SkillBase {
                 setCooldown(true);
                 int cooldownCount = getCooldownCount();
 
-                if (ROMUtils.getPlayer().level().nextSubTickCount()%20 == 0) {
-                    setCooldownCount(cooldownCount-1);
+                if (ROMUtils.getPlayer().level().nextSubTickCount() % 20 == 0) {
+                    setCooldownCount(cooldownCount - 1);
 
                 }
 

@@ -7,7 +7,6 @@ import com.rumaruka.riskofmine.client.ROMEntityRegister;
 import com.rumaruka.riskofmine.client.event.ROMScreenEvent;
 import com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
-import com.rumaruka.riskofmine.datagen.worldgen.ROMFeatures;
 import com.rumaruka.riskofmine.init.*;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
 import com.rumaruka.riskofmine.ntw.packets.OverlayPacket;
@@ -56,7 +55,6 @@ public class RiskOfMine {
         ROMEffects.POTIONS.register(bus);
 
 
-
         bus.addListener(RiskOfMine::setup);
         bus.addListener(RiskOfMine::clientSetup);
 
@@ -88,8 +86,8 @@ public class RiskOfMine {
     }
 
     private void newRegister(NewRegistryEvent event) {
-        RegistryMapping.report(SkillBase.class,SKILLS,false);
-        event.register(SKILLS)  ;
+        RegistryMapping.report(SkillBase.class, SKILLS, false);
+        event.register(SKILLS);
     }
 
 

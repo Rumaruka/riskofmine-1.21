@@ -1,7 +1,6 @@
 package com.rumaruka.riskofmine.ntw.packets;
 
 import com.rumaruka.riskofmine.common.cap.Barrier;
-import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.FriendlyByteBuf;

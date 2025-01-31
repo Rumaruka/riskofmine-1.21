@@ -1,13 +1,11 @@
 package com.rumaruka.riskofmine.api.enumeration;
 
 import com.rumaruka.riskofmine.init.ROMBlocks;
-
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
-
 
 import java.util.Locale;
 

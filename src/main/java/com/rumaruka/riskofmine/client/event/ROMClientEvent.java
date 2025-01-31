@@ -2,12 +2,9 @@ package com.rumaruka.riskofmine.client.event;
 
 import com.rumaruka.riskofmine.client.screen.BaseChestScreen;
 import com.rumaruka.riskofmine.client.screen.BaseShopScreen;
-import com.rumaruka.riskofmine.client.screen.SurvivorsSelectionScreen;
 import com.rumaruka.riskofmine.init.ROMContainerTypes;
-import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)

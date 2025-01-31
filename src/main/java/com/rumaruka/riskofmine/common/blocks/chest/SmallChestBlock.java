@@ -2,7 +2,6 @@ package com.rumaruka.riskofmine.common.blocks.chest;
 
 import com.mojang.serialization.MapCodec;
 import com.rumaruka.riskofmine.api.enumeration.Chest;
-
 import com.rumaruka.riskofmine.common.cap.Money;
 import com.rumaruka.riskofmine.common.config.ROMConfig;
 import com.rumaruka.riskofmine.common.tiles.chest.GenericChestTE;
@@ -27,7 +26,7 @@ public class SmallChestBlock extends GenericChestBlock {
     public static final MapCodec<SmallChestBlock> CODEC = simpleCodec(p_304364_ -> new SmallChestBlock());
 
     public SmallChestBlock() {
-        super(Properties.of().strength(5, 5), ()->ROMTiles.SMALL_CHEST, Chest.SMALL);
+        super(Properties.of().strength(5, 5), () -> ROMTiles.SMALL_CHEST, Chest.SMALL);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class SmallChestBlock extends GenericChestBlock {
                     player.openMenu((GenericChestTE) blockEntity);
                     player.awardStat(Stats.OPEN_CHEST);
                     PiglinAi.angerNearbyPiglins(player, true);
-                } else if (money.getCurrentMoney() <ROMConfig.priceSmallChest) {
+                } else if (money.getCurrentMoney() < ROMConfig.priceSmallChest) {
                     level.playSound(null, blockPos, ROMSounds.ROM_CHEST_NOT_MONEY.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
                     player.displayClientMessage(Component.translatable("riskofmine.not_money"), true);
 

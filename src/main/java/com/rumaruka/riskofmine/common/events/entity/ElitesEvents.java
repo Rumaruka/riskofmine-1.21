@@ -27,9 +27,9 @@ public class ElitesEvents {
             }
 
 
-
         }
     }
+
     @SubscribeEvent
     public static void addBlazing(EntityTickEvent.Post event) {
         Entity entity = event.getEntity();
@@ -41,7 +41,6 @@ public class ElitesEvents {
             if (entity instanceof LivingEntity living) {
                 ((IBlazing) living).setBlazing(living.hasEffect(ROMEffects.BLAZING));
             }
-
 
 
         }

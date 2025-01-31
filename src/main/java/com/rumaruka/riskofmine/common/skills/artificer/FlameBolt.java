@@ -1,15 +1,11 @@
 package com.rumaruka.riskofmine.common.skills.artificer;
 
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
-import com.rumaruka.riskofmine.common.skills.commando.CommandoSkills;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Arrow;
-import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -17,13 +13,12 @@ public class FlameBolt extends ArtificerSkills {
 
     protected boolean isLeftFlag;
     protected int cooldownCountMax;
+
     public FlameBolt(int cooldownCountMax) {
         super(SkillType.PRIMARY, cooldownCountMax);
         addListener(this::onLeftClick);
         addListener(this::onTick);
-        this.cooldownCountMax=cooldownCountMax;
-
-
+        this.cooldownCountMax = cooldownCountMax;
 
 
     }

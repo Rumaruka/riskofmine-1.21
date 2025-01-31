@@ -14,7 +14,7 @@ import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
 
 
-@SimplyRegister(creativeTabs = @Ref(value = RiskOfMine.class,field = "TAB"))
+@SimplyRegister(creativeTabs = @Ref(value = RiskOfMine.class, field = "TAB"))
 public interface ROMBlocks {
     @RegistryName("small_chest")
     SmallChestBlock SMALL_CHEST = new SmallChestBlock();

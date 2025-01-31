@@ -24,7 +24,6 @@ public class MonsterToothItem extends BaseCollectablesItem {
         if (Screen.hasAltDown()) {
 
 
-
             tooltip.add(Component.translatable("riskofmine.rarity").append(": ").append(Component.translatable((getColor() + getTypeName()))));
             tooltip.add(Component.translatable("riskofmine.category").append(": ").append(Component.translatable((getColors() + getCategoryName()))));
         }

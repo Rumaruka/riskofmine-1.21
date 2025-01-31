@@ -1,7 +1,6 @@
 package com.rumaruka.riskofmine.api.registry.skill;
 
 
-import com.google.common.base.Suppliers;
 import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.client.IClientSkillExtensions;
 import com.rumaruka.riskofmine.api.enumeration.Survivors;
@@ -21,7 +20,6 @@ import org.zeith.hammerlib.api.fml.IRegisterListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class SkillBase implements IHasRegisterName, IRegisterListener {
 
@@ -49,9 +47,6 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
 
     @Getter
     protected static boolean isSkillActive = false;
-
-
-
 
 
     public SkillBase(Survivors survivors, SkillType skillType, int cooldown) {

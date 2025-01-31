@@ -10,26 +10,21 @@ import net.neoforged.api.distmarker.OnlyIn;
 public class SyncSkills {
     private static SkillData CLIENT_DATA;
 
-    public static boolean is(SkillData data)
-    {
+    public static boolean is(SkillData data) {
         return data == CLIENT_DATA;
     }
 
-    public static void doCheck(Player localPlayer)
-    {
-        if(localPlayer == null && CLIENT_DATA != null)
-        {
+    public static void doCheck(Player localPlayer) {
+        if (localPlayer == null && CLIENT_DATA != null) {
 
             CLIENT_DATA = null;
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static SkillData getData()
-    {
+    public static SkillData getData() {
         var mcp = ROMUtils.getPlayer();
-        if(CLIENT_DATA == null || CLIENT_DATA.player != mcp)
-        {
+        if (CLIENT_DATA == null || CLIENT_DATA.player != mcp) {
             CLIENT_DATA = new SkillData(mcp);
             CLIENT_DATA.requestSync();
         }
@@ -37,9 +32,7 @@ public class SyncSkills {
     }
 
 
-
-    public static void handle(Player localPlayer, PacketSyncSkillData packet)
-    {
+    public static void handle(Player localPlayer, PacketSyncSkillData packet) {
         CLIENT_DATA = SkillData.deserialize(localPlayer, packet.getNbt());
     }
 }

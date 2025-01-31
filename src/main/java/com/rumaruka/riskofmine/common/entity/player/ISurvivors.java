@@ -46,7 +46,6 @@ public interface ISurvivors {
     }
 
 
-
     default int getArmor() {
         return survivors().getArmor();
     }
@@ -56,7 +55,6 @@ public interface ISurvivors {
     }
 
 
-
     default void setName(String name) {
         survivors().setName(name);
     }
@@ -64,7 +62,7 @@ public interface ISurvivors {
     default String getName() {
         return survivors().getName();
     }
-  //  void onClientUpdate(PlayerInfoPacket packet);
+    //  void onClientUpdate(PlayerInfoPacket packet);
 
     void copyOnDeath(ISurvivors info);
 }

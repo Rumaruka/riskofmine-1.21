@@ -19,18 +19,16 @@ public class ROMConfig {
     public static int priceSmallChest;
 
     @SetupConfigs
-    public static void reloadCustom(ConfigFile cfgs)
-    {
-       config=cfgs;
+    public static void reloadCustom(ConfigFile cfgs) {
+        config = cfgs;
         gameplay = cfgs.setupCategory("Gameplay");
         {
-            cooldownEq = gameplay.getElement(ConfiguredLib.INT,"Cooldown").withRange(IntValueRange.range(1, Integer.MAX_VALUE)).withDefault(10).getValue().intValue();
-            priceSmallChest = gameplay.getElement(ConfiguredLib.INT,"Price Small").withRange(IntValueRange.range(1, Integer.MAX_VALUE)).withDefault(25).getValue().intValue();
-            TIME_UPDATE_TIMER =gameplay.getElement(ConfiguredLib.INT,"Updated Timer").withRange(IntValueRange.range(5, Integer.MAX_VALUE)).withDefault(15).getValue().intValue();
+            cooldownEq = gameplay.getElement(ConfiguredLib.INT, "Cooldown").withRange(IntValueRange.range(1, Integer.MAX_VALUE)).withDefault(10).getValue().intValue();
+            priceSmallChest = gameplay.getElement(ConfiguredLib.INT, "Price Small").withRange(IntValueRange.range(1, Integer.MAX_VALUE)).withDefault(25).getValue().intValue();
+            TIME_UPDATE_TIMER = gameplay.getElement(ConfiguredLib.INT, "Updated Timer").withRange(IntValueRange.range(5, Integer.MAX_VALUE)).withDefault(15).getValue().intValue();
 
         }
     }
-
 
 
 }

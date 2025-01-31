@@ -14,7 +14,5 @@ public interface ROMModels {
     @RegistryName("sticky_bomb")
     IGeometryContainer STICKY_BOMB = IGeometryContainer.createNoSuffix();
 
-    @RegistryName("zeith")
-    IGeometryContainer ZEITH = IGeometryContainer.createNoSuffix();
 }
 

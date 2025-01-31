@@ -5,7 +5,6 @@ import com.rumaruka.riskofmine.init.ROMSounds;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,10 +22,10 @@ public class ScrapperBlock extends Block {
     @Override
     public InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult p_60508_) {
         if (!level.isClientSide()) {
-            boolean second_5 = level.getGameTime() % 100 == 0;
+            boolean second = ROMUtils.getPlayer().level().nextSubTickCount() % 20 == 0;
 
             if (ROMUtils.isCommon(player)) {
-                if (second_5) {
+                if (second) {
                     level.playSound(player, blockPos, ROMSounds.ROM_SCRAPPER_WORK.get(), SoundSource.MASTER, 1, 1);
                     ItemEntity itemEntity = new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), new ItemStack(ROMItems.COMMON_ITEM_SCRAP, 1));
                     level.addFreshEntity(itemEntity);
@@ -36,7 +35,7 @@ public class ScrapperBlock extends Block {
                 return InteractionResult.SUCCESS;
             }
             if (ROMUtils.isUnCommon(player)) {
-                if (second_5) {
+                if (second) {
                     ItemEntity itemEntity = new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), new ItemStack(ROMItems.UNCOMMON_ITEM_SCRAP, 1));
                     level.addFreshEntity(itemEntity);
                 }

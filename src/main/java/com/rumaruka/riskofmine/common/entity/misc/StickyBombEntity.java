@@ -10,7 +10,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.*;
-
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
@@ -41,7 +40,6 @@ public class StickyBombEntity extends Entity {
         this.owner = pOwner;
         this.target = target;
     }
-
 
 
     protected Entity.MovementEmission getMovementEmission() {
@@ -100,7 +98,7 @@ public class StickyBombEntity extends Entity {
     }
 
     protected void explode() {
-        this.level().explode(this, this.getX(), this.getY(0.0625D), this.getZ(), ROMMathFormula.explodeIncreasing(ROMUtils.counting(ROMUtils.getPlayer(),ROMItems.STICKY_BOMB.getDefaultInstance())), Level.ExplosionInteraction.MOB);
+        this.level().explode(this, this.getX(), this.getY(0.0625D), this.getZ(), ROMMathFormula.explodeIncreasing(ROMUtils.counting(ROMUtils.getPlayer(), ROMItems.STICKY_BOMB.getDefaultInstance())), Level.ExplosionInteraction.MOB);
     }
 
 

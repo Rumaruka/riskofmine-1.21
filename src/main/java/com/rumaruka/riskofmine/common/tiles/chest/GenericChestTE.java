@@ -78,23 +78,22 @@ public abstract class GenericChestTE extends RandomizableContainerBlockEntity im
 
     @Override
     public void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
-        super.loadAdditional(compoundTag,provider);
+        super.loadAdditional(compoundTag, provider);
 
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
 
         if (!this.tryLoadLootTable(compoundTag)) {
-            ContainerHelper.loadAllItems(compoundTag, this.items,provider);
+            ContainerHelper.loadAllItems(compoundTag, this.items, provider);
         }
     }
 
 
-
     @Override
     public void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
-        super.saveAdditional(compoundTag,provider);
+        super.saveAdditional(compoundTag, provider);
 
         if (!this.trySaveLootTable(compoundTag)) {
-            ContainerHelper.saveAllItems(compoundTag, this.items,provider);
+            ContainerHelper.saveAllItems(compoundTag, this.items, provider);
         }
     }
 

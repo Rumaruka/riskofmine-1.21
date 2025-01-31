@@ -1,6 +1,5 @@
 package com.rumaruka.riskofmine.ntw.packets;
 
-import com.rumaruka.riskofmine.common.cap.Barrier;
 import com.rumaruka.riskofmine.common.cap.Shields;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import io.netty.buffer.Unpooled;

@@ -6,7 +6,6 @@ import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
 import com.rumaruka.riskofmine.common.skills.artificer.FlameBolt;
-import com.rumaruka.riskofmine.common.skills.commando.DoubleTap;
 import com.rumaruka.riskofmine.common.skills.commando.PhaseRound;
 import com.rumaruka.riskofmine.common.skills.commando.SuppressiveFire;
 import com.rumaruka.riskofmine.common.skills.commando.TacticalDive;
@@ -92,13 +91,11 @@ public class ArtificerOverlayRender {
             gui.blit(DOUBLE_TAP_IMG, 0, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
-               // String toDisplay = String.valueOf(getDoubleTapDisplay(doubleTap));
+                // String toDisplay = String.valueOf(getDoubleTapDisplay(doubleTap));
 //
-               // ROMUtils.drawString(gui, font, toDisplay, 10, (h / 2 + 70 + 20), color.getRGB());
+                // ROMUtils.drawString(gui, font, toDisplay, 10, (h / 2 + 70 + 20), color.getRGB());
             }
         }
-
-
 
 
         RenderSystem.disableBlend();
@@ -131,19 +128,19 @@ public class ArtificerOverlayRender {
             gui.blit(PHASE_ROUND_IMG, w - (h / 2 + 340 - 33)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
-              //  String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
+                //  String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
 //
-              //  ROMUtils.drawString(gui, font, toDisplay,  w - (h / 2 +290), (h / 2 + 70), color.getRGB());
+                //  ROMUtils.drawString(gui, font, toDisplay,  w - (h / 2 +290), (h / 2 + 70), color.getRGB());
             }
 
 
         } else {
-            gui.blit(PHASE_ROUND_IMG,34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(PHASE_ROUND_IMG, 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
-               // String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
+                // String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
 //
-               // ROMUtils.drawString(gui, font, toDisplay, 45, (h / 2 + 70 + 20), color.getRGB());
+                // ROMUtils.drawString(gui, font, toDisplay, 45, (h / 2 + 70 + 20), color.getRGB());
             }
         }
 
@@ -178,19 +175,19 @@ public class ArtificerOverlayRender {
             gui.blit(TACTICAL_DIVE_IMG, w - (h / 2 + 340 - 33 - 33)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
-               // String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
+                // String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
 //
-               // ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 260), (h / 2 + 70), color.getRGB());
+                // ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 260), (h / 2 + 70), color.getRGB());
             }
 
 
         } else {
-            gui.blit(TACTICAL_DIVE_IMG, 34*2, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(TACTICAL_DIVE_IMG, 34 * 2, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
-              //  String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
+                //  String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
 //
-              //  ROMUtils.drawString(gui, font, toDisplay, 34*2+10, (h / 2 + 70 + 20), color.getRGB());
+                //  ROMUtils.drawString(gui, font, toDisplay, 34*2+10, (h / 2 + 70 + 20), color.getRGB());
             }
 
         }
@@ -227,24 +224,22 @@ public class ArtificerOverlayRender {
 
 
             if (!doubleTap.isCooldown()) {
-               // String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+                // String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
 
-             //   ROMUtils.drawString(gui, font, toDisplay, 34*2+34, (h / 2 + 70), color.getRGB());
+                //   ROMUtils.drawString(gui, font, toDisplay, 34*2+34, (h / 2 + 70), color.getRGB());
             }
 
 
         } else {
-            gui.blit(SUPPRESSIVE_FIRE_IMG, 34*2+34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(SUPPRESSIVE_FIRE_IMG, 34 * 2 + 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
 
             if (!doubleTap.isCooldown()) {
-               // String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+                // String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
 
-              //  ROMUtils.drawString(gui, font, toDisplay, 34*2+34+10, (h / 2 + 70 + 20), color.getRGB());
+                //  ROMUtils.drawString(gui, font, toDisplay, 34*2+34+10, (h / 2 + 70 + 20), color.getRGB());
             }
         }
-
-
 
 
         RenderSystem.disableBlend();

@@ -15,7 +15,6 @@ public class SmallChestTE extends GenericChestTE {
     }
 
 
-
     @Override
     protected AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory) {
         return ChestInventory.createCommonContainer(pContainerId, pInventory, this);

@@ -17,9 +17,11 @@ public class ROMChestGen {
     public static List<PlacementModifier> endOrePlacements(int count, PlacementModifier placementModifier) {
         return orePlacements(CountPlacement.of(count), placementModifier);
     }
+
     public static List<PlacementModifier> netherOrePlacements(int count, PlacementModifier placementModifier) {
         return orePlacements(CountPlacement.of(count), placementModifier);
     }
+
     public static List<PlacementModifier> rareOrePlacements(int count, PlacementModifier placementModifier) {
         return orePlacements(RarityFilter.onAverageOnceEvery(count), placementModifier);
     }

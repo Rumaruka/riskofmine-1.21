@@ -1,7 +1,6 @@
 package com.rumaruka.riskofmine.common.items.eqiupment;
 
 import com.rumaruka.riskofmine.api.enumeration.Category;
-
 import com.rumaruka.riskofmine.init.ROMItems;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -13,7 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-
 import net.neoforged.neoforge.common.EffectCure;
 
 import java.util.List;
@@ -49,7 +47,7 @@ public class BlastShowerItem extends EquipmentBase {
                 pPlayer.removeAllEffects();
                 removeNegativeEffect(pPlayer);
 
-                pPlayer.getCooldowns().addCooldown(this,/* ROMConfig.GENERAL.cooldownEq.get()*/1000 );
+                pPlayer.getCooldowns().addCooldown(this,/* ROMConfig.GENERAL.cooldownEq.get()*/1000);
 
             }
         }

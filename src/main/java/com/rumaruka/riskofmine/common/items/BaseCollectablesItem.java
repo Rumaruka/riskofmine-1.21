@@ -17,14 +17,10 @@ public abstract class BaseCollectablesItem extends Item implements ICurioItem {
     private final Category categoryEnum;
 
 
-
-
     public BaseCollectablesItem(ChestTypes type, Category category) {
         super(new Properties());
         this.type = type;
         this.categoryEnum = category;
-
-
 
 
     }

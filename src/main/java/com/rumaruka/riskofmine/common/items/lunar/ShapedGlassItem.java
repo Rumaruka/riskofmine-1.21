@@ -2,7 +2,6 @@ package com.rumaruka.riskofmine.common.items.lunar;
 
 import com.rumaruka.riskofmine.api.enumeration.Category;
 import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
-
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
@@ -21,6 +20,7 @@ public class ShapedGlassItem extends BaseCollectablesItem {
     public ShapedGlassItem() {
         super(ChestTypes.LUNAR, Category.DAMAGE);
     }
+
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
         tooltip.add(Component.translatable("ror.alt.info"));

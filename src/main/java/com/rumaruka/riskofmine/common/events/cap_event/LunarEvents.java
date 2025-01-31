@@ -2,7 +2,6 @@ package com.rumaruka.riskofmine.common.events.cap_event;
 
 import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.common.cap.Lunar;
-import com.rumaruka.riskofmine.common.cap.Money;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.init.ROMItems;
 import net.minecraft.server.MinecraftServer;

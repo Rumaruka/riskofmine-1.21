@@ -1,7 +1,6 @@
 package com.rumaruka.riskofmine.datagen.worldgen;
 
 import com.rumaruka.riskofmine.RiskOfMine;
-
 import com.rumaruka.riskofmine.datagen.worldgen.chests.ROMConfiguredFeatures;
 import com.rumaruka.riskofmine.datagen.worldgen.chests.ROMPlacedFeatures;
 import net.minecraft.core.HolderLookup;

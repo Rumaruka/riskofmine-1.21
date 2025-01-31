@@ -12,13 +12,12 @@ public interface ROMData {
     @RegistryName("skill_data_rom")
     AttachmentType<SkillData> SKILL_DATA = AttachmentType.serializable(holder ->
     {
-        if(holder instanceof Player pl)
+        if (holder instanceof Player pl)
             return new SkillData(pl);
         return null;
     }).copyOnDeath().copyHandler((attachment, holder, provider) ->
     {
-        if(holder instanceof Player pl)
-        {
+        if (holder instanceof Player pl) {
             var psd = new SkillData(pl);
             psd.deserializeNBT(provider, attachment.serializeNBT(provider));
             return psd;

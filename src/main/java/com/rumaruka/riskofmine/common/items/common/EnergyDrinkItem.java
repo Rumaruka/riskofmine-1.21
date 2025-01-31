@@ -85,8 +85,6 @@ public class EnergyDrinkItem extends BaseCollectablesItem {
     }
 
 
-
-
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
         tooltip.add(Component.translatable("ror.alt.info"));

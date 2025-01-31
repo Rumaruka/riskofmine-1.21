@@ -23,7 +23,7 @@ public class LunarChestBlock extends GenericChestBlock {
     public static final MapCodec<LunarChestBlock> CODEC = simpleCodec(p_304364_ -> new LunarChestBlock());
 
     public LunarChestBlock() {
-        super(Properties.of().strength(5, 5), ()-> ROMTiles.SMALL_CHEST, Chest.LUNAR);
+        super(Properties.of().strength(5, 5), () -> ROMTiles.SMALL_CHEST, Chest.LUNAR);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class LunarChestBlock extends GenericChestBlock {
             if (blockEntity instanceof GenericChestTE) {
                 if (lunar.getCurrentLunar() != 0) {
                     player.openMenu((GenericChestTE) blockEntity);
-                    lunar.consumeLunar( 1);
+                    lunar.consumeLunar(1);
 
                 } else {
                     level.playSound(null, blockPos, ROMSounds.ROM_CHEST_NOT_MONEY.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
@@ -49,7 +49,6 @@ public class LunarChestBlock extends GenericChestBlock {
         }
         return InteractionResult.CONSUME;
     }
-
 
 
     @Nullable

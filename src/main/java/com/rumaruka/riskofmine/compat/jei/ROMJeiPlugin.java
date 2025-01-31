@@ -26,7 +26,7 @@ public class ROMJeiPlugin implements IModPlugin {
 
     @Override
     @NotNull
-    public  ResourceLocation getPluginUid() {
+    public ResourceLocation getPluginUid() {
         return rl("riskofmine");
     }
 

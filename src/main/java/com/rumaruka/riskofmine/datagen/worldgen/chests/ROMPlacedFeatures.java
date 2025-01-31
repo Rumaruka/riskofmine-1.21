@@ -18,8 +18,8 @@ import java.util.List;
 public class ROMPlacedFeatures {
 
     public static ResourceKey<PlacedFeature> OVER_SMALL_CHEST_GEN = createKey("over_small_chest_gen");
- //   public static ResourceKey<PlacedFeature> NETHER_CHEST_GEN = createKey("nether_chest_gen");
- //   public static ResourceKey<PlacedFeature> END_CHEST_GEN = createKey("end_chest_gen");
+    //   public static ResourceKey<PlacedFeature> NETHER_CHEST_GEN = createKey("nether_chest_gen");
+    //   public static ResourceKey<PlacedFeature> END_CHEST_GEN = createKey("end_chest_gen");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -35,8 +35,8 @@ public class ROMPlacedFeatures {
 //        register(context, OVER_CHEST_GEN, overholder, ROMChestGen.commonOrePlacements(
 //                10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(240)
 //        )));
-       // register(context, NETHER_CHEST_GEN, netherholder, ROMChestGen.netherOrePlacements(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(200))));
-       // register(context, END_CHEST_GEN, endholder, ROMChestGen.endOrePlacements(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64   ), VerticalAnchor.absolute(200))));
+        // register(context, NETHER_CHEST_GEN, netherholder, ROMChestGen.netherOrePlacements(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(200))));
+        // register(context, END_CHEST_GEN, endholder, ROMChestGen.endOrePlacements(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64   ), VerticalAnchor.absolute(200))));
         PlacementUtils.register(
                 context,
                 OVER_SMALL_CHEST_GEN,

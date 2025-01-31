@@ -3,7 +3,6 @@ package com.rumaruka.riskofmine.ntw.cmd.shields;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-import com.rumaruka.riskofmine.common.cap.Money;
 import com.rumaruka.riskofmine.common.cap.Shields;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;

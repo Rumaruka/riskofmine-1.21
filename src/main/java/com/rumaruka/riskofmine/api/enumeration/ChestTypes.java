@@ -56,7 +56,6 @@ public enum ChestTypes implements StringRepresentable {
     }
 
 
-
     public int getColorValue() {
         return this.colorValue;
     }

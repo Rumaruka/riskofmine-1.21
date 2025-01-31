@@ -32,13 +32,14 @@ public class InfusionItem extends BaseCollectablesItem {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack stack = pPlayer.getMainHandItem();
         if (!pLevel.isClientSide()) {
-            pPlayer.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier( rl("healthBoost"), stack.getCount(), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            pPlayer.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(rl("healthBoost"), stack.getCount(), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
             if (!pPlayer.isCreative() || !pPlayer.getAbilities().invulnerable) {
                 stack.shrink(stack.getCount());
             }
         }
         return super.use(pLevel, pPlayer, pUsedHand);
     }
+
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
         tooltip.add(Component.translatable("ror.alt.info"));

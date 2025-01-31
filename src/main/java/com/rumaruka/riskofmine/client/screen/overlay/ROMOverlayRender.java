@@ -30,7 +30,6 @@ public class ROMOverlayRender {
     }
 
 
-
     @SubscribeEvent
     public static void renderOverlay(CustomizeGuiOverlayEvent.Chat event) {
         GuiGraphics guiGraphics = event.getGuiGraphics();

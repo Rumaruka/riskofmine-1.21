@@ -31,7 +31,7 @@ public record ChestLootTableROM(HolderLookup.Provider reg) implements LootTableS
                         .add(LootItem.lootTableItem(ROMItems.MONSTER_TOOTH).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         .add(LootItem.lootTableItem(ROMItems.STUN_GRENADE).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
                         .add(LootItem.lootTableItem(ROMItems.TRI_TIP_DAGGER).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 1)))))
-                )
+        )
 
         ;
     }

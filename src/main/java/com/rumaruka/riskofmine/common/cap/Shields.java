@@ -101,6 +101,6 @@ public class Shields implements INBTSerializable<CompoundTag> {
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-            nbt.getInt("shields");
+        nbt.getInt("shields");
     }
 }

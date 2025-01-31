@@ -1,10 +1,8 @@
 package com.rumaruka.riskofmine.common.events;
 
 
-import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.common.entity.misc.HealthOrbEntity;
 import com.rumaruka.riskofmine.common.entity.misc.StickyBombEntity;
-import com.rumaruka.riskofmine.common.skills.commando.DoubleTap;
 import com.rumaruka.riskofmine.init.ROMItems;
 import com.rumaruka.riskofmine.init.ROMParticles;
 import com.rumaruka.riskofmine.init.ROMSounds;
@@ -16,7 +14,6 @@ import lombok.Setter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -94,15 +91,15 @@ public class ItemsEvents {
                 if (!level.isClientSide()) {
                     if (ROMUtils.checkInventory(player, ROMItems.OLD_WAR_STEALTHKIT.getDefaultInstance()) || ROMUtils.checkInventory(player, ROMItems.OLD_WAR_STEALTHKIT.getDefaultInstance())) {
                         if (player.getHealth() < 2.5f) {
-                            ROMUtils.addEffects(player,MobEffects.INVISIBILITY);
-                            ROMUtils.addEffects(player,MobEffects.MOVEMENT_SPEED);
+                            ROMUtils.addEffects(player, MobEffects.INVISIBILITY);
+                            ROMUtils.addEffects(player, MobEffects.MOVEMENT_SPEED);
 
                         }
                     }
                     if (ROMUtils.checkInventory(player, ROMItems.DIO_BEST_FRIEND.getDefaultInstance()) || ROMUtils.checkCurios(player, ROMItems.DIO_BEST_FRIEND.getDefaultInstance())) {
                         if (player.getHealth() == 1f) {
-                            ROMUtils.addEffects(player,MobEffects.DIG_SPEED);
-                            ROMUtils.addEffects(player,MobEffects.MOVEMENT_SPEED);
+                            ROMUtils.addEffects(player, MobEffects.DIG_SPEED);
+                            ROMUtils.addEffects(player, MobEffects.MOVEMENT_SPEED);
 
                         }
                     }
@@ -118,10 +115,10 @@ public class ItemsEvents {
         Entity attacked = event.getSource().getEntity();
         Level level = target.level();
         if (!level.isClientSide()) {
-        if (attacked instanceof ServerPlayer player) {
+            if (attacked instanceof ServerPlayer player) {
 
-                if (ROMUtils.checkInventory(player,  ROMItems.MONSTER_TOOTH.getDefaultInstance()) || ROMUtils.checkCurios(player,  ROMItems.MONSTER_TOOTH.getDefaultInstance())) {
-                    level.addFreshEntity(new HealthOrbEntity(level, target.getX() + 0.5d, target.getY() + 0.5d, target.getZ() + 0.5d, ROMUtils.countAll(player,  ROMItems.MONSTER_TOOTH.getDefaultInstance())));
+                if (ROMUtils.checkInventory(player, ROMItems.MONSTER_TOOTH.getDefaultInstance()) || ROMUtils.checkCurios(player, ROMItems.MONSTER_TOOTH.getDefaultInstance())) {
+                    level.addFreshEntity(new HealthOrbEntity(level, target.getX() + 0.5d, target.getY() + 0.5d, target.getZ() + 0.5d, ROMUtils.countAll(player, ROMItems.MONSTER_TOOTH.getDefaultInstance())));
                     level.playSound(null, new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ()), ROMSounds.PROC_MT_SPAWN.get(), SoundSource.MASTER, 2, 2);
                 }
             }

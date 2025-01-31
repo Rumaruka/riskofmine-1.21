@@ -2,7 +2,6 @@ package com.rumaruka.riskofmine.common.blocks.chest;
 
 import com.mojang.serialization.MapCodec;
 import com.rumaruka.riskofmine.api.enumeration.Chest;
-
 import com.rumaruka.riskofmine.common.cap.Money;
 import com.rumaruka.riskofmine.common.tiles.chest.GenericChestTE;
 import com.rumaruka.riskofmine.common.tiles.chest.LargeChestTE;
@@ -26,7 +25,7 @@ public class LargeChestBlock extends GenericChestBlock {
     public static final MapCodec<LargeChestBlock> CODEC = simpleCodec(p_304364_ -> new LargeChestBlock());
 
     public LargeChestBlock() {
-        super(Properties.of().strength(5, 5),()-> ROMTiles.LARGE_CHEST, Chest.LARGE);
+        super(Properties.of().strength(5, 5), () -> ROMTiles.LARGE_CHEST, Chest.LARGE);
     }
 
     @Override
@@ -38,8 +37,8 @@ public class LargeChestBlock extends GenericChestBlock {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof GenericChestTE) {
                 if (money.getCurrentMoney() >= 30) {
-                    money.consumeMoney( 30);
-                    
+                    money.consumeMoney(30);
+
                     player.openMenu((GenericChestTE) blockEntity);
                     player.awardStat(Stats.OPEN_CHEST);
                     PiglinAi.angerNearbyPiglins(player, true);

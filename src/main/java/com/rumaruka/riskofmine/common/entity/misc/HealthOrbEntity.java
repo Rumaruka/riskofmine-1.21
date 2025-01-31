@@ -7,8 +7,6 @@ import com.rumaruka.riskofmine.init.ROMSounds;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -22,8 +20,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.NotNull;
 
@@ -226,11 +222,12 @@ public class HealthOrbEntity extends Entity {
     public void playerTouch(Player pEntity) {
         if (!this.level().isClientSide) {
             if (pEntity.takeXpDelay == 0) {
-                if (net.neoforged.neoforge.common.NeoForge.EVENT_BUS.post(new PlayerHealthEvent.PickupHealth(pEntity, this)).isCanceled()) return;
+                if (net.neoforged.neoforge.common.NeoForge.EVENT_BUS.post(new PlayerHealthEvent.PickupHealth(pEntity, this)).isCanceled())
+                    return;
                 pEntity.takeXpDelay = 2;
                 pEntity.take(this, 1);
 
-                pEntity.heal(ROMUtils.counting(pEntity,ROMItems.MONSTER_TOOTH.getDefaultInstance()));
+                pEntity.heal(ROMUtils.counting(pEntity, ROMItems.MONSTER_TOOTH.getDefaultInstance()));
                 pEntity.level().playSound(null, new BlockPos(pEntity.getBlockX(), pEntity.getBlockY(), pEntity.getBlockZ()), ROMSounds.PROC_MT_IMPACT.get(), SoundSource.MASTER, 2, 2);
 
                 --this.count;

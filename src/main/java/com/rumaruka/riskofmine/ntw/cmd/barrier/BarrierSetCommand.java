@@ -3,7 +3,6 @@ package com.rumaruka.riskofmine.ntw.cmd.barrier;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-
 import com.rumaruka.riskofmine.common.cap.Barrier;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -30,7 +29,6 @@ public class BarrierSetCommand {
         for (ServerPlayer player : playerEntities) {
             Barrier lunar = Barrier.get(player);
             lunar.setBarrier(amount);
-
 
 
         }

@@ -20,8 +20,8 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 public class ROMModifiers {
 
     protected static ResourceKey<BiomeModifier> ADD_CHEST = createKey("add_chest");
-   // protected static ResourceKey<BiomeModifier> ADD_NETHER_CHEST = createKey("add_nether_chest");
-   // protected static ResourceKey<BiomeModifier> ADD_END_CHEST = createKey("add_end_chest");
+    // protected static ResourceKey<BiomeModifier> ADD_NETHER_CHEST = createKey("add_nether_chest");
+    // protected static ResourceKey<BiomeModifier> ADD_END_CHEST = createKey("add_end_chest");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);

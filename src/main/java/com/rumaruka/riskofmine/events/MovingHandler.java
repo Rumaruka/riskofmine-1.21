@@ -8,7 +8,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -33,10 +32,10 @@ public class MovingHandler {
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
 
-            MoveInfo moveInfo = moveMap.get(event.getEntity().getUUID());
-            if (moveInfo != null) {
-                moveInfo.update(event.getEntity());
-            }
+        MoveInfo moveInfo = moveMap.get(event.getEntity().getUUID());
+        if (moveInfo != null) {
+            moveInfo.update(event.getEntity());
+        }
 
 
     }

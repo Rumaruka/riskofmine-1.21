@@ -4,10 +4,7 @@ import com.rumaruka.riskofmine.api.registry.skill.SkillType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -17,13 +14,12 @@ public class PhaseRound extends CommandoSkills {
 
     protected int cooldownCountMax;
 
-    public PhaseRound(int cooldownCountMax){
+    public PhaseRound(int cooldownCountMax) {
         super(SkillType.SECONDARY, cooldownCountMax);
         addListener(this::onRightClick);
-        this.cooldownCountMax=cooldownCountMax;
+        this.cooldownCountMax = cooldownCountMax;
 
         addListener(this::onTick);
-
 
 
     }
@@ -38,7 +34,6 @@ public class PhaseRound extends CommandoSkills {
         }
 
     }
-
 
 
     private void onTick(PlayerTickEvent.Post event) {
@@ -57,7 +52,6 @@ public class PhaseRound extends CommandoSkills {
                     setCooldown(false);
                     setCooldownCount(cooldownCountMax);
                 }
-
 
 
             }

@@ -1,10 +1,10 @@
 package com.rumaruka.riskofmine.utils;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.rumaruka.riskofmine.api.enumeration.Survivors;
-import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
+import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import lombok.Getter;
@@ -350,10 +350,8 @@ public class ROMUtils {
 
 
     public static MultiLineTextWidget getTextWidget(Component component, int x, int y) {
-        return new MultiLineTextWidget(x, y, component, mc.font) ;
+        return new MultiLineTextWidget(x, y, component, mc.font);
     }
-
-
 
 
 }
