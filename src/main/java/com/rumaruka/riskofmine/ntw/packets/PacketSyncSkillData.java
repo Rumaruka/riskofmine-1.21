@@ -1,5 +1,6 @@
 package com.rumaruka.riskofmine.ntw.packets;
 
+import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.registry.skill.IGuiSkillDataConsumer;
 import com.rumaruka.riskofmine.api.registry.skill.SkillData;
 import com.rumaruka.riskofmine.common.data.PlayerDataManager;
@@ -30,7 +31,7 @@ public class PacketSyncSkillData implements IPacket {
             if (mp != null)
                 PlayerDataManager.handleDataSafely(mp, data -> Network.sendTo(new PacketSyncSkillData(mp.registryAccess(), data), mp));
         } catch (NullPointerException npe) {
-            // networking issues, pretty unsure how to prevent.
+            RiskOfMine.logger.throwing(npe);
         }
     }
 

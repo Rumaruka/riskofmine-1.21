@@ -54,10 +54,15 @@ public class ROMOverlayRender {
             Timer timer = Timer.get(player);
             String toDisplay = getTimerDisplay(timer);
             Color color = Color.RED;
-            ROMUtils.drawString(stack, font, toDisplay, 27.5f, 60, color.getRGB());
+            String time = convertToMMSS(timer.getCurrentTimer());
+            ROMUtils.drawString(stack, font, time, 27.5f, 60, color.getRGB());
         }
     }
-
+    public static String convertToMMSS(int totalSeconds) {
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format("%02d:%02d", minutes, seconds);
+    }
     private static void renderNearbyMoneyDisplay(GuiGraphics stack) {
         var pose = stack.pose();
         pose.pushPose();

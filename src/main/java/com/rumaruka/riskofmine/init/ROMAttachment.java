@@ -11,6 +11,7 @@ import static com.rumaruka.riskofmine.RiskOfMine.MODID;
 
 public class ROMAttachment {
     private static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, MODID);
+
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Barrier>> BARRIER = ATTACHMENT_TYPES.register("barrier", () -> AttachmentType.builder(() -> new Barrier()).serialize(Barrier.CODEC).copyOnDeath().build());
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Lunar>> LUNAR = ATTACHMENT_TYPES.register("lunar", () -> AttachmentType.builder(() -> new Lunar()).serialize(Lunar.CODEC).copyOnDeath().build());
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Money>> MONEY = ATTACHMENT_TYPES.register("money", () -> AttachmentType.builder(() -> new Money()).serialize(Money.CODEC).copyOnDeath().build());

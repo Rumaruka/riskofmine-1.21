@@ -2,6 +2,7 @@ package com.rumaruka.riskofmine.init;
 
 import com.rumaruka.riskofmine.common.entity.misc.HealthOrbEntity;
 import com.rumaruka.riskofmine.common.entity.misc.StickyBombEntity;
+import com.rumaruka.riskofmine.common.entity.weapon.Bullet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import org.zeith.hammerlib.annotations.RegistryName;
@@ -19,6 +20,12 @@ public interface ROMEntity {
             .setTrackingRange(80)
             .setShouldReceiveVelocityUpdates(true)
             .sized(0.5F, 0.5F).updateInterval(20).build("sticky_bomb");
+
+    @RegistryName("bullet")
+    EntityType<Bullet> BULLET = EntityType.Builder.<Bullet>of(Bullet::new,MobCategory.MISC)
+            .setTrackingRange(80)
+            .setShouldReceiveVelocityUpdates(true)
+            .sized(0.5F, 0.5F).updateInterval(20).build("bullet");
 
 
 }

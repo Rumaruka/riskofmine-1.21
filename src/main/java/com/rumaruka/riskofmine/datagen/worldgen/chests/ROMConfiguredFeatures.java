@@ -1,8 +1,9 @@
 package com.rumaruka.riskofmine.datagen.worldgen.chests;
 
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.datagen.worldgen.ROMFeatures;
+
 import com.rumaruka.riskofmine.init.ROMBlocks;
+import com.rumaruka.riskofmine.init.ROMFeatures;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;

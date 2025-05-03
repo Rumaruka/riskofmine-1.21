@@ -6,6 +6,8 @@ import com.google.common.collect.Multimap;
 import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
+import com.rumaruka.riskofmine.utils.ROMMathFormula;
+import com.rumaruka.riskofmine.utils.ROMMathUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -32,7 +34,7 @@ public class PlayerEvents {
         ImmutableMultimap.Builder<Holder<Attribute>, AttributeModifier> builder = ImmutableMultimap.builder();
 
         builder.put(Attributes.MAX_HEALTH, new AttributeModifier(RiskOfMine.rl("survivoirs_health"), iSurvivors.getHealth(), AttributeModifier.Operation.ADD_VALUE));
-        // builder.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(RiskOfMine.rl("survivoirs_health"), iSurvivors.getSpeed(), AttributeModifier.Operation.ADD_VALUE));
+        builder.put(Attributes.ARMOR, new AttributeModifier(RiskOfMine.rl("survivoirs_armor"), iSurvivors.getArmor(), AttributeModifier.Operation.ADD_VALUE));
 
 
         defaultModifiers = builder.build();

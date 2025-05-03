@@ -6,6 +6,7 @@ import com.rumaruka.riskofmine.api.registry.skill.SkillBase;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
 import com.rumaruka.riskofmine.common.skills.artificer.FlameBolt;
+import com.rumaruka.riskofmine.common.skills.commando.DoubleTap;
 import com.rumaruka.riskofmine.common.skills.commando.PhaseRound;
 import com.rumaruka.riskofmine.common.skills.commando.SuppressiveFire;
 import com.rumaruka.riskofmine.common.skills.commando.TacticalDive;
@@ -29,10 +30,10 @@ import static com.rumaruka.riskofmine.RiskOfMine.rl;
 public class ArtificerOverlayRender {
 
 
-    private static final ResourceLocation DOUBLE_TAP_IMG = rl("textures/gui/skills/artificer/double_tap.png");
-    private static final ResourceLocation SUPPRESSIVE_FIRE_IMG = rl("textures/gui/skills/artificer/suppressive_fire.png");
-    private static final ResourceLocation PHASE_ROUND_IMG = rl("textures/gui/skills/artificer/phase_round.png");
-    private static final ResourceLocation TACTICAL_DIVE_IMG = rl("textures/gui/skills/artificer/tactical_dive.png");
+    private static final ResourceLocation DOUBLE_TAP_IMG = rl("textures/gui/skills/commando/double_tap.png");
+    private static final ResourceLocation SUPPRESSIVE_FIRE_IMG = rl("textures/gui/skills/commando/suppressive_fire.png");
+    private static final ResourceLocation PHASE_ROUND_IMG = rl("textures/gui/skills/commando/phase_round.png");
+    private static final ResourceLocation TACTICAL_DIVE_IMG = rl("textures/gui/skills/commando/tactical_dive.png");
 
     private static final Minecraft mc = ROMUtils.getMc();
 
@@ -45,24 +46,26 @@ public class ArtificerOverlayRender {
             Survivors survivors = iSurvivors.survivors();
             if (survivors == Survivors.ARTIFICER) {
                 if (SkillBase.isSkillActive()) {
-                    //renderDoubleTapSkill(guiGraphics);
-                    //renderSuppressiveFireSkill(guiGraphics);
-                    //renderTacticalDiveSkill(guiGraphics);
-                    //renderPhaseRoundSkill(guiGraphics);
+                   // renderFlameBoltSkill(guiGraphics);
+                   // renderSuppressiveFireSkill(guiGraphics);
+                   // renderTacticalDiveSkill(guiGraphics);
+                   // renderPhaseRoundSkill(guiGraphics);
                 }
 
             }
         }
+
+
     }
 
 
-    private static void renderDoubleTapSkill(GuiGraphics gui) {
+    private static void renderFlameBoltSkill(GuiGraphics gui) {
         Font font = mc.font;
         Color color = Color.RED;
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
-        int imageWidth = 32; // Ширина вашего изображения
-        int imageHeight = 32; // Высота вашего изображения
+        int imageWidth = 32;
+        int imageHeight = 32;
 
         int x = mc.getWindow().getX();
         int y = mc.getWindow().getY();
@@ -72,17 +75,16 @@ public class ArtificerOverlayRender {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, DOUBLE_TAP_IMG);
 
-        // Включение смешивания и прозрачности
+
         RenderSystem.enableBlend();
 
 
-        // Рисование изображения в центре экрана
-        FlameBolt doubleTap = ROMSkills.FLAME_BOLT;
+        FlameBolt flameBolt = ROMSkills.FLAME_BOLT;
         if (mc.getWindow().isFullscreen()) {
-            gui.blit(DOUBLE_TAP_IMG, w - (h / 2 + 340)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(DOUBLE_TAP_IMG, w - (h / 2 + 340), (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                String toDisplay = String.valueOf(getFlameBoltDisplay(doubleTap));
+            if (!flameBolt.isCooldown()) {
+                String toDisplay = String.valueOf(getFlameBoltDisplay(flameBolt));
 
                 ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 325), (h / 2 + 70), color.getRGB());
             }
@@ -90,10 +92,10 @@ public class ArtificerOverlayRender {
         } else {
             gui.blit(DOUBLE_TAP_IMG, 0, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                // String toDisplay = String.valueOf(getDoubleTapDisplay(doubleTap));
-//
-                // ROMUtils.drawString(gui, font, toDisplay, 10, (h / 2 + 70 + 20), color.getRGB());
+            if (!flameBolt.isCooldown()) {
+                String toDisplay = String.valueOf(getFlameBoltDisplay(flameBolt));
+
+                ROMUtils.drawString(gui, font, toDisplay, 10, (h / 2 + 70 + 20), color.getRGB());
             }
         }
 
@@ -107,8 +109,8 @@ public class ArtificerOverlayRender {
         Color color = Color.RED;
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
-        int imageWidth = 32; // Ширина вашего изображения
-        int imageHeight = 32; // Высота вашего изображения
+        int imageWidth = 32;
+        int imageHeight = 32;
 
         int x = mc.getWindow().getX();
         int y = mc.getWindow().getY();
@@ -118,29 +120,27 @@ public class ArtificerOverlayRender {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, PHASE_ROUND_IMG);
 
-        // Включение смешивания и прозрачности
         RenderSystem.enableBlend();
 
 
-        // Рисование изображения в центре экрана
-        PhaseRound doubleTap = ROMSkills.PHASE_ROUND;
+        PhaseRound phaseRound = ROMSkills.PHASE_ROUND;
         if (mc.getWindow().isFullscreen()) {
             gui.blit(PHASE_ROUND_IMG, w - (h / 2 + 340 - 33)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                //  String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
-//
-                //  ROMUtils.drawString(gui, font, toDisplay,  w - (h / 2 +290), (h / 2 + 70), color.getRGB());
+            if (!phaseRound.isCooldown()) {
+                String toDisplay = String.valueOf(getPhaseRoundDisplay(phaseRound));
+
+                ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 290), (h / 2 + 70), color.getRGB());
             }
 
 
         } else {
             gui.blit(PHASE_ROUND_IMG, 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                // String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
-//
-                // ROMUtils.drawString(gui, font, toDisplay, 45, (h / 2 + 70 + 20), color.getRGB());
+            if (!phaseRound.isCooldown()) {
+                String toDisplay = String.valueOf(getPhaseRoundDisplay(phaseRound));
+
+                ROMUtils.drawString(gui, font, toDisplay, 45, (h / 2 + 70 + 20), color.getRGB());
             }
         }
 
@@ -154,8 +154,8 @@ public class ArtificerOverlayRender {
         Color color = Color.RED;
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
-        int imageWidth = 32; // Ширина вашего изображения
-        int imageHeight = 32; // Высота вашего изображения
+        int imageWidth = 32;
+        int imageHeight = 32;
 
         int x = mc.getWindow().getX();
         int y = mc.getWindow().getY();
@@ -165,29 +165,28 @@ public class ArtificerOverlayRender {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, TACTICAL_DIVE_IMG);
 
-        // Включение смешивания и прозрачности
+
         RenderSystem.enableBlend();
 
 
-        // Рисование изображения в центре экрана
-        TacticalDive doubleTap = ROMSkills.TACTICAL_DIVE;
+        TacticalDive tacticalDive = ROMSkills.TACTICAL_DIVE;
         if (mc.getWindow().isFullscreen()) {
-            gui.blit(TACTICAL_DIVE_IMG, w - (h / 2 + 340 - 33 - 33)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(TACTICAL_DIVE_IMG, w - (h / 2 + 340 - 33 - 33), (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                // String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
-//
-                // ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 260), (h / 2 + 70), color.getRGB());
+            if (!tacticalDive.isCooldown()) {
+                String toDisplay = String.valueOf(getTacticalDiveDisplay(tacticalDive));
+
+                ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 260), (h / 2 + 70), color.getRGB());
             }
 
 
         } else {
             gui.blit(TACTICAL_DIVE_IMG, 34 * 2, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                //  String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
-//
-                //  ROMUtils.drawString(gui, font, toDisplay, 34*2+10, (h / 2 + 70 + 20), color.getRGB());
+            if (!tacticalDive.isCooldown()) {
+                String toDisplay = String.valueOf(getTacticalDiveDisplay(tacticalDive));
+
+                ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 10, (h / 2 + 70 + 20), color.getRGB());
             }
 
         }
@@ -216,17 +215,17 @@ public class ArtificerOverlayRender {
         RenderSystem.enableBlend();
 
 
-        SuppressiveFire doubleTap = ROMSkills.SUPPRESSIVE_FIRE;
+        SuppressiveFire suppressiveFire = ROMSkills.SUPPRESSIVE_FIRE;
 
         if (mc.getWindow().isFullscreen()) {
 
             gui.blit(SUPPRESSIVE_FIRE_IMG, w - (h / 2 + 340 - 33 - 33 - 33), (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
 
-            if (!doubleTap.isCooldown()) {
-                // String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+            if (!suppressiveFire.isCooldown()) {
+                String toDisplay = String.valueOf(getSuppressiveFireDisplay(suppressiveFire));
 
-                //   ROMUtils.drawString(gui, font, toDisplay, 34*2+34, (h / 2 + 70), color.getRGB());
+                ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 34, (h / 2 + 70), color.getRGB());
             }
 
 
@@ -234,10 +233,10 @@ public class ArtificerOverlayRender {
             gui.blit(SUPPRESSIVE_FIRE_IMG, 34 * 2 + 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
 
-            if (!doubleTap.isCooldown()) {
-                // String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+            if (!suppressiveFire.isCooldown()) {
+                String toDisplay = String.valueOf(getSuppressiveFireDisplay(suppressiveFire));
 
-                //  ROMUtils.drawString(gui, font, toDisplay, 34*2+34+10, (h / 2 + 70 + 20), color.getRGB());
+                ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 34 + 10, (h / 2 + 70 + 20), color.getRGB());
             }
         }
 
@@ -245,24 +244,23 @@ public class ArtificerOverlayRender {
         RenderSystem.disableBlend();
     }
 
-
     private static int getFlameBoltDisplay(FlameBolt tap) {
         return tap.getCooldownCount();
 
     }
 
-//    private static int getSuppressiveFireDisplay(SuppressiveFire tap) {
-//        return tap.getCooldownCount();
-//
-//    }
-//
-//    private static int getPhaseRoundDisplay(PhaseRound tap) {
-//        return tap.getCooldownCount();
-//
-//    }
-//
-//    private static int getTacticalDiveDisplay(TacticalDive tap) {
-//        return tap.getCooldownCount();
-//
-//    }
+    private static int getSuppressiveFireDisplay(SuppressiveFire tap) {
+        return tap.getCooldownCount();
+    }
+
+    private static int getPhaseRoundDisplay(PhaseRound tap) {
+        return tap.getCooldownCount();
+    }
+
+    private static int getTacticalDiveDisplay(TacticalDive tap) {
+        return tap.getCooldownCount();
+
+    }
+
+
 }

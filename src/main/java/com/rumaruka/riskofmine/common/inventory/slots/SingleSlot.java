@@ -11,6 +11,7 @@ public class SingleSlot extends Slot {
         super(inventoryIn, slotIndex, xPosition, yPosition);
     }
 
+
     @Override
     public boolean mayPlace(ItemStack stack) {
         return stack.getItem() instanceof BaseCollectablesItem;

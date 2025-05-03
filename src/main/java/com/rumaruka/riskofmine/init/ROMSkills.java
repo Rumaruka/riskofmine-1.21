@@ -11,6 +11,8 @@ import org.zeith.hammerlib.annotations.SimplyRegister;
 @SimplyRegister
 public interface ROMSkills {
 
+
+    //Skills for Commando
     @RegistryName("double_tap")
     DoubleTap DOUBLE_TAP = new DoubleTap(0);
     @RegistryName("phase_round")

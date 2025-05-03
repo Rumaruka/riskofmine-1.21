@@ -55,8 +55,6 @@ public class CommandoOverlayRender {
         }
 
 
-        //
-
     }
 
 
@@ -65,8 +63,8 @@ public class CommandoOverlayRender {
         Color color = Color.RED;
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
-        int imageWidth = 32; // Ширина вашего изображения
-        int imageHeight = 32; // Высота вашего изображения
+        int imageWidth = 32;
+        int imageHeight = 32;
 
         int x = mc.getWindow().getX();
         int y = mc.getWindow().getY();
@@ -76,14 +74,13 @@ public class CommandoOverlayRender {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, DOUBLE_TAP_IMG);
 
-        // Включение смешивания и прозрачности
+
         RenderSystem.enableBlend();
 
 
-        // Рисование изображения в центре экрана
         DoubleTap doubleTap = ROMSkills.DOUBLE_TAP;
         if (mc.getWindow().isFullscreen()) {
-            gui.blit(DOUBLE_TAP_IMG, w - (h / 2 + 340)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(DOUBLE_TAP_IMG, w - (h / 2 + 340), (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
             if (!doubleTap.isCooldown()) {
                 String toDisplay = String.valueOf(getDoubleTapDisplay(doubleTap));
@@ -111,8 +108,8 @@ public class CommandoOverlayRender {
         Color color = Color.RED;
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
-        int imageWidth = 32; // Ширина вашего изображения
-        int imageHeight = 32; // Высота вашего изображения
+        int imageWidth = 32;
+        int imageHeight = 32;
 
         int x = mc.getWindow().getX();
         int y = mc.getWindow().getY();
@@ -122,17 +119,15 @@ public class CommandoOverlayRender {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, PHASE_ROUND_IMG);
 
-        // Включение смешивания и прозрачности
         RenderSystem.enableBlend();
 
 
-        // Рисование изображения в центре экрана
-        PhaseRound doubleTap = ROMSkills.PHASE_ROUND;
+        PhaseRound phaseRound = ROMSkills.PHASE_ROUND;
         if (mc.getWindow().isFullscreen()) {
             gui.blit(PHASE_ROUND_IMG, w - (h / 2 + 340 - 33)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
+            if (!phaseRound.isCooldown()) {
+                String toDisplay = String.valueOf(getPhaseRoundDisplay(phaseRound));
 
                 ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 290), (h / 2 + 70), color.getRGB());
             }
@@ -141,8 +136,8 @@ public class CommandoOverlayRender {
         } else {
             gui.blit(PHASE_ROUND_IMG, 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                String toDisplay = String.valueOf(getPhaseRoundDisplay(doubleTap));
+            if (!phaseRound.isCooldown()) {
+                String toDisplay = String.valueOf(getPhaseRoundDisplay(phaseRound));
 
                 ROMUtils.drawString(gui, font, toDisplay, 45, (h / 2 + 70 + 20), color.getRGB());
             }
@@ -158,8 +153,8 @@ public class CommandoOverlayRender {
         Color color = Color.RED;
         int width = mc.getWindow().getGuiScaledWidth();
         int height = mc.getWindow().getGuiScaledHeight();
-        int imageWidth = 32; // Ширина вашего изображения
-        int imageHeight = 32; // Высота вашего изображения
+        int imageWidth = 32;
+        int imageHeight = 32;
 
         int x = mc.getWindow().getX();
         int y = mc.getWindow().getY();
@@ -169,17 +164,16 @@ public class CommandoOverlayRender {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, TACTICAL_DIVE_IMG);
 
-        // Включение смешивания и прозрачности
+
         RenderSystem.enableBlend();
 
 
-        // Рисование изображения в центре экрана
-        TacticalDive doubleTap = ROMSkills.TACTICAL_DIVE;
+        TacticalDive tacticalDive = ROMSkills.TACTICAL_DIVE;
         if (mc.getWindow().isFullscreen()) {
-            gui.blit(TACTICAL_DIVE_IMG, w - (h / 2 + 340 - 33 - 33)/*(width - imageWidth-420) / 2*/, (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+            gui.blit(TACTICAL_DIVE_IMG, w - (h / 2 + 340 - 33 - 33), (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
+            if (!tacticalDive.isCooldown()) {
+                String toDisplay = String.valueOf(getTacticalDiveDisplay(tacticalDive));
 
                 ROMUtils.drawString(gui, font, toDisplay, w - (h / 2 + 260), (h / 2 + 70), color.getRGB());
             }
@@ -188,8 +182,8 @@ public class CommandoOverlayRender {
         } else {
             gui.blit(TACTICAL_DIVE_IMG, 34 * 2, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
-            if (!doubleTap.isCooldown()) {
-                String toDisplay = String.valueOf(getTacticalDiveDisplay(doubleTap));
+            if (!tacticalDive.isCooldown()) {
+                String toDisplay = String.valueOf(getTacticalDiveDisplay(tacticalDive));
 
                 ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 10, (h / 2 + 70 + 20), color.getRGB());
             }
@@ -220,15 +214,15 @@ public class CommandoOverlayRender {
         RenderSystem.enableBlend();
 
 
-        SuppressiveFire doubleTap = ROMSkills.SUPPRESSIVE_FIRE;
+        SuppressiveFire suppressiveFire = ROMSkills.SUPPRESSIVE_FIRE;
 
         if (mc.getWindow().isFullscreen()) {
 
             gui.blit(SUPPRESSIVE_FIRE_IMG, w - (h / 2 + 340 - 33 - 33 - 33), (h / 2 + 80), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
 
-            if (!doubleTap.isCooldown()) {
-                String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+            if (!suppressiveFire.isCooldown()) {
+                String toDisplay = String.valueOf(getSuppressiveFireDisplay(suppressiveFire));
 
                 ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 34, (h / 2 + 70), color.getRGB());
             }
@@ -238,22 +232,16 @@ public class CommandoOverlayRender {
             gui.blit(SUPPRESSIVE_FIRE_IMG, 34 * 2 + 34, (h / 2 + 80 + 20), 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
 
 
-            if (!doubleTap.isCooldown()) {
-                String toDisplay = String.valueOf(getSuppressiveFireDisplay(doubleTap));
+            if (!suppressiveFire.isCooldown()) {
+                String toDisplay = String.valueOf(getSuppressiveFireDisplay(suppressiveFire));
 
                 ROMUtils.drawString(gui, font, toDisplay, 34 * 2 + 34 + 10, (h / 2 + 70 + 20), color.getRGB());
             }
         }
 
 
-//  String toDisplay = String.valueOf(0);
-//
-//  ROMUtils.drawString(gui, font, toDisplay,  w - (h / 2 + 305),  (h / 2 + 70), color.getRGB());
-
-
         RenderSystem.disableBlend();
     }
-
 
     private static int getDoubleTapDisplay(DoubleTap tap) {
         return tap.getCooldownCount();
@@ -262,16 +250,16 @@ public class CommandoOverlayRender {
 
     private static int getSuppressiveFireDisplay(SuppressiveFire tap) {
         return tap.getCooldownCount();
-
     }
 
     private static int getPhaseRoundDisplay(PhaseRound tap) {
         return tap.getCooldownCount();
-
     }
 
     private static int getTacticalDiveDisplay(TacticalDive tap) {
         return tap.getCooldownCount();
 
     }
+
+
 }

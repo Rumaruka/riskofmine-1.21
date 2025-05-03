@@ -1,5 +1,6 @@
 package com.rumaruka.riskofmine.common.skills.commando;
 
+import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.EntityType;
@@ -33,10 +34,7 @@ public class SuppressiveFire extends CommandoSkills {
                 }
 
             }
-
-
         }
-
     }
 
 
@@ -69,7 +67,7 @@ public class SuppressiveFire extends CommandoSkills {
                 try {
                     Thread.sleep(delayTicks * 50L); // 50 ms per tick
                 } catch (InterruptedException e) {
-                    e.fillInStackTrace();
+                    RiskOfMine.logger.throwing(e);
                 }
 
                 MinecraftServer server = world.getServer();

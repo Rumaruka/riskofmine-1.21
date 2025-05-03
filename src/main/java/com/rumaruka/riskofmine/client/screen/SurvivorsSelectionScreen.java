@@ -19,8 +19,10 @@ public class SurvivorsSelectionScreen extends Screen {
 
     private static final ResourceLocation COMMANDO_SELECT = RiskOfMine.rl("survivors/commando_selected_final");
     private static final ResourceLocation COMMANDO = RiskOfMine.rl("survivors/commando_final");
+
     private static final ResourceLocation ARTIFICER_SELECT = RiskOfMine.rl("survivors/artificer_selected_final");
     private static final ResourceLocation ARTIFICER = RiskOfMine.rl("survivors/artificer_final");
+
     private static final ResourceLocation ACRID_SELECT = RiskOfMine.rl("survivors/acrid_selected_final");
     private static final ResourceLocation ACRID = RiskOfMine.rl("survivors/acrid_final");
 

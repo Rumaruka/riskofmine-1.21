@@ -18,6 +18,7 @@ public class MovingHandler {
 
     @SubscribeEvent
     public static void onPlayerIn(PlayerEvent.PlayerLoggedInEvent e) {
+
         moveMap.put(e.getEntity().getUUID(), new MoveInfo(e.getEntity()));
 
     }
