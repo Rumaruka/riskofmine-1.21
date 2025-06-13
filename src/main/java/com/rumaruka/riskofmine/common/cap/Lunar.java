@@ -5,7 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
-import com.rumaruka.riskofmine.ntw.packets.LunarPacket;
+import com.rumaruka.riskofmine.ntw.packets.cap_packets.LunarPacket;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;

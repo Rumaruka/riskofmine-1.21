@@ -2,7 +2,7 @@ package com.rumaruka.riskofmine.events;
 
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
-import com.rumaruka.riskofmine.ntw.packets.BlazingPacket;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.BlazingPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;

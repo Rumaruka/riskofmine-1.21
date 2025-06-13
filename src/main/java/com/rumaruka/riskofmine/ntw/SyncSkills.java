@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.ntw;
 
 import com.rumaruka.riskofmine.api.registry.skill.SkillData;
-import com.rumaruka.riskofmine.ntw.packets.PacketSyncSkillData;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.PacketSyncSkillData;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;

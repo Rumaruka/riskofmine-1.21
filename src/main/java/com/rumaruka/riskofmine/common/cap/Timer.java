@@ -5,7 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.rumaruka.riskofmine.init.ROMAttachment;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
-import com.rumaruka.riskofmine.ntw.packets.TimerPacket;
+import com.rumaruka.riskofmine.ntw.packets.cap_packets.TimerPacket;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.core.HolderLookup;

@@ -2,7 +2,7 @@ package com.rumaruka.riskofmine.mixin;
 
 import com.rumaruka.riskofmine.init.ROMItems;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
-import com.rumaruka.riskofmine.ntw.packets.DoubleJumpPacket;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.DoubleJumpPacket;
 import com.rumaruka.riskofmine.utils.ROMDoubleEffect;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.player.LocalPlayer;

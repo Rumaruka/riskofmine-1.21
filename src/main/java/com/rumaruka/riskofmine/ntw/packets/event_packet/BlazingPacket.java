@@ -1,6 +1,6 @@
-package com.rumaruka.riskofmine.ntw.packets;
+package com.rumaruka.riskofmine.ntw.packets.event_packet;
 
-import com.rumaruka.riskofmine.api.entity.IOverloading;
+import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,15 +12,15 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import static com.rumaruka.riskofmine.RiskOfMine.rl;
 
-public record OverloadingPacket(int entityId, boolean overloading) implements CustomPacketPayload {
-    public static final Type<OverloadingPacket> TYPE = new Type<>(rl("overloading"));
+public record BlazingPacket(int entityId, boolean blazing) implements CustomPacketPayload {
+    public static final Type<BlazingPacket> TYPE = new Type<>(rl("blazing"));
 
 
-    public static final StreamCodec<FriendlyByteBuf, OverloadingPacket> CODEC = StreamCodec.composite(
-            ByteBufCodecs.INT, OverloadingPacket::entityId,
-            ByteBufCodecs.BOOL, OverloadingPacket::overloading,
+    public static final StreamCodec<FriendlyByteBuf, BlazingPacket> CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, BlazingPacket::entityId,
+            ByteBufCodecs.BOOL, BlazingPacket::blazing,
 
-            OverloadingPacket::new);
+            BlazingPacket::new);
 
 
     public void handle(IPayloadContext ctx) {
@@ -32,9 +32,9 @@ public record OverloadingPacket(int entityId, boolean overloading) implements Cu
                 FriendlyByteBuf byteBuf = new FriendlyByteBuf(Unpooled.buffer());
                 byteBuf.writeUtf(entity.getStringUUID());
                 byteBuf.writeInt(entityId());
-                byteBuf.writeBoolean(overloading());
-                if (entity instanceof IOverloading over) {
-                    over.setOverloading(overloading);
+                byteBuf.writeBoolean(blazing());
+                if (entity instanceof IBlazing over) {
+                    over.setBlazing(blazing);
                 }
             }
 

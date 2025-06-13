@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.ntw.packets;
+package com.rumaruka.riskofmine.ntw.packets.event_packet;
 
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import io.netty.buffer.Unpooled;

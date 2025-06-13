@@ -1,4 +1,4 @@
-package com.rumaruka.riskofmine.ntw.packets;
+package com.rumaruka.riskofmine.ntw.packets.event_packet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;

@@ -3,7 +3,7 @@ package com.rumaruka.riskofmine.common.data;
 import com.rumaruka.riskofmine.api.registry.skill.SkillData;
 import com.rumaruka.riskofmine.init.ROMData;
 import com.rumaruka.riskofmine.ntw.SyncSkills;
-import com.rumaruka.riskofmine.ntw.packets.PacketSyncSkillData;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.PacketSyncSkillData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtAccounter;
 import net.minecraft.nbt.NbtIo;

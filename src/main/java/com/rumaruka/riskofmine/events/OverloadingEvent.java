@@ -2,7 +2,7 @@ package com.rumaruka.riskofmine.events;
 
 import com.rumaruka.riskofmine.api.entity.IOverloading;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
-import com.rumaruka.riskofmine.ntw.packets.OverloadingPacket;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.OverloadingPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;

@@ -34,6 +34,13 @@ public class ROMModifiers {
                         HolderSet.direct(placedFeatures.getOrThrow(ROMPlacedFeatures.OVER_SMALL_CHEST_GEN)),
                         GenerationStep.Decoration.UNDERGROUND_ORES
                 )
+        );       context.register(
+                ADD_CHEST,
+                new BiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                        HolderSet.direct(placedFeatures.getOrThrow(ROMPlacedFeatures.OVER_LARGE_CHEST_GEN)),
+                        GenerationStep.Decoration.UNDERGROUND_ORES
+                )
         );
 //        context.register(
 //                ADD_NETHER_CHEST,

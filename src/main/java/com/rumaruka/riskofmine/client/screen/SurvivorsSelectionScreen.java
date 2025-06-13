@@ -3,6 +3,7 @@ package com.rumaruka.riskofmine.client.screen;
 import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.utils.ROMUtils;
+import com.rumaruka.riskofmine.utils.SurvivorsUtils;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
@@ -13,6 +14,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import java.awt.*;
+
+import static com.rumaruka.riskofmine.utils.SurvivorsUtils.*;
 
 public class SurvivorsSelectionScreen extends Screen {
 
@@ -27,9 +30,7 @@ public class SurvivorsSelectionScreen extends Screen {
     private static final ResourceLocation ACRID = RiskOfMine.rl("survivors/acrid_final");
 
     private static final Component COPYRIGHT_TEXT = Component.translatable("title.credits");
-    public static boolean isCommando;
-    public static boolean isAcrid;
-    public static boolean isArtificer;
+
     private final Screen parent;
 
     public SurvivorsSelectionScreen(Screen parent) {
@@ -77,7 +78,7 @@ public class SurvivorsSelectionScreen extends Screen {
     public ImageButton getCommandoButton(Screen screen, int height) {
         WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
         return new ImageButton(screen.width / 2 - 160, height, 32, 32, sprites, b -> {
-            isAcrid = isArtificer = false;
+            isAcrid =  isArtificer = false;
 
             isCommando = true;
         });
@@ -89,16 +90,16 @@ public class SurvivorsSelectionScreen extends Screen {
         return new ImageButton(screen.width / 2 - 128, height + 1, 32, 32, sprites, b -> {
             isArtificer = true;
 
-            isAcrid = isCommando = false;
+            isAcrid =  isCommando = false;
         });
     }
 
     public ImageButton getAcridButton(Screen screen, int height) {
         WidgetSprites sprites = new WidgetSprites(ACRID, ACRID_SELECT);
-        return new ImageButton(screen.width / 2 - 80, height, 32, 32, sprites, b -> {
+        return new ImageButton(screen.width / 2 - 96, height  + 2, 32, 32, sprites, b -> {
             isAcrid = true;
 
-            isArtificer = isCommando = false;
+            isArtificer =  isCommando = false;
         });
     }
 
@@ -114,17 +115,19 @@ public class SurvivorsSelectionScreen extends Screen {
 
     private void renderSurvivorsStatus(GuiGraphics p_281549_) {
 
-        if (isAcrid) {
+        if ( isAcrid) {
             ROMUtils.drawString(p_281549_, font, Component.literal("Acrid Selected"), this.width / 2 - 154, this.height - 20, Color.RED.getRGB());
             ROMUtils.drawString(p_281549_, font, Component.literal("Health").append(String.valueOf(Survivors.ACRID.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
 
         }
         if (isCommando) {
             ROMUtils.drawString(p_281549_, font, Component.literal("Commando Selected"), this.width / 2 - 154, this.height - 20, Color.RED.getRGB());
+            ROMUtils.drawString(p_281549_, font, Component.literal("Health").append(String.valueOf(Survivors.COMMANDO.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
 
         }
-        if (isArtificer) {
+        if ( isArtificer) {
             ROMUtils.drawString(p_281549_, font, Component.literal("Artificer Selected"), this.width / 2 - 154, this.height - 20, Color.RED.getRGB());
+            ROMUtils.drawString(p_281549_, font, Component.literal("Health").append(String.valueOf(Survivors.ARTIFICER.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
 
         }
 

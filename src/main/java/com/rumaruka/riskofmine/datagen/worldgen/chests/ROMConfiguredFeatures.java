@@ -29,35 +29,10 @@ public class ROMConfiguredFeatures {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
-        RuleTest stoneReplacable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
-        RuleTest flowerReplace = new TagMatchTest(BlockTags.FLOWERS);
 
-
-        RuleTest netherReplacable = new TagMatchTest(Tags.Blocks.NETHERRACKS);
-        RuleTest endReplacable = new TagMatchTest(Tags.Blocks.END_STONES);
-        BlockState smallChest
-                = ROMBlocks.SMALL_CHEST.defaultBlockState();
-        List<OreConfiguration.TargetBlockState> netherOre =
-                List.of(
-                        OreConfiguration.target(netherReplacable, smallChest)
-
-                );
-        List<OreConfiguration.TargetBlockState> endOre =
-                List.of(
-
-                        OreConfiguration.target(endReplacable, smallChest)
-                );
-
-
-        List<OreConfiguration.TargetBlockState> overOre =
-                List.of(
-                        OreConfiguration.target(stoneReplacable, smallChest),
-                        OreConfiguration.target(flowerReplace, smallChest)
-
-                );
         FeatureUtils.register(context, OVERWORLD_CHEST, ROMFeatures.SMALL_CHEST.get());
-//        register(context, NETHER_CHEST, Feature.ORE, new OreConfiguration(netherOre, 57));
-//        register(context, END_CHEST, Feature.ORE, new OreConfiguration(endOre, 57));
+        FeatureUtils.register(context, OVERWORLD_CHEST, ROMFeatures.LARGE_CHEST.get());
+
 
     }
 

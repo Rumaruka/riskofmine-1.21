@@ -18,6 +18,7 @@ import java.util.List;
 public class ROMPlacedFeatures {
 
     public static ResourceKey<PlacedFeature> OVER_SMALL_CHEST_GEN = createKey("over_small_chest_gen");
+    public static ResourceKey<PlacedFeature> OVER_LARGE_CHEST_GEN = createKey("over_large_chest_gen");
     //   public static ResourceKey<PlacedFeature> NETHER_CHEST_GEN = createKey("nether_chest_gen");
     //   public static ResourceKey<PlacedFeature> END_CHEST_GEN = createKey("end_chest_gen");
 
@@ -46,7 +47,15 @@ public class ROMPlacedFeatures {
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(240)),
                 BiomeFilter.biome()
         );
-
+        PlacementUtils.register(
+                context,
+                OVER_LARGE_CHEST_GEN,
+                overholder,
+                RarityFilter.onAverageOnceEvery(5),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(240)),
+                BiomeFilter.biome()
+        );
     }
 
 

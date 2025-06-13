@@ -5,7 +5,7 @@ package com.rumaruka.riskofmine.api.registry.skill;
 
 import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.ntw.SyncSkills;
-import com.rumaruka.riskofmine.ntw.packets.PacketSyncSkillData;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.PacketSyncSkillData;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;

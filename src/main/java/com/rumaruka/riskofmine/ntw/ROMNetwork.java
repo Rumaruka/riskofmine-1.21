@@ -2,6 +2,8 @@ package com.rumaruka.riskofmine.ntw;
 
 import com.rumaruka.riskofmine.RiskOfMine;
 import com.rumaruka.riskofmine.ntw.packets.*;
+import com.rumaruka.riskofmine.ntw.packets.cap_packets.*;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;

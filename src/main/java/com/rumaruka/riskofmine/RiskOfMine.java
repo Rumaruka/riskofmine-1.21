@@ -9,7 +9,7 @@ import com.rumaruka.riskofmine.client.screen.overlay.ROMOverlayRender;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.init.*;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
-import com.rumaruka.riskofmine.ntw.packets.OverlayPacket;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.OverlayPacket;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

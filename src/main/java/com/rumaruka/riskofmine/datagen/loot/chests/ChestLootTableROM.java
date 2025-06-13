@@ -34,5 +34,18 @@ public record ChestLootTableROM(HolderLookup.Provider reg) implements LootTableS
         )
 
         ;
+        consumer.accept(ROMLootTables.LARGE_CHEST, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ROMItems.ARMOR_PIERCING_ROUNDS).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.CROWBAR).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.SOLDIER_SYRINGE).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.BUSTLING_FUNGUS).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.ENERGY_DRINK).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.FOCUS_CRYSTAL).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.GASOLINE).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.MONSTER_TOOTH).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.STUN_GRENADE).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
+                        .add(LootItem.lootTableItem(ROMItems.TRI_TIP_DAGGER).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 1)))))
+        );
     }
 }

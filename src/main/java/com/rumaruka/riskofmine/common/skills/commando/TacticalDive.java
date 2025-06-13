@@ -2,7 +2,7 @@ package com.rumaruka.riskofmine.common.skills.commando;
 
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
 import com.rumaruka.riskofmine.ntw.ROMNetwork;
-import com.rumaruka.riskofmine.ntw.packets.DashPacket;
+import com.rumaruka.riskofmine.ntw.packets.event_packet.DashPacket;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;

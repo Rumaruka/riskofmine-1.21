@@ -1,6 +1,6 @@
-package com.rumaruka.riskofmine.ntw.packets;
+package com.rumaruka.riskofmine.ntw.packets.cap_packets;
 
-import com.rumaruka.riskofmine.common.cap.Lunar;
+import com.rumaruka.riskofmine.common.cap.Timer;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.FriendlyByteBuf;
@@ -13,15 +13,15 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import static com.rumaruka.riskofmine.RiskOfMine.rl;
 
-public record LunarPacket(int entityID, int value) implements CustomPacketPayload {
-    public static final Type<LunarPacket> TYPE = new Type<>(rl("lunar"));
+public record TimerPacket(int entityID, int value) implements CustomPacketPayload {
+    public static final Type<TimerPacket> TYPE = new Type<>(rl("timer"));
 
 
-    public static final StreamCodec<FriendlyByteBuf, LunarPacket> CODEC = StreamCodec.composite(
-            ByteBufCodecs.INT, LunarPacket::entityID,
-            ByteBufCodecs.INT, LunarPacket::value,
+    public static final StreamCodec<FriendlyByteBuf, TimerPacket> CODEC = StreamCodec.composite(
+            ByteBufCodecs.INT, TimerPacket::entityID,
+            ByteBufCodecs.INT, TimerPacket::value,
 
-            LunarPacket::new);
+            TimerPacket::new);
 
 
     public void handle(IPayloadContext ctx) {
@@ -31,12 +31,12 @@ public record LunarPacket(int entityID, int value) implements CustomPacketPayloa
             Entity entity = ROMUtils.getLvL().getEntity(entityID());
             if (entity != null) {
                 FriendlyByteBuf byteBuf = new FriendlyByteBuf(Unpooled.buffer());
-                Lunar data = Lunar.get((Player) entity);
+                Timer data = Timer.get((Player) entity);
                 byteBuf.writeUtf(entity.getStringUUID());
                 byteBuf.writeInt(entityID());
-                byteBuf.writeInt(data.getCurrentLunar());
+                byteBuf.writeInt(data.getCurrentTimer());
 
-                data.setLunar(value());
+                data.setTimer(value());
 
             }
 
