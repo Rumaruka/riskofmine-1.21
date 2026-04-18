@@ -1,7 +1,8 @@
 package com.rumaruka.riskofmine.ntw;
 
+
 import com.rumaruka.riskofmine.RiskOfMine;
-import com.rumaruka.riskofmine.ntw.packets.*;
+import com.rumaruka.riskofmine.ntw.packets.SurvivorsPacket;
 import com.rumaruka.riskofmine.ntw.packets.cap_packets.*;
 import com.rumaruka.riskofmine.ntw.packets.event_packet.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -12,7 +13,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class ROMNetwork {

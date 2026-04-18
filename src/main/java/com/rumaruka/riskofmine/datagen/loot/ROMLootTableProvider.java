@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class ROMLootTableProvider extends LootTableProvider {
+public class  ROMLootTableProvider extends LootTableProvider {
 
     private final List<SubProviderEntry> lootTables = List.of(new LootTableProvider.SubProviderEntry(ChestLootTableROM::new, LootContextParamSets.CHEST));
 

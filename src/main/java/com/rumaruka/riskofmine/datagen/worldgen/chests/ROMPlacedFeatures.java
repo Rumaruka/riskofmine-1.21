@@ -18,7 +18,11 @@ import java.util.List;
 public class ROMPlacedFeatures {
 
     public static ResourceKey<PlacedFeature> OVER_SMALL_CHEST_GEN = createKey("over_small_chest_gen");
+    public static ResourceKey<PlacedFeature> NETHER_SMALL_CHEST_GEN = createKey("nether_small_chest_gen");
+    public static ResourceKey<PlacedFeature> END_SMALL_CHEST_GEN = createKey("end_small_chest_gen");
+
     public static ResourceKey<PlacedFeature> OVER_LARGE_CHEST_GEN = createKey("over_large_chest_gen");
+
     //   public static ResourceKey<PlacedFeature> NETHER_CHEST_GEN = createKey("nether_chest_gen");
     //   public static ResourceKey<PlacedFeature> END_CHEST_GEN = createKey("end_chest_gen");
 
@@ -27,10 +31,10 @@ public class ROMPlacedFeatures {
 
         Holder<ConfiguredFeature<?, ?>> overholder =
                 configuredFeatures.getOrThrow(ROMConfiguredFeatures.OVERWORLD_CHEST);
-//        Holder<ConfiguredFeature<?, ?>> netherholder =
-//                configuredFeatures.getOrThrow(ROMConfiguredFeatures.NETHER_CHEST);
-//        Holder<ConfiguredFeature<?, ?>> endholder =
-//                configuredFeatures.getOrThrow(ROMConfiguredFeatures.END_CHEST);
+        Holder<ConfiguredFeature<?, ?>> netherholder =
+                configuredFeatures.getOrThrow(ROMConfiguredFeatures.NETHER_CHEST);
+        Holder<ConfiguredFeature<?, ?>> endholder =
+                configuredFeatures.getOrThrow(ROMConfiguredFeatures.END_CHEST);
 
 
 //        register(context, OVER_CHEST_GEN, overholder, ROMChestGen.commonOrePlacements(
@@ -47,6 +51,25 @@ public class ROMPlacedFeatures {
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(240)),
                 BiomeFilter.biome()
         );
+        PlacementUtils.register(
+                context,
+                NETHER_SMALL_CHEST_GEN,
+                netherholder,
+                RarityFilter.onAverageOnceEvery(10),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(240)),
+                BiomeFilter.biome()
+        );
+        PlacementUtils.register(
+                context,
+                END_SMALL_CHEST_GEN,
+                endholder,
+                RarityFilter.onAverageOnceEvery(10),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(240)),
+                BiomeFilter.biome()
+        );
+
         PlacementUtils.register(
                 context,
                 OVER_LARGE_CHEST_GEN,

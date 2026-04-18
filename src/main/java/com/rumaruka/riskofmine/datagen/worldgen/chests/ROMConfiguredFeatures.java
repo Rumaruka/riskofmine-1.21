@@ -23,14 +23,17 @@ import java.util.List;
 
 public class ROMConfiguredFeatures {
     protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_CHEST = createKey("overworld_chest");
-//    protected static ResourceKey<ConfiguredFeature<?, ?>> NETHER_CHEST = createKey("nether_chest");
-//    protected static ResourceKey<ConfiguredFeature<?, ?>> END_CHEST = createKey("end_chest");
+    protected static ResourceKey<ConfiguredFeature<?, ?>> NETHER_CHEST = createKey("nether_chest");
+    protected static ResourceKey<ConfiguredFeature<?, ?>> END_CHEST = createKey("end_chest");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
 
         FeatureUtils.register(context, OVERWORLD_CHEST, ROMFeatures.SMALL_CHEST.get());
+        FeatureUtils.register(context, NETHER_CHEST, ROMFeatures.SMALL_CHEST.get());
+        FeatureUtils.register(context, END_CHEST, ROMFeatures.SMALL_CHEST.get());
+
         FeatureUtils.register(context, OVERWORLD_CHEST, ROMFeatures.LARGE_CHEST.get());
 
 

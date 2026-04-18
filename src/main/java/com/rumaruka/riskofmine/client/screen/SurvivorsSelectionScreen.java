@@ -1,9 +1,10 @@
 package com.rumaruka.riskofmine.client.screen;
 
 import com.rumaruka.riskofmine.RiskOfMine;
+
 import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.utils.ROMUtils;
-import com.rumaruka.riskofmine.utils.SurvivorsUtils;
+
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
@@ -28,6 +29,9 @@ public class SurvivorsSelectionScreen extends Screen {
 
     private static final ResourceLocation ACRID_SELECT = RiskOfMine.rl("survivors/acrid_selected_final");
     private static final ResourceLocation ACRID = RiskOfMine.rl("survivors/acrid_final");
+
+    private static final ResourceLocation BANDIT_SELECT = RiskOfMine.rl("survivors/bandit_selected_final");
+    private static final ResourceLocation BANDIT = RiskOfMine.rl("survivors/bandit_final");
 
     private static final Component COPYRIGHT_TEXT = Component.translatable("title.credits");
 
@@ -55,6 +59,7 @@ public class SurvivorsSelectionScreen extends Screen {
         this.addRenderableWidget(
                 getArtificerButton(this, l)
         );
+        this.addRenderableWidget(getBanditButton(this,l));
 
 
         this.addRenderableWidget(
@@ -67,19 +72,10 @@ public class SurvivorsSelectionScreen extends Screen {
 
     }
 
-    //        Button.builder(Component.literal("Commando"), button -> {
-//        isAcrid = isArtificer = false;
-//screen.width/2  + 82 , screen.height - 310 - (count * 3)
-//        isCommando = true;
-//
-//    })
-//            .bounds(this.width / 2 - 154, this.height - 5 - (count * 3), 150, 20)
-//            .build()
     public ImageButton getCommandoButton(Screen screen, int height) {
         WidgetSprites sprites = new WidgetSprites(COMMANDO, COMMANDO_SELECT);
         return new ImageButton(screen.width / 2 - 160, height, 32, 32, sprites, b -> {
-            isAcrid =  isArtificer = false;
-
+            isAcrid =  isArtificer = isBandit =false;
             isCommando = true;
         });
     }
@@ -90,7 +86,7 @@ public class SurvivorsSelectionScreen extends Screen {
         return new ImageButton(screen.width / 2 - 128, height + 1, 32, 32, sprites, b -> {
             isArtificer = true;
 
-            isAcrid =  isCommando = false;
+            isAcrid =  isCommando = isBandit=false;
         });
     }
 
@@ -99,12 +95,19 @@ public class SurvivorsSelectionScreen extends Screen {
         return new ImageButton(screen.width / 2 - 96, height  + 2, 32, 32, sprites, b -> {
             isAcrid = true;
 
-            isArtificer =  isCommando = false;
+            isArtificer =  isCommando =isBandit= false;
         });
     }
+    public ImageButton getBanditButton(Screen screen, int height) {
+        WidgetSprites sprites = new WidgetSprites(BANDIT, BANDIT_SELECT);
+        return new ImageButton(screen.width / 2 - 96, height  + 2, 32, 32, sprites, b -> {
+            isBandit = true;
 
+            isArtificer = isAcrid= isCommando = false;
+        });
+    }
     private void backToMenu() {
-        this.minecraft.setScreen(this.parent);
+        ROMUtils.getMc().setScreen(this.parent);
     }
 
     @Override
@@ -130,7 +133,11 @@ public class SurvivorsSelectionScreen extends Screen {
             ROMUtils.drawString(p_281549_, font, Component.literal("Health").append(String.valueOf(Survivors.ARTIFICER.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
 
         }
+        if ( isBandit) {
+            ROMUtils.drawString(p_281549_, font, Component.literal("Bandit Selected"), this.width / 2 - 154, this.height - 20, Color.RED.getRGB());
+            ROMUtils.drawString(p_281549_, font, Component.literal("Health").append(String.valueOf(Survivors.BANDIT.getHealth())), this.width / 2 - 144, this.height - 10, Color.RED.getRGB());
 
+        }
 
     }
 

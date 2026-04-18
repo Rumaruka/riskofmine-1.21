@@ -17,10 +17,12 @@ public class ROMLootTables {
 
     public static final ResourceKey<LootTable> SMALL_CHEST = register("chests/small_chest");
      public static final ResourceKey<LootTable> LARGE_CHEST = register("chests/large_chest");
+
     // public static final ResourceKey<LootTable> LEGENDARY_CHEST = register("chests/legendary_chest");
     // public static final ResourceKey<LootTable> LUNAR_CHEST = register("chests/lunar_chest");
-//
+
     // public static final ResourceKey<LootTable> EQUIPMENT_BARREL = register("chests/equipment_barrel");
+
     // //Category Chest
     // public static final ResourceKey<LootTable> DAMAGE_CHEST = register("chests/damage_chest");
     // public static final ResourceKey<LootTable> HEALING_CHEST = register("chests/healing_chest");

@@ -46,8 +46,29 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     protected boolean isCooldown;
 
     @Getter
+    @Setter
+    protected int chargeValue;
+
+    @Getter
     protected static boolean isSkillActive = false;
 
+
+
+    public static boolean isSkillActive() {
+        return isSkillActive;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public static void setIsSkillActive(boolean isSkillActive) {
+        SkillBase.isSkillActive = isSkillActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
     public SkillBase(Survivors survivors, SkillType skillType, int cooldown) {
 
@@ -71,6 +92,7 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
     public static void registerKeys(RegisterKeyMappingsEvent e) {
         e.register(KEY_ACTIVE_SKILL);
         e.register(KEY_SPECIAL_SKILL);
+        e.register(KEY_UTILITY_SKILL);
 
     }
 
@@ -107,6 +129,14 @@ public class SkillBase implements IHasRegisterName, IRegisterListener {
         if (id == null)
             id = RiskOfMine.SKILLS.getKey(this);
         return id;
+    }
+
+    public int getChargeValue() {
+        return chargeValue;
+    }
+
+    public int getCooldownCount() {
+        return cooldownCount;
     }
 
     public boolean isCooldown() {

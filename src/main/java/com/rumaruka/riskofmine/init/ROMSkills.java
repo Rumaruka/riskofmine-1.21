@@ -22,6 +22,8 @@ public interface ROMSkills {
     @RegistryName("suppressive_fire")
     SuppressiveFire SUPPRESSIVE_FIRE = new SuppressiveFire(9);
 
+
+    //Skills for Artificer
     @RegistryName("flame_bolt")
     FlameBolt FLAME_BOLT = new FlameBolt(1);
 }
