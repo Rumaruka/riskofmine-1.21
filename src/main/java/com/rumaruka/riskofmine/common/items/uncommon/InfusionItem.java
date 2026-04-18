@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.uncommon;
 
 import com.rumaruka.riskofmine.api.enumeration.Category;
-import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.ItemTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
@@ -25,7 +25,7 @@ public class InfusionItem extends BaseCollectablesItem {
     public static final UUID uuid1 = UUID.randomUUID();
 
     public InfusionItem() {
-        super(ChestTypes.UNCOMMON, Category.UTILITY);
+        super(ItemTypes.UNCOMMON, Category.UTILITY);
     }
 
     @Override

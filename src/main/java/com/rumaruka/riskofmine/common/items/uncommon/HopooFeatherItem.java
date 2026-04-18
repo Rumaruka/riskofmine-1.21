@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.uncommon;
 
 import com.rumaruka.riskofmine.api.enumeration.Category;
-import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.ItemTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class HopooFeatherItem extends BaseCollectablesItem {
     public HopooFeatherItem() {
-        super(ChestTypes.UNCOMMON, Category.UTILITY);
+        super(ItemTypes.UNCOMMON, Category.UTILITY);
     }
 
     @Override

@@ -19,6 +19,7 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
+
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.CustomizeGuiOverlayEvent;
 
@@ -46,7 +47,7 @@ public class ArtificerOverlayRender {
             Survivors survivors = iSurvivors.survivors();
             if (survivors == Survivors.ARTIFICER) {
                 if (SkillBase.isSkillActive()) {
-                   // renderFlameBoltSkill(guiGraphics);
+                    renderFlameBoltSkill(guiGraphics);
                    // renderSuppressiveFireSkill(guiGraphics);
                    // renderTacticalDiveSkill(guiGraphics);
                    // renderPhaseRoundSkill(guiGraphics);

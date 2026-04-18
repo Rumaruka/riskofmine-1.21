@@ -4,7 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.util.StringRepresentable;
 
 
-public enum ChestTypes implements StringRepresentable {
+public enum ItemTypes implements StringRepresentable {
     COMMON(0, 5, "Common", "common", 16383998, ChatFormatting.WHITE),
     UNCOMMON(1, 4, "Uncommon", "uncommon", 6192150, ChatFormatting.DARK_GREEN),
     LEGENDARY(2, 3, "Legendary", "legendary", 11546150, ChatFormatting.RED),
@@ -15,8 +15,8 @@ public enum ChestTypes implements StringRepresentable {
     VOID(6, 1, "Void", "void", 8991416, ChatFormatting.DARK_PURPLE);
 
 
-    private static final ChestTypes[] META_LOOKUP = new ChestTypes[values().length];
-    private static final ChestTypes[] TYPE_DMG_LOOKUP = new ChestTypes[values().length];
+    private static final ItemTypes[] META_LOOKUP = new ItemTypes[values().length];
+    private static final ItemTypes[] TYPE_DMG_LOOKUP = new ItemTypes[values().length];
     private final int meta;
     private final int typeDamage;
     private final String name;
@@ -25,7 +25,7 @@ public enum ChestTypes implements StringRepresentable {
     private final float[] colorComponentValues;
     private final ChatFormatting chatColor;
 
-    ChestTypes(int metaIn, int dyeDamageIn, String nameIn, String unlocalizedNameIn, int colorValue, ChatFormatting chatColorIn) {
+    ItemTypes(int metaIn, int dyeDamageIn, String nameIn, String unlocalizedNameIn, int colorValue, ChatFormatting chatColorIn) {
         this.meta = metaIn;
         this.typeDamage = dyeDamageIn;
         this.name = nameIn;
@@ -65,7 +65,7 @@ public enum ChestTypes implements StringRepresentable {
         return this.colorComponentValues;
     }
 
-    public static ChestTypes byDyeDamage(int damage) {
+    public static ItemTypes byDyeDamage(int damage) {
         if (damage < 0 || damage >= TYPE_DMG_LOOKUP.length) {
             damage = 0;
         }
@@ -73,7 +73,7 @@ public enum ChestTypes implements StringRepresentable {
         return TYPE_DMG_LOOKUP[damage];
     }
 
-    public static ChestTypes byMetadata(int meta) {
+    public static ItemTypes byMetadata(int meta) {
         if (meta < 0 || meta >= META_LOOKUP.length) {
             meta = 0;
         }
@@ -90,7 +90,7 @@ public enum ChestTypes implements StringRepresentable {
     }
 
     static {
-        for (ChestTypes enumdyecolor : values()) {
+        for (ItemTypes enumdyecolor : values()) {
             META_LOOKUP[enumdyecolor.getMetadata()] = enumdyecolor;
             TYPE_DMG_LOOKUP[enumdyecolor.getDyeDamage()] = enumdyecolor;
         }

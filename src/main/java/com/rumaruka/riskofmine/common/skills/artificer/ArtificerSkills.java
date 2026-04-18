@@ -27,10 +27,12 @@ public class ArtificerSkills extends SkillBase {
                 isSkillActive = !isSkillActive;
                 if (isSkillActive) {
                     // Enable the feature
-                    ROMUtils.getPlayer().sendSystemMessage(Component.literal("Skill is enabled"));
+                   // ROMUtils.getPlayer().sendSystemMessage(Component.literal("Skill is enabled"));
+                    ROMUtils.sendChat(String.valueOf(Component.literal("Skill is enabled")));
                 } else {
                     // Disable the feature
-                    ROMUtils.getPlayer().sendSystemMessage(Component.literal("Skill is disabled"));
+                   // ROMUtils.getPlayer().sendSystemMessage(Component.literal("Skill is disabled"));
+                    ROMUtils.sendChat(String.valueOf(Component.literal("Skill is disabled")));
                 }
 
 

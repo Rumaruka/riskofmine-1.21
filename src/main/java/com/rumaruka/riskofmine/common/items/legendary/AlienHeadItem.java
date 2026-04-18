@@ -1,7 +1,7 @@
 package com.rumaruka.riskofmine.common.items.legendary;
 
 import com.rumaruka.riskofmine.api.enumeration.Category;
-import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.ItemTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.client.gui.screens.Screen;
@@ -16,7 +16,7 @@ public class AlienHeadItem extends BaseCollectablesItem {
     public int cooldownMinus;
 
     public AlienHeadItem() {
-        super(ChestTypes.LEGENDARY, Category.UTILITY);
+        super(ItemTypes.LEGENDARY, Category.UTILITY);
         this.cooldownMinus = this.getDefaultInstance().getCount();
 
     }

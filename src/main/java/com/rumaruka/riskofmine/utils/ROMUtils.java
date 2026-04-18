@@ -3,7 +3,7 @@ package com.rumaruka.riskofmine.utils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.rumaruka.riskofmine.api.entity.IBlazing;
 import com.rumaruka.riskofmine.api.entity.IOverloading;
-import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.ItemTypes;
 import com.rumaruka.riskofmine.api.enumeration.Survivors;
 import com.rumaruka.riskofmine.common.entity.player.PlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.MultiLineTextWidget;
+import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.Holder;
@@ -28,6 +29,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -37,8 +39,10 @@ public class ROMUtils {
     private static MobEffectCategory category;
 
 
+
     @Getter
     private static final Minecraft mc = Minecraft.getInstance();
+
     // private static int durOld;
     // public static int valueShields = 5;
 
@@ -50,32 +54,11 @@ public class ROMUtils {
         return getMc().levelRenderer;
     }
 
-
-    public static Player getPlayer() {
-
-        return getMc().player;
-    }
-
-//    public static int getValueShields() {
-//        return valueShields;
-//    }
-
     public static int getShieldShapedGlass() {
         return 16;
     }
 
-
-//    public static int getDurOld() {
-//        return durOld;
-//    }
-
-    /**
-     * set the movespeed used for the new AI system
-     */
-//    public static int setDurOld(int durNew) {
-//        return durOld = durNew;
-//    }
-    public static void sendMessage(String msg) {
+    public static void sendSystemMessage(String msg) {
         Player player = Minecraft.getInstance().player;
 
         if (player != null) {
@@ -84,6 +67,17 @@ public class ROMUtils {
         }
 
     }
+
+    public static void sendChat(String msg){
+        if (getConnection() != null){
+            getConnection().sendChat(msg);
+        }
+
+
+    }
+
+
+
 
     public static boolean isGiveDamage(LivingEntity entity) {
         float health = Math.min(entity.getHealth(), entity.getMaxHealth());
@@ -121,11 +115,18 @@ public class ROMUtils {
         return itemCount;
 
     }
+    public static Player getPlayer() {
 
+        return getMc().player;
+    }
+    public static ClientPacketListener getConnection() {
+
+        return getMc().player != null ? getMc().player.connection : null;
+    }
     @Deprecated
-    /**
-     *  {@param countAll(player, itemstack)} new methods for check count items for inventory and curios
-     **/
+    /*
+       {@param countAll(player, itemstack)} new methods for check count items for inventory and curios
+     */
     public static int counting(Player player, ItemStack itemToCount) {
         int itemCount = 0;
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
@@ -138,9 +139,6 @@ public class ROMUtils {
     }
 
     @Deprecated
-    /**
-     * {@param countAll(player, itemstack)} new methods for check count items for inventory and curios
-     **/
     public static int countingCurio(Player player, ItemStack item) {
         int itemCount = 0;
 
@@ -183,7 +181,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == ChestTypes.COMMON) {
+            if (base.getType() == ItemTypes.COMMON) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -196,7 +194,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == ChestTypes.UNCOMMON) {
+            if (base.getType() == ItemTypes.UNCOMMON) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -209,7 +207,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == ChestTypes.BOSS) {
+            if (base.getType() == ItemTypes.BOSS) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -222,7 +220,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            return base.getType() == ChestTypes.VOID;
+            return base.getType() == ItemTypes.VOID;
 
         }
         return false;
@@ -232,7 +230,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            return base.getType() == ChestTypes.SCRAP;
+            return base.getType() == ItemTypes.SCRAP;
 
         }
         return false;
@@ -242,7 +240,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            return base.getType() == ChestTypes.LUNAR;
+            return base.getType() == ItemTypes.LUNAR;
 
         }
         return false;
@@ -252,7 +250,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == ChestTypes.LEGENDARY) {
+            if (base.getType() == ItemTypes.LEGENDARY) {
                 itemStack.shrink(1);
                 return true;
             }
@@ -265,7 +263,7 @@ public class ROMUtils {
 
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof BaseCollectablesItem base) {
-            if (base.getType() == ChestTypes.EQUIPMENT) {
+            if (base.getType() == ItemTypes.EQUIPMENT) {
                 itemStack.shrink(1);
                 return true;
             }

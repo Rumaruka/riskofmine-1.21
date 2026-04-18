@@ -1,14 +1,14 @@
 package com.rumaruka.riskofmine.common.items.voiditems;
 
 import com.rumaruka.riskofmine.api.enumeration.Category;
-import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.ItemTypes;
 import com.rumaruka.riskofmine.api.item.IVoidItem;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import net.minecraft.world.item.ItemStack;
 
 public class VoidItem extends BaseCollectablesItem implements IVoidItem {
     public VoidItem(Category category) {
-        super(ChestTypes.VOID, category);
+        super(ItemTypes.VOID, category);
 
     }
 

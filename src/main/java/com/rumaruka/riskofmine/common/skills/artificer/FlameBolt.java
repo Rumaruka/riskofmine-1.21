@@ -42,12 +42,15 @@ public class FlameBolt extends ArtificerSkills {
 
             if (isSkillActive) {
                 if (isLeftFlag && isCooldown()) {
+
                     SmallFireball arrow = new SmallFireball(EntityType.SMALL_FIREBALL, level);
+
                     Vec3 direction = player.getLookAngle();
                     arrow.shoot(direction.x, direction.y, direction.z, 3F, 1.0F);
                     arrow.setPos(player.getX(), player.getY() + 1, player.getZ());
                     level.addFreshEntity(arrow);
                     arrow.setOwner(player);
+
                     isLeftFlag = false;
                     setCooldown(false);
                     setCooldownCount(cooldownCountMax);

@@ -3,7 +3,7 @@ package com.rumaruka.riskofmine.common.items.common;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.rumaruka.riskofmine.api.enumeration.Category;
-import com.rumaruka.riskofmine.api.enumeration.ChestTypes;
+import com.rumaruka.riskofmine.api.enumeration.ItemTypes;
 import com.rumaruka.riskofmine.common.items.BaseCollectablesItem;
 import com.rumaruka.riskofmine.utils.ROMMathFormula;
 import com.rumaruka.riskofmine.utils.ROMUtils;
@@ -33,7 +33,7 @@ public class EnergyDrinkItem extends BaseCollectablesItem {
     private static final ResourceLocation SPEED_MODIFIER_SPRINTING_UUID = rl("speed");
 
     public EnergyDrinkItem() {
-        super(ChestTypes.COMMON, Category.UTILITY);
+        super(ItemTypes.COMMON, Category.UTILITY);
     }
 
     @Override
