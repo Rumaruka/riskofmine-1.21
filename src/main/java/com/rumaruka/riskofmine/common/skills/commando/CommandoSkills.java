@@ -8,6 +8,10 @@ import com.rumaruka.riskofmine.api.registry.skill.SkillType;
 import com.rumaruka.riskofmine.common.entity.player.IPlayerSurvivorsBridge;
 import com.rumaruka.riskofmine.common.entity.player.ISurvivors;
 import com.rumaruka.riskofmine.utils.ROMUtils;
+import net.minecraft.client.multiplayer.PlayerInfo;
+import net.minecraft.network.chat.Component;
+
+import java.util.Collection;
 
 public class CommandoSkills extends SkillBase {
 
@@ -28,9 +32,12 @@ public class CommandoSkills extends SkillBase {
                 if (isSkillActive) {
                     // Enable the feature
                     RiskOfMine.logger.info("Skill activated");
+                    ROMUtils.sendChat("Skill is enabled");
                 } else {
                     // Disable the feature
                     RiskOfMine.logger.info("Skill deactivate");
+                    ROMUtils.sendChat("Skill is deactivate");
+
                 }
 
 

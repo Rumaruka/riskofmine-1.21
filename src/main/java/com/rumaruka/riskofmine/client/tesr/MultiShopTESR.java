@@ -16,6 +16,7 @@ import org.zeith.hammerlib.client.render.tile.IBESR;
 import static com.rumaruka.riskofmine.RiskOfMine.rl;
 
 public class MultiShopTESR implements IBESR<MultiShopTE> {
+
     IGeometricModel model;
     final ResourceLocation textureOPEN = rl("textures/tile/multi_shop_open.png");
     final RenderData data;

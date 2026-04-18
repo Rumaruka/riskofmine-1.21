@@ -15,9 +15,9 @@ import java.util.Collections;
 public class Printer3DBlock extends Block {
     public Item priorityItem;
 
-    public Printer3DBlock(Properties properties_, Item priority) {
+    public Printer3DBlock(Properties properties_) {
         super(properties_);
-        this.priorityItem = priority;
+
     }
 
     @Override

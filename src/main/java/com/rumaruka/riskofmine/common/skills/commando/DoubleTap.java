@@ -1,6 +1,7 @@
 package com.rumaruka.riskofmine.common.skills.commando;
 
 import com.rumaruka.riskofmine.api.registry.skill.SkillType;
+import com.rumaruka.riskofmine.utils.ROMUtils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -25,8 +26,10 @@ public class DoubleTap extends CommandoSkills {
 
     private void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
         if (isActive()) {
+
             if (isSkillActive()) {
                 isLeftFlag = true;
+
             }
 
 
@@ -53,6 +56,7 @@ public class DoubleTap extends CommandoSkills {
                     isLeftFlag = false;
                     setCooldown(false);
                     setCooldownCount(cooldownCountMax);
+
                 }
 
 

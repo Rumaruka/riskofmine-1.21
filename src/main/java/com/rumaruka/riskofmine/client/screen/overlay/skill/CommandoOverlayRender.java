@@ -45,6 +45,7 @@ public class CommandoOverlayRender {
             Survivors survivors = iSurvivors.survivors();
             if (survivors == Survivors.COMMANDO) {
                 if (SkillBase.isSkillActive()) {
+
                     renderDoubleTapSkill(guiGraphics);
                     renderSuppressiveFireSkill(guiGraphics);
                     renderTacticalDiveSkill(guiGraphics);
@@ -194,6 +195,7 @@ public class CommandoOverlayRender {
         RenderSystem.disableBlend();
 
     }
+
 
     private static void renderSuppressiveFireSkill(GuiGraphics gui) {
         Font font = mc.font;

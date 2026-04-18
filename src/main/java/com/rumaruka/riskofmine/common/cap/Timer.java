@@ -73,7 +73,7 @@ public class Timer implements INBTSerializable<CompoundTag> {
         setTimer(Math.min(getCurrentTimer() + value, getMaxTimer()));
     }
 
-    public void removetimer(int value) {
+    public void removeTimer(int value) {
 
         setTimer(Math.max(getCurrentTimer() - value, 0));
     }

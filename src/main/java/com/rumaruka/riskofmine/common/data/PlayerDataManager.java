@@ -77,7 +77,7 @@ public class PlayerDataManager {
         return null;
     }
 
-    /// ////////////////// DATA LIFECYCLE EVENTS /////////////////////
+
 
     @SubscribeEvent
     public static void playerTick(PlayerTickEvent.Pre e) {
