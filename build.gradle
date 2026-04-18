@@ -104,8 +104,8 @@ dependencies {
 
     implementation "net.neoforged:neoforge:${neo_version}"
     ////// UTILITY STUFF //////
-    compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
     ///////////////////////////
 
     implementation "org.zeith.hammerlib:HammerLib-1.21:${hl_version}"
