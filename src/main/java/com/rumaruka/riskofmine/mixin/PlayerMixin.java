@@ -51,7 +51,9 @@ public abstract class PlayerMixin extends LivingEntity implements IPlayerSurvivo
             riskofmine$survivorsBridge = new PlayerSurvivorsBridge((Player) (Object) this, Survivors.ARTIFICER);
 
         }
-
+        if ( SurvivorsUtils.isBandit) {
+            riskofmine$survivorsBridge = new PlayerSurvivorsBridge((Player) (Object) this, Survivors.BANDIT);
+        }
     }
 
 
